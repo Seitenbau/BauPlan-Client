@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Haupgebäude  EG",
+    "short": "EG",
+    "picture": "hauptgebaeudeEg.svg",
+    "labels": [
+      {
+        "name": "Besprecher Groß",
+        "x": 100,
+        "y": 100
+      }
+    ]
+  }
+]
