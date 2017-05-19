@@ -10,18 +10,15 @@
  */
 
 import React from 'react';
-import { FormattedMessage } from 'react-intl';
-import messages from './messages';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import Button from 'components/Button';
-import Tabs from 'components/Tabs';
+// import { FormattedMessage } from 'react-intl';
+// import messages from './messages';
 
 export default class HomePage extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  // <FormattedMessage {...messages.hallo} />
   render() {
     return (
-      <MuiThemeProvider>
-        <Tabs/>
-      </MuiThemeProvider>
+      <div>
+      </div>
     );
   }
 }
