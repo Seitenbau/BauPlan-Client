@@ -8,3 +8,6 @@ stats.json
 .DS_Store
 npm-debug.log
 .idea
+
+/app/ultils/floorplans/
+!/app/ultils/floorplans/floors.svg

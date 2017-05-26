@@ -2,10 +2,32 @@
   {
     "name": "Haupgebäude  EG",
     "short": "EG",
-    "picture": "hauptgebaeudeEg.svg",
+    "plan": "floors.svg",
     "labels": [
       {
-        "name": "Besprecher Groß",
+        "name": "Besprecher 1",
+        "x": 150,
+        "y": 300
+      },
+      {
+        "name": "Besprecher 3",
+        "x": 150,
+        "y": 470
+      },
+      {
+        "name": "Besprecher 3",
+        "x": 150,
+        "y": 600
+      }
+    ]
+  },
+  {
+    "name": "Haupgebäude  OG",
+    "short": "EG",
+    "plan": "floors.svg",
+    "labels": [
+      {
+        "name": "Besprecher 4",
         "x": 100,
         "y": 100
       }

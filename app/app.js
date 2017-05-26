@@ -16,11 +16,7 @@ import { applyRouterMiddleware, Router, browserHistory } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 import { useScroll } from 'react-router-scroll';
 import 'sanitize.css/sanitize.css';
-import injectTapEventPlugin from 'react-tap-event-plugin';
-
-// Needed for onTouchTap
-// http://stackoverflow.com/a/34015469/988941
-injectTapEventPlugin();
+import { ThemeProvider } from 'styled-components';
 
 // Import root app
 import App from 'containers/App';
@@ -30,6 +26,7 @@ import { makeSelectLocationState } from 'containers/App/selectors';
 
 // Import Language Provider
 import LanguageProvider from 'containers/LanguageProvider';
+import SystemProvider from 'containers/SystemProvider';
 
 // Load the favicon, the manifest.json file and the .htaccess file
 /* eslint-disable import/no-unresolved, import/extensions */
@@ -45,9 +42,13 @@ import { translationMessages } from './i18n';
 
 // Import CSS reset and Global Styles
 import './global-styles';
+import system from './utils/system.json';
+import theme from './utils/theme.json';
+import { toTheme } from './utils/helper';
 
 // Import root routes
 import createRoutes from './routes';
+
 
 // Create redux store with history
 // this uses the singleton browserHistory provided by react-router
@@ -72,17 +73,21 @@ const rootRoute = {
 const render = (messages) => {
   ReactDOM.render(
     <Provider store={store}>
-      <LanguageProvider messages={messages}>
-        <Router
-          history={history}
-          routes={rootRoute}
-          render={
-            // Scroll to top when going to a new page, imitating default browser
-            // behaviour
-            applyRouterMiddleware(useScroll())
-          }
-        />
-      </LanguageProvider>
+      <ThemeProvider theme={toTheme(theme, system.objects)}>
+        <LanguageProvider messages={messages}>
+          <SystemProvider system={system}>
+            <Router
+              history={history}
+              routes={rootRoute}
+              render={
+                // Scroll to top when going to a new page, imitating default browser
+                // behaviour
+                applyRouterMiddleware(useScroll())
+              }
+            />
+          </SystemProvider>
+        </LanguageProvider>
+      </ThemeProvider>
     </Provider>,
     document.getElementById('app')
   );

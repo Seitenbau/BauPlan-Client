@@ -2,5 +2,12 @@
   "name": "Bauplan",
   "paths": {
     "images": "utils/images/"
-  }
+  },
+  "objects": [
+    {
+      "name": "Table",
+      "size": [1.6, 0.8],
+      "color": "#d3d3d3"
+    }
+  ]
 }
