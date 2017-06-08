@@ -83,6 +83,10 @@ module.exports = (options) => ({
       '.jsx',
       '.react.js',
     ],
+    alias: {
+      system: path.resolve(process.cwd(), 'app/utils/System.js'),
+      helper: path.resolve(process.cwd(), 'app/utils/helper.js'),
+    },
     mainFields: [
       'browser',
       'jsnext:main',
