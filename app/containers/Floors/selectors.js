@@ -29,15 +29,15 @@ const makeSelectTables = () => createSelector(
   (substate) => substate.get('tables')
 );
 
-const makeSelectSystem = () => createSelector(
-  selectSystemProviderDomain(),
-  (substate) => substate.get('system')
+const makeSelectProjects = () => createSelector(
+  selectFloorsDomain(),
+  (substate) => substate.get('projects')
 );
 
 export default makeSelectFloors;
 export {
   selectFloorsDomain,
   makeSelectFloorsData,
-  makeSelectSystem,
   makeSelectTables,
+  makeSelectProjects
 };

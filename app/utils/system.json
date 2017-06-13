@@ -3,11 +3,11 @@
   "paths": {
     "images": "utils/images/"
   },
-  "objects": [
-    {
+  "objects": {
+    "table": {
       "name": "Table",
       "size": [1.6, 0.8],
       "color": "#d3d3d3"
     }
-  ]
+  }
 }

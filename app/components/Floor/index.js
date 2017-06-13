@@ -4,7 +4,7 @@
 *
 */
 
-import React, { PropTypes } from 'react';
+import React, { PropTypes, Children } from 'react';
 // import styled from 'styled-components';
 import Img from './Img';
 import StyledFloor from './StyledFloor';
@@ -28,6 +28,9 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
               left={label.x}
               top={label.y}
             />)
+          }
+          {
+            Children.toArray(this.props.tables)
           }
         </ImgWrapper>
       </StyledFloor>

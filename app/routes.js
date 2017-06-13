@@ -24,15 +24,17 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           import('containers/HomePage/reducer'),
           import('containers/Floors/reducer'),
+          import('containers/TableParent/reducer'),
           import('containers/Floors/sagas'),
           import('containers/HomePage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([HomePageReducer, FloorsReducer, FloorsSaga, component]) => {
+        importModules.then(([HomePageReducer, FloorsReducer, TableParentReducer, FloorsSaga, component]) => {
           injectReducer('home', HomePageReducer.default);
           injectReducer('floors', FloorsReducer.default);
+          injectReducer('tableParent', TableParentReducer.default);
           injectSagas(FloorsSaga.default);
           renderRoute(component);
         });

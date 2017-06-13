@@ -12,6 +12,9 @@ import {
   REQUEST_TABLE_DATA,
   REQUEST_TABLE_DATA_SUCCESS,
   REQUEST_TABLE_DATA_ERROR,
+  REQUEST_PROJECTS_DATA,
+  REQUEST_PROJECTS_DATA_SUCCESS,
+  REQUEST_PROJECTS_DATA_ERROR,
 } from './constants';
 
 export function defaultAction() {
@@ -58,4 +61,24 @@ export function requestTableDataError(error) {
     type: REQUEST_TABLE_DATA_ERROR,
     error,
   };
+}
+
+export function requestProjectData() {
+  return {
+    type: REQUEST_PROJECTS_DATA
+  }
+}
+
+export function requestProjectDataSuccess(data) {
+  return {
+    type: REQUEST_PROJECTS_DATA_SUCCESS,
+    data
+  }
+}
+
+export function requestProjectDataError(error) {
+  return {
+    type: REQUEST_PROJECTS_DATA_ERROR,
+    error
+  }
 }

@@ -9,11 +9,20 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Floor from 'components/Floor';
 
-import { requestFloorsSuccess } from './actions';
+import {
+  requestFloorsSuccess,
+  requestTableData
+} from './actions';
 import content from '../../utils/floors.json';
-import { makeSelectFloorsData, makeSelectSystem, makeSelectTables } from './selectors';
+import {
+  makeSelectFloorsData,
+  makeSelectTables,
+  makeSelectProjects
+} from './selectors';
 
 import Wrapper from './FloorsWrapper';
+import TableParent from '../TableParent';
+
 
 // import { requestFloors } from './actions';
 // {Children.map(this.props.floors, (floor, i) => <Floor name={floor.name} />)}
@@ -33,9 +42,22 @@ export class Floors extends React.PureComponent { // eslint-disable-line react/p
             short={floor.short}
             plan={floor.plan}
             labels={floor.labels}
+            tables= {this.props.tables
+              .filter((table) => table.floor == i || (typeof table.floor === 'undefined' && i == 0))
+              .map((tab, i) => <TableParent
+                key={i}
+                className={`table table-${i}`}
+                name={tab.name}
+                number={tab.number}
+                projects={console.log(filterProjects(this.props.projects, tab.projects))}
+                x={tab.x}
+                y={tab.y}
+                width={this.props.system.objects.table.size[0]}
+                height={this.props.system.objects.table.size[1]}
+              />)}
           />)}
+
       </Wrapper>
-      // tables= {this.props.tables.filter((table) => table.floor == i)}
     );
   }
 }
@@ -46,12 +68,14 @@ Floors.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  system: PropTypes.object,
+  projects: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({
   floors: makeSelectFloorsData(),
-  system: makeSelectSystem(),
   tables: makeSelectTables(),
+  projects: makeSelectProjects(),
 });
 
 function mapDispatchToProps(dispatch) {

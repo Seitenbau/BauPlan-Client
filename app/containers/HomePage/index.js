@@ -10,6 +10,7 @@
  */
 
 import React from 'react';
+import system from 'utils/System'
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 
@@ -19,7 +20,7 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
   // <FormattedMessage {...messages.hallo} />
   render() {
     return (
-      <Floors />
+      <Floors system={system} />
     );
   }
 }
