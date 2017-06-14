@@ -49,7 +49,7 @@ export class Floors extends React.PureComponent { // eslint-disable-line react/p
                 className={`table table-${i}`}
                 name={tab.name}
                 number={tab.number}
-                projects={console.log(filterProjects(this.props.projects, tab.projects))}
+                projects={tab.projects}
                 x={tab.x}
                 y={tab.y}
                 width={this.props.system.objects.table.size[0]}

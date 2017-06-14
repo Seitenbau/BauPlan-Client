@@ -1,0 +1,130 @@
+exports[`<Img /> Expect to render correctly 1`] = `
+ShallowWrapper {
+  "complexSelector": ComplexSelector {
+    "buildPredicate": [Function],
+    "childrenOfNode": [Function],
+    "findWhereUnwrapped": [Function],
+  },
+  "length": 1,
+  "node": <Img
+    className="sc-bdVaJa bIetak"
+    src="floors.svg" />,
+  "nodes": Array [
+    <Img
+      className="sc-bdVaJa bIetak"
+      src="floors.svg" />,
+  ],
+  "options": Object {
+    "context": Object {
+      "__styled-components__": [Function],
+    },
+  },
+  "renderer": ReactShallowRenderer {
+    "_instance": ShallowComponentWrapper {
+      "_calledComponentWillUnmount": false,
+      "_compositeType": 0,
+      "_context": Object {
+        "__styled-components__": [Function],
+      },
+      "_currentElement": <Styled(undefined)
+        src="floors.svg" />,
+      "_debugID": 3,
+      "_hostContainerInfo": null,
+      "_hostParent": null,
+      "_instance": StyledComponent {
+        "_reactInternalInstance": [Circular],
+        "attrs": Object {},
+        "context": Object {
+          "__styled-components__": [Function],
+        },
+        "props": Object {
+          "src": "floors.svg",
+        },
+        "refs": Object {},
+        "state": Object {
+          "generatedClassName": "bIetak",
+          "theme": Object {
+            "colors": Object {
+              "backgroundColor": "#F2F5F6",
+              "black": "#FFFFFF",
+              "primary": "#022032",
+              "secondary": "#00FF00",
+              "white": "#00000",
+            },
+            "plans": Object {
+              "backgroundColor": "#FFFFFF",
+              "color": "#000000",
+              "floorName": Object {
+                "font": "Helvetica",
+                "size": 24,
+              },
+              "image": Object {
+                "padding": "3vh 5vw 3vh 5vw",
+                "width": 50,
+              },
+              "marginBottom": 40,
+              "roomName": Object {
+                "font": "Helvetica",
+                "size": 16,
+              },
+              "width": 60,
+            },
+            "systemStyles": Object {
+              "name": "Bauplan",
+              "objects": Object {
+                "table": Object {
+                  "color": "#d3d3d3",
+                  "name": "Table",
+                  "size": Array [
+                    1.6,
+                    0.8,
+                  ],
+                },
+              },
+              "paths": Object {
+                "images": "utils/images/",
+              },
+            },
+          },
+        },
+        "unsubscribe": [Function],
+        "updater": Object {
+          "enqueueCallback": [Function],
+          "enqueueCallbackInternal": [Function],
+          "enqueueElementInternal": [Function],
+          "enqueueForceUpdate": [Function],
+          "enqueueReplaceState": [Function],
+          "enqueueSetState": [Function],
+          "isMounted": [Function],
+          "validateCallback": [Function],
+        },
+      },
+      "_mountOrder": 2,
+      "_pendingCallbacks": null,
+      "_pendingElement": null,
+      "_pendingForceUpdate": false,
+      "_pendingReplaceState": false,
+      "_pendingStateQueue": null,
+      "_renderedComponent": NoopInternalComponent {
+        "_currentElement": <Img
+          className="sc-bdVaJa bIetak"
+          src="floors.svg" />,
+        "_debugID": 4,
+        "_renderedOutput": <Img
+          className="sc-bdVaJa bIetak"
+          src="floors.svg" />,
+      },
+      "_renderedNodeType": 1,
+      "_rootNodeID": 0,
+      "_topLevelWrapper": null,
+      "_updateBatchNumber": null,
+      "_warnedAboutRefsInRender": false,
+    },
+    "getRenderOutput": [Function],
+    "render": [Function],
+  },
+  "root": [Circular],
+  "unrendered": <Styled(undefined)
+    src="floors.svg" />,
+}
+`;
