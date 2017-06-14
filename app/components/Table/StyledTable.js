@@ -10,6 +10,7 @@ const Tabel = styled.div`
   border: 1px solid ${shadeColor('#d3d3d3', -0.8)};
   left: ${(props) => rem(props.left)};
   top: ${(props) => rem(props.top)};
+  transform: rotate(${(props) => props.rotation}deg);
   :after {
     content: "";
     display: block;

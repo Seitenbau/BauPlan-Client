@@ -51,6 +51,7 @@ export class Floors extends React.PureComponent { // eslint-disable-line react/p
                 y={tab.y}
                 width={this.props.system.objects.table.size[0]}
                 height={this.props.system.objects.table.size[1]}
+                rotation={tab.rotation}
               />)}
           />)}
 
