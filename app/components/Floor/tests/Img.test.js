@@ -1,12 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
 import { shallowWithTheme } from 'utils/helper';
 
 import Img from '../Img';
 
 describe('<Img />', () => {
-  const cut = shallowWithTheme(<Img src="floor.svg"></Img>)
+  const cut = shallowWithTheme(<Img src="floor.svg"></Img>);
   it('Expect to have a name', () => {
-    expect(cut.props.src).not().toBeDefined()
+    expect(cut.props.src).not().toBeDefined();
   });
 });

@@ -5,10 +5,10 @@
 */
 
 import React, { PropTypes } from 'react';
+import ProjectIdentifier from 'components/ProjectIdentifier';
+import { prefixNumber } from 'utils/helper';
 import StyledTable from './StyledTable';
 import TableSpan from './TableSpan';
-import { prefixNumber } from 'utils/helper';
-import ProjectIdentifier from 'components/ProjectIdentifier';
 // import styled from 'styled-components';
 
 
@@ -41,6 +41,8 @@ Table.propTypes = {
   })),
   width: PropTypes.number,
   height: PropTypes.number,
+  y: PropTypes.number,
+  x: PropTypes.number,
 };
 
 export default Table;

@@ -10,7 +10,7 @@
  */
 
 import React from 'react';
-import system from 'utils/System'
+import system from 'utils/System';
 // import { FormattedMessage } from 'react-intl';
 // import messages from './messages';
 

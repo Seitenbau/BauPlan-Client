@@ -51,12 +51,12 @@ export function* getProjects() {
       id: 1,
       name: 'Service Baden-Würtemberg',
       short: 'SBW',
-      color: '#FFFF00'
-    },{
+      color: '#FFFF00',
+    }, {
       id: 2,
       name: 'Future Comunication Center',
       short: 'FCC',
-      color: '#FF00FF'
+      color: '#FF00FF',
     }]
   ));
 }

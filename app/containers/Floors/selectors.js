@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-import { selectSystemProviderDomain } from '../SystemProvider/selectors';
 /**
  * Direct selector to the floors state domain
  */
@@ -39,5 +38,5 @@ export {
   selectFloorsDomain,
   makeSelectFloorsData,
   makeSelectTables,
-  makeSelectProjects
+  makeSelectProjects,
 };

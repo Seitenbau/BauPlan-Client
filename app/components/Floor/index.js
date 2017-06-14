@@ -27,11 +27,8 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
               name={label.name}
               left={label.x}
               top={label.y}
-            />)
-          }
-          {
-            Children.toArray(this.props.tables)
-          }
+            />)}
+          { Children.toArray(this.props.tables) }
         </ImgWrapper>
       </StyledFloor>
     );
@@ -45,6 +42,7 @@ Floor.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  tables: PropTypes.array,
 };
 
 export default Floor;

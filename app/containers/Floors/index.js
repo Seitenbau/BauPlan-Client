@@ -9,15 +9,12 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Floor from 'components/Floor';
 
-import {
-  requestFloorsSuccess,
-  requestTableData
-} from './actions';
+import { requestFloorsSuccess } from './actions';
 import content from '../../utils/floors.json';
 import {
   makeSelectFloorsData,
   makeSelectTables,
-  makeSelectProjects
+  makeSelectProjects,
 } from './selectors';
 
 import Wrapper from './FloorsWrapper';
@@ -42,11 +39,11 @@ export class Floors extends React.PureComponent { // eslint-disable-line react/p
             short={floor.short}
             plan={floor.plan}
             labels={floor.labels}
-            tables= {this.props.tables
-              .filter((table) => table.floor == i || (typeof table.floor === 'undefined' && i == 0))
-              .map((tab, i) => <TableParent
-                key={i}
-                className={`table table-${i}`}
+            tables={this.props.tables
+              .filter((table) => table.floor === i || (typeof table.floor === 'undefined' && i === 0))
+              .map((tab, j) => <TableParent
+                key={j}
+                className={`table table-${j}`}
                 name={tab.name}
                 number={tab.number}
                 projects={tab.projects}
@@ -69,7 +66,7 @@ Floors.propTypes = {
     PropTypes.object,
   ]),
   system: PropTypes.object,
-  projects: PropTypes.array,
+  tables: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({

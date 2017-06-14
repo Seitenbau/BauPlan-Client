@@ -65,20 +65,20 @@ export function requestTableDataError(error) {
 
 export function requestProjectData() {
   return {
-    type: REQUEST_PROJECTS_DATA
-  }
+    type: REQUEST_PROJECTS_DATA,
+  };
 }
 
 export function requestProjectDataSuccess(data) {
   return {
     type: REQUEST_PROJECTS_DATA_SUCCESS,
-    data
-  }
+    data,
+  };
 }
 
 export function requestProjectDataError(error) {
   return {
     type: REQUEST_PROJECTS_DATA_ERROR,
-    error
-  }
+    error,
+  };
 }
