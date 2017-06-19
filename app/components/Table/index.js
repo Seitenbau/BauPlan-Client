@@ -5,7 +5,7 @@
 */
 
 import React, { PropTypes } from 'react';
-import ProjectIdentifier from 'containers/ProjectIdentifier';
+import ProjectIdentifier from 'components/ProjectIdentifier';
 import { prefixNumber } from 'utils/helper';
 import StyledTable from './StyledTable';
 import TableSpan from './TableSpan';
@@ -20,7 +20,7 @@ class Table extends React.PureComponent { // eslint-disable-line react/prefer-st
       <StyledTable rotation={this.props.rotation} top={this.props.y} left={this.props.x} width={this.props.width} height={this.props.height} className={this.props.className}>
         <TableSpan>{this.props.name}</TableSpan>
         <TableSpan center>{prefixNumber(this.props.number)}</TableSpan>
-        <ProjectIdentifier projects={this.props.projects} />
+        <ProjectIdentifier projects={this.props.project} />
       </StyledTable>
     );
   }
@@ -33,7 +33,7 @@ Table.propTypes = {
     PropTypes.string,
     PropTypes.number,
   ]),
-  projects: PropTypes.arrayOf(PropTypes.shape({
+  project: PropTypes.arrayOf(PropTypes.shape({
     id: PropTypes.number,
     name: PropTypes.string,
     short: PropTypes.string,
