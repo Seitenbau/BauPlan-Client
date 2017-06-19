@@ -17,15 +17,15 @@ export function* getTables() {
       y: 1500,
       floor: 0,
       rotation: 45,
+      projects: [1],
       number: 1,
-      projects: 1,
     }, {
       name: 'Dominik Prill',
       x: 250,
       y: 300,
       floor: 0,
       rotation: 180,
-      projects: 1,
+      projects: [1],
       number: 2,
     }, {
       name: 'Tobias Wursthorn',
@@ -33,6 +33,7 @@ export function* getTables() {
       y: 400,
       floor: 0,
       rotation: 245,
+      projects: [1],
       number: 2,
     }, {
       name: 'Patrick Blum',
@@ -40,6 +41,7 @@ export function* getTables() {
       y: 500,
       floor: 0,
       rotation: 90,
+      projects: [1],
       number: 3,
     }]
   ));

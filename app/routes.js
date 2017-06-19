@@ -25,17 +25,21 @@ export default function createRoutes(store) {
           import('containers/HomePage/reducer'),
           import('containers/Floors/reducer'),
           import('containers/TableParent/reducer'),
+          import('containers/ProjectIdentifier/reducer'),
           import('containers/Floors/sagas'),
+          import('containers/ProjectIdentifier/sagas'),
           import('containers/HomePage'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([HomePageReducer, FloorsReducer, TableParentReducer, FloorsSaga, component]) => {
+        importModules.then(([HomePageReducer, FloorsReducer, TableParentReducer, ProjectIdentifierReducer, FloorsSaga, ProjectIdentifierSaga, component]) => {
           injectReducer('home', HomePageReducer.default);
           injectReducer('floors', FloorsReducer.default);
           injectReducer('tableParent', TableParentReducer.default);
+          injectReducer('projectIdentifier', ProjectIdentifierReducer.default);
           injectSagas(FloorsSaga.default);
+          injectSagas(ProjectIdentifierSaga.default);
           renderRoute(component);
         });
 
