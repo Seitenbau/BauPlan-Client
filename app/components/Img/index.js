@@ -5,17 +5,15 @@
 */
 
 import React, { PropTypes } from 'react';
-import images from 'utils/Images';
-// import styled from 'styled-components';
-
 
 function Img(props) {
   return (
-    <img src={images[props.src]} alt={props.src.split('.')[0]} className={props.className} />
+    <img src={props.src} alt={props.alt} className={props.className} />
   );
 }
 
 Img.propTypes = {
+  alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   className: PropTypes.string,
 };

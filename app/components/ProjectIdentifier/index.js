@@ -7,7 +7,6 @@
 import React, { PropTypes } from 'react';
 import Wrapper from './Wrapper';
 import Rectangle from './Rectangle';
-// import styled from 'styled-components';
 
 
 class ProjectIdentifier extends React.Component { // eslint-disable-line react/prefer-stateless-function
