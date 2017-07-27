@@ -10,3 +10,4 @@
  */
 
 export const DEFAULT_LOCALE = 'en';
+export const WINDOW_LIFE_RESIZE = 'WINDOW_LIFE_RESIZE';

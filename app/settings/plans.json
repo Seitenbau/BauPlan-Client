@@ -2,6 +2,7 @@
   "name": "Haupgebäude EG",
   "id": "EG",
   "imageName": "sample.svg",
+  "mapScaleFactor": 60,
   "labels": [{
     "name": "Besprecher 1",
     "x": 150,
@@ -19,6 +20,7 @@
   "name": "Haupgebäude  OG",
   "id": "OG",
   "imageName": "sample.svg",
+  "mapScaleFactor": 60,
   "labels": [{
     "name": "Besprecher 4",
     "x": 100,

@@ -14,13 +14,37 @@ import makeSelectTable from './selectors';
 export class Table extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <TableDisplay />
+      <TableDisplay
+        scaleFactor={this.props.scaleFactor}
+        className={this.props.className}
+        name={this.props.name}
+        number={this.props.number}
+        projects={this.props.projects}
+        x={this.props.x}
+        y={this.props.y}
+        rotation={this.props.rotation}
+      />
     );
   }
 }
 
 Table.propTypes = {
-  dispatch: PropTypes.func.isRequired,
+  name: PropTypes.string.isRequired,
+  number: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  projects: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number,
+    name: PropTypes.string,
+    short: PropTypes.string,
+    color: PropTypes.string,
+  })),
+  x: PropTypes.number,
+  y: PropTypes.number,
+  rotation: PropTypes.number,
+  className: PropTypes.string,
+  scaleFactor: PropTypes.number,
 };
 
 const mapStateToProps = createStructuredSelector({

@@ -14,8 +14,14 @@ const makeSelectTables = () => createSelector(
   (substate) => substate.get('tables')
 );
 
+const makeSelectProjects = () => createSelector(
+  selectPlansDomain(),
+  (substate) => substate.get('projects')
+);
+
 export {
   selectPlansDomain,
   makeSelectPlansData,
   makeSelectTables,
+  makeSelectProjects,
 };

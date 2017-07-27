@@ -10,10 +10,6 @@ import {
 
 
 export function rem(pix) {
-  const multi = pix.toString().split(' ');
-  if (multi.length > 1) {
-    return multi.map((p) => rem(p));
-  }
   return `${(parseFloat(pix / REM_BASE, 10))}rem`;
 }
 
@@ -46,6 +42,13 @@ export function prefixNumber(number) {
     return `#0${number}`;
   }
   return `#${number}`;
+}
+
+export function flatten(array) {
+  return array.reduce((prev, cur) => {
+    const more = [].concat(cur).some(Array.isArray);
+    return prev.concat(more ? flatten(cur) : cur);
+  }, []);
 }
 
 // export const shallowWithTheme = (children, options) => {

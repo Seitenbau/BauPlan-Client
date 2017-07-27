@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
-import NormalImg from 'components/Img';
+import NormalImg from 'containers/Img';
 
 const Img = styled(NormalImg)`
-  width: ${(props) => props.theme.plans.image.width}vw;
+  width: 100%;
   height: auto;
   margin: 0 auto;
 `;

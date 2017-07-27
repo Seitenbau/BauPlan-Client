@@ -25,16 +25,20 @@ export default function createRoutes(store) {
           import('containers/HomePage'),
           import('containers/HomePage/reducer'),
           import('containers/Plans/reducer'),
+          import('containers/UiEventProvider/reducer'),
           import('containers/Plans/sagas'),
           import('containers/Table/reducer'),
+          import('containers/Img/reducer'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component, HomePageReducer, PlansReducer, PlansSaga, TableReducer]) => {
+        importModules.then(([component, HomePageReducer, PlansReducer, UiEventProviderReducer, PlansSaga, TableReducer, ImgReducer]) => {
           injectReducer('home', HomePageReducer.default);
           injectReducer('plans', PlansReducer.default);
+          injectReducer('uiEvents', UiEventProviderReducer.default);
           injectReducer('table', TableReducer.default);
+          injectReducer('img', ImgReducer.default);
           injectSagas(PlansSaga.default);
           renderRoute(component);
         });

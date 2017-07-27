@@ -20,6 +20,7 @@ import { ThemeProvider } from 'styled-components';
 
 // Import root app
 import App from 'containers/App';
+import UiEventProvider from 'containers/UiEventProvider';
 
 // Import selector for `syncHistoryWithStore`
 import { makeSelectLocationState } from 'containers/App/selectors';
@@ -72,15 +73,17 @@ const render = (messages) => {
     <Provider store={store}>
       <ThemeProvider theme={theme}>
         <LanguageProvider messages={messages}>
-          <Router
-            history={history}
-            routes={rootRoute}
-            render={
-              // Scroll to top when going to a new page, imitating default browser
-              // behaviour
-              applyRouterMiddleware(useScroll())
-            }
-          />
+          <UiEventProvider>
+            <Router
+              history={history}
+              routes={rootRoute}
+              render={
+                // Scroll to top when going to a new page, imitating default browser
+                // behaviour
+                applyRouterMiddleware(useScroll())
+              }
+            />
+          </UiEventProvider>
         </LanguageProvider>
       </ThemeProvider>
     </Provider>,
