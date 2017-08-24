@@ -18,7 +18,7 @@ class Img extends React.PureComponent {
   componentDidMount() {
     this.props.calculationDone({
       scale: this.componentCalculateScaleFactor(),
-      key: this.props.name,
+      id: this.props.id,
     });
   }
   shouldComponentUpdate(nextProps) {
@@ -27,7 +27,7 @@ class Img extends React.PureComponent {
   componentWillUpdate() {
     this.props.calculationDone({
       scale: this.componentCalculateScaleFactor(),
-      key: this.props.name,
+      id: this.props.id,
     });
   }
   componentCalculateScaleFactor() {
@@ -42,12 +42,12 @@ class Img extends React.PureComponent {
 
 Img.propTypes = {
   alt: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   className: PropTypes.string,
   calculationDone: PropTypes.func,
   'width-height': PropTypes.string,
   mapScaleFactor: PropTypes.number,
+  id: PropTypes.string,
 };
 
 function mapDispatchToProps(dispatch) {

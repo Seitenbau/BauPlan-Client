@@ -20,18 +20,11 @@ import Wrapper from './PlansWrapper';
 
 
 export class Plans extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
-  constructor(props) {
-    super(props);
-    this.state = {
-      plans: props.plans,
-    };
-  }
   render() {
-    console.log(this.props);
     const { tables } = this.props;
     return (
       <Wrapper>
-        {this.props.plans.map((plan, i) =>
+        {this.props.floors.map((plan, i) =>
           <Floor
             key={i}
             name={plan.name}
@@ -41,6 +34,7 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
             tables={tables.filter((table) => table.planId === plan.id)}
             projects={this.props.projects}
             mapScaleFactor={plan.mapScaleFactor}
+            scale={plan.scale}
           />)}
 
       </Wrapper>
@@ -51,7 +45,7 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
 Plans.propTypes = {
   tables: PropTypes.array.isRequired,
   projects: PropTypes.array.isRequired,
-  plans: PropTypes.object,
+  floors: PropTypes.array,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -61,7 +55,7 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  plans: makeSelectPlansData(),
+  floors: makeSelectPlansData(),
   tables: makeSelectTables(),
   projects: makeSelectProjects(),
 });

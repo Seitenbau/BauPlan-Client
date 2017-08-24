@@ -12,18 +12,12 @@ import { selectImgDomain } from '../Img/selectors';
 /**
  * Default selector used by UiEventProvider
  */
-const getName = (state, props) => props.name;
 
 const makeSelectScale = () => createSelector(
    selectImgDomain(),
-   (substate) => substate.get('scale').toJS()
- );
-const makeSelectScaleFactor = () => createSelector(
-  [makeSelectScale(), getName],
-   (substate, name) => substate.get(name)
+   (substate) => substate.get('scale')
  );
 
-export default makeSelectScaleFactor;
 export {
   makeSelectScale,
 };

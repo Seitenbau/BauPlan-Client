@@ -1,6 +1,11 @@
 import { put, takeLatest } from 'redux-saga/effects';
-import { requestTableDataSuccess, requestProjectDataSuccess } from './actions';
-import { REQUEST_TABLE_DATA, REQUEST_PROJECTS_DATA } from './constants';
+import plans from 'settings/plans.json';
+import { requestTableDataSuccess, requestProjectDataSuccess, requestPlansSuccess } from './actions';
+import {
+  REQUEST_TABLE_DATA,
+  REQUEST_PROJECTS_DATA,
+} from './constants';
+
 // Individual exports for testing
 export function* defaultSaga() {
   // See example in containers/HomePage/sagas.js
@@ -65,9 +70,14 @@ export function* getProjects() {
   ));
 }
 
+export function* getPLans() {
+  yield put(requestPlansSuccess(plans));
+}
+
 // All sagas to be loaded
 export default [
   defaultSaga,
+  getPLans,
   getTables,
   getProjects,
 ];

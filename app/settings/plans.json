@@ -20,7 +20,7 @@
   "name": "Haupgebäude  OG",
   "id": "OG",
   "imageName": "sample.svg",
-  "mapScaleFactor": 60,
+  "mapScaleFactor": 10,
   "labels": [{
     "name": "Besprecher 4",
     "x": 100,

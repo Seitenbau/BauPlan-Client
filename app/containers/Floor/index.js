@@ -5,13 +5,13 @@
 */
 
 import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
 // import { createStructuredSelector } from 'reselect';
 import imageLoader from 'floorplans';
 import RoomLabel from 'components/RoomLabel';
 import Table from 'containers/Table';
 import { flatten } from 'utils/helper';
-import makeSelectScaleFactor from './selectors';
+// import { makeSelectScale } from './selectors';
 import Img from './Img';
 import StyledFloor from './StyledFloor';
 import ImgWrapper from './ImgWrapper';
@@ -31,7 +31,7 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
       <StyledFloor innerRef={(ref) => { this.ref = ref; }}>
         <Label>{this.props.name}</Label>
         <ImgWrapper >
-          <Img mapScaleFactor={this.props.mapScaleFactor} name={this.props.name} scale={this.props['width-height']} src={floorPlanImage} alt={`Floorplan ${this.props.name}`} />
+          <Img id={this.props.id} mapScaleFactor={this.props.mapScaleFactor} name={this.props.name} src={floorPlanImage} alt={`Floorplan ${this.props.name}`} />
           {this.props.labels.map((label, i) =>
             <RoomLabel
               key={i}
@@ -43,7 +43,7 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
           {this.props.tables.map((table, j) =>
             <Table
               key={j}
-              scaleFactor={this.props.scaleFactor}
+              scaleFactor={this.props.scale}
               className={`table table-${j}`}
               name={table.name}
               number={table.number}
@@ -66,34 +66,24 @@ Floor.propTypes = {
     PropTypes.array,
     PropTypes.object,
   ]),
+  id: PropTypes.string,
   tables: PropTypes.array,
   projects: PropTypes.array,
-  'width-height': PropTypes.string,
   mapScaleFactor: PropTypes.number,
-  scaleFactor: PropTypes.number,
-};
-
-Floor.defaultProps = {
-  scaleFactor: 1,
-};
-
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
-
-const makeMapStateToProps = () => {
-  const selectScaleFactor = makeSelectScaleFactor();
-  /* eslint-disable */
-  const mapStateToProps = (state, props) => {
-    return {
-      scaleFactor: selectScaleFactor(state, props),
-    }
-  };
-  /* eslint-enable */
-  return mapStateToProps;
+  scale: PropTypes.number,
 };
 
 
-export default connect(makeMapStateToProps, mapDispatchToProps)(Floor);
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     dispatch,
+//   };
+// }
+//
+//
+// const mapStateToProps = createStructuredSelector({
+//   scaleFactor: makeSelectScale(),
+// });
+
+
+export default Floor;
