@@ -38,6 +38,7 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
               name={label.name}
               left={label.x}
               top={label.y}
+              scaleFactor={this.props.scale}
             />)}
 
           {this.props.tables.map((table, j) =>
