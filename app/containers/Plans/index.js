@@ -8,7 +8,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Floor from 'containers/Floor';
-import plans from 'settings/plans.json';
+
 
 import {
   makeSelectPlansData,
@@ -20,11 +20,18 @@ import Wrapper from './PlansWrapper';
 
 
 export class Plans extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+  constructor(props) {
+    super(props);
+    this.state = {
+      plans: props.plans,
+    };
+  }
   render() {
+    console.log(this.props);
     const { tables } = this.props;
     return (
       <Wrapper>
-        {plans.map((plan, i) =>
+        {this.props.plans.map((plan, i) =>
           <Floor
             key={i}
             name={plan.name}
@@ -44,6 +51,7 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
 Plans.propTypes = {
   tables: PropTypes.array.isRequired,
   projects: PropTypes.array.isRequired,
+  plans: PropTypes.object,
 };
 
 function mapDispatchToProps(dispatch) {

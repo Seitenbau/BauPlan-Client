@@ -16,7 +16,7 @@ const getName = (state, props) => props.name;
 
 const makeSelectScale = () => createSelector(
    selectImgDomain(),
-   (substate) => substate.get('scale')
+   (substate) => substate.get('scale').toJS()
  );
 const makeSelectScaleFactor = () => createSelector(
   [makeSelectScale(), getName],
