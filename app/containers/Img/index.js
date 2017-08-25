@@ -15,6 +15,10 @@ import {
 } from './actions';
 
 class Img extends React.PureComponent {
+  constructor(props) {
+    super(props);
+    this.doCalculation = this.doCalculation.bind(this);
+  }
   componentDidMount() {
     this.props.calculationDone({
       scale: this.componentCalculateScaleFactor(),
@@ -30,12 +34,18 @@ class Img extends React.PureComponent {
       id: this.props.id,
     });
   }
+  doCalculation() {
+    this.props.calculationDone({
+      scale: this.componentCalculateScaleFactor(),
+      id: this.props.id,
+    });
+  }
   componentCalculateScaleFactor() {
     return (this.img.offsetWidth / this.img.naturalWidth) * this.props.mapScaleFactor;
   }
   render() {
     return (
-      <img ref={(ref) => { this.img = ref; }} src={this.props.src} alt={this.props.alt} className={this.props.className} />
+      <img ref={(ref) => { this.img = ref; }} onLoad={this.doCalculation} src={this.props.src} alt={this.props.alt} className={this.props.className} />
     );
   }
 }
