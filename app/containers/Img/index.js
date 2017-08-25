@@ -19,12 +19,6 @@ class Img extends React.PureComponent {
     super(props);
     this.doCalculation = this.doCalculation.bind(this);
   }
-  componentDidMount() {
-    this.props.calculationDone({
-      scale: this.componentCalculateScaleFactor(),
-      id: this.props.id,
-    });
-  }
   shouldComponentUpdate(nextProps) {
     return this.props['width-height'] !== nextProps['width-height'];
   }
