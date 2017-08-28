@@ -18,22 +18,30 @@ export default function createRoutes(store) {
 
   return [
     {
-      path: '/*',
+      path: '/',
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage/reducer'),
-          import('containers/Floors/reducer'),
-          import('containers/Floors/sagas'),
           import('containers/HomePage'),
+          import('containers/HomePage/reducer'),
+          import('containers/Plans/reducer'),
+          import('containers/UiEventProvider/reducer'),
+          import('containers/Plans/sagas'),
+          import('containers/Table/reducer'),
+          import('containers/Img/reducer'),
+          import('containers/JumpView/reducer'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([HomePageReducer, FloorsReducer, FloorsSaga, component]) => {
+        importModules.then(([component, HomePageReducer, PlansReducer, UiEventProviderReducer, PlansSaga, TableReducer, ImgReducer, JumpViewReducer]) => {
           injectReducer('home', HomePageReducer.default);
-          injectReducer('floors', FloorsReducer.default);
-          injectSagas(FloorsSaga.default);
+          injectReducer('plans', PlansReducer.default);
+          injectReducer('uiEvents', UiEventProviderReducer.default);
+          injectReducer('table', TableReducer.default);
+          injectReducer('img', ImgReducer.default);
+          injectReducer('jumpView', JumpViewReducer.default);
+          injectSagas(PlansSaga.default);
           renderRoute(component);
         });
 

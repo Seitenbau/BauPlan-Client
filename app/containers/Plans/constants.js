@@ -1,0 +1,20 @@
+/*
+ *
+ * Plans constants
+ *
+ */
+
+export const DEFAULT_ACTION = 'app/Plans/DEFAULT_ACTION';
+export const REQUEST_FLOORS = 'app/Plans/REQUEST_FLOORS';
+export const REQUEST_FLOORS_SUCCESS = 'app/Plans/REQUEST_FLOORS_SUCCESS';
+export const REQUEST_FLOORS_ERROR = 'app/Plans/REQUEST_FLOORS_ERROR';
+
+export const REQUEST_TABLE_DATA = 'app/Plans/REQUEST_TABLE_DATA';
+export const REQUEST_TABLE_DATA_SUCCESS = 'app/Plans/REQUEST_TABLE_DATA_SUCCESS';
+export const REQUEST_TABLE_DATA_ERROR = 'app/Plans/REQUEST_TABLE_DATA_ERROR';
+
+export const REQUEST_PROJECTS_DATA = 'app/Plans/REQUEST_PROJECTS_DATA';
+export const REQUEST_PROJECTS_DATA_SUCCESS = 'app/Plans/REQUEST_PROJECTS_DATA_SUCCESS';
+export const REQUEST_PROJECTS_DATA_ERROR = 'app/Plans/REQUEST_PROJECTS_DATA_ERROR';
+
+// export const WINDOW_LIFE_RESIZE = 'app/Plans/WINDOW_LIFE_RESIZE';
