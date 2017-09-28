@@ -17,7 +17,7 @@ export function* defaultSaga() {
 export function* getTables() {
   yield put(requestTableDataSuccess(
     [{
-      name: 'Lukas Ochmann',
+      name: 'Tim Dresner',
       x: 2,
       y: 1.5,
       floor: 0,
@@ -26,7 +26,7 @@ export function* getTables() {
       projects: [1, 2],
       planId: 'EG',
     }, {
-      name: 'Dominik Prill',
+      name: 'Christina Freud',
       x: 2.50,
       y: 3,
       floor: 0,
@@ -35,7 +35,7 @@ export function* getTables() {
       number: 2,
       planId: 'OG',
     }, {
-      name: 'Tobias Wursthorn',
+      name: 'Martina Huber',
       x: 3,
       y: 4,
       floor: 0,
@@ -43,7 +43,7 @@ export function* getTables() {
       number: 2,
       planId: 'EG',
     }, {
-      name: 'Patrick Blum',
+      name: 'Jan Friedmann',
       x: 3.50,
       y: 5,
       floor: 0,
@@ -58,13 +58,13 @@ export function* getProjects() {
   yield put(requestProjectDataSuccess(
     [{
       id: 1,
-      name: 'Service Baden-Würtemberg',
-      short: 'SBW',
+      name: 'Human Resources',
+      short: 'HR',
       color: '#FFFF00',
     }, {
       id: 2,
-      name: 'Future Comunication Center',
-      short: 'FCC',
+      name: 'Financial Department',
+      short: 'FD',
       color: '#FF00FF',
     }]
   ));
