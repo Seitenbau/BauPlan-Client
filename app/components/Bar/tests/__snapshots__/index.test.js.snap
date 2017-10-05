@@ -1,4 +1,4 @@
-exports[`<TableDisplay /> Expect StyledTable to have styles defined 1`] = `
+exports[`<Bar /> Expect to have unit tests specified 1`] = `
 ShallowWrapper {
   "complexSelector": ComplexSelector {
     "buildPredicate": [Function],
@@ -6,49 +6,28 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="sc-bdVaJa iwhLko"
-    height={80}
-    width={40} />,
+  "node": <styled.div
+    side={undefined} />,
   "nodes": Array [
-    <div
-      className="sc-bdVaJa iwhLko"
-      height={80}
-      width={40} />,
+    <styled.div
+      side={undefined} />,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
     "_instance": ShallowComponentWrapper {
       "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
+      "_compositeType": 1,
       "_context": Object {},
-      "_currentElement": <styled.div
-        height={80}
-        left={100}
-        rotation={90}
-        top={100}
-        width={40} />,
+      "_currentElement": <Leftbar />,
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": StyledComponent {
+      "_instance": Leftbar {
         "_reactInternalInstance": [Circular],
-        "attrs": Object {},
-        "context": Object {
-          "__styled-components__": undefined,
-        },
-        "props": Object {
-          "height": 80,
-          "left": 100,
-          "rotation": 90,
-          "top": 100,
-          "width": 40,
-        },
+        "context": Object {},
+        "props": Object {},
         "refs": Object {},
-        "state": Object {
-          "generatedClassName": "iwhLko",
-          "theme": Object {},
-        },
+        "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -67,17 +46,13 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="sc-bdVaJa iwhLko"
-          height={80}
-          width={40} />,
+        "_currentElement": <styled.div
+          side={undefined} />,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className="sc-bdVaJa iwhLko"
-          height={80}
-          width={40} />,
+        "_renderedOutput": <styled.div
+          side={undefined} />,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -87,11 +62,6 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <styled.div
-    height={80}
-    left={100}
-    rotation={90}
-    top={100}
-    width={40} />,
+  "unrendered": <Leftbar />,
 }
 `;

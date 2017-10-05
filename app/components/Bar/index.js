@@ -5,7 +5,7 @@
 */
 
 import React, { PropTypes } from 'react';
-import Bar from './bar';
+import Bar from './Bar';
 // import styled from 'styled-components';
 
 

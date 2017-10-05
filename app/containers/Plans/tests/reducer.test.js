@@ -5,7 +5,9 @@ import plansReducer from '../reducer';
 describe('plansReducer', () => {
   it('returns the initial state', () => {
     const initialState = {
-      plans: [],
+      floors: [],
+      tables: [],
+      projects: [],
     };
     expect(plansReducer(undefined, {})).toEqual(fromJS(initialState));
   });

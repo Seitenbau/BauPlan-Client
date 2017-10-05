@@ -1,10 +1,10 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import Leftbar from '../index';
+import Bar from '../index';
 
-describe('<Leftbar />', () => {
+describe('<Bar />', () => {
   it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+    expect(shallow(<Bar></Bar>)).toMatchSnapshot();
   });
 });

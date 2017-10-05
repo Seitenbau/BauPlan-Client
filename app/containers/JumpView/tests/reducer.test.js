@@ -4,6 +4,6 @@ import jumpViewReducer from '../reducer';
 
 describe('jumpViewReducer', () => {
   it('returns the initial state', () => {
-    expect(jumpViewReducer(undefined, {})).toEqual(fromJS({}));
+    expect(jumpViewReducer(undefined, {})).not.toEqual(fromJS({}));
   });
 });

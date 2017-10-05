@@ -1,18 +1,22 @@
 
 import {
-  defaultAction,
+  windowLifeResize,
 } from '../actions';
 import {
-  DEFAULT_ACTION,
+  WINDOW_LIFE_RESIZE,
 } from '../constants';
 
 describe('UiEventProvider actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
-      const expected = {
-        type: DEFAULT_ACTION,
+  describe('WINDOW_LIFE_RESIZE', () => {
+    it('has a type of WINDOW_LIFE_RESIZE', () => {
+      const data = {
+        width: '10px',
       };
-      expect(defaultAction()).toEqual(expected);
+      const expected = {
+        type: WINDOW_LIFE_RESIZE,
+        data,
+      };
+      expect(windowLifeResize(data)).toEqual(expected);
     });
   });
 });

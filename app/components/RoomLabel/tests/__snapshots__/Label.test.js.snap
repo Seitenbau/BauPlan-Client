@@ -7,10 +7,10 @@ ShallowWrapper {
   },
   "length": 1,
   "node": <h4
-    className="sc-bdVaJa flDElm" />,
+    className="sc-bdVaJa ednyiP" />,
   "nodes": Array [
     <h4
-      className="sc-bdVaJa flDElm" />,
+      className="sc-bdVaJa ednyiP" />,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -56,7 +56,7 @@ ShallowWrapper {
         },
         "refs": Object {},
         "state": Object {
-          "generatedClassName": "flDElm",
+          "generatedClassName": "ednyiP",
           "theme": Object {
             "plans": Object {
               "color": "#FFFFFF",
@@ -86,10 +86,10 @@ ShallowWrapper {
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
         "_currentElement": <h4
-          className="sc-bdVaJa flDElm" />,
+          className="sc-bdVaJa ednyiP" />,
         "_debugID": 2,
         "_renderedOutput": <h4
-          className="sc-bdVaJa flDElm" />,
+          className="sc-bdVaJa ednyiP" />,
       },
       "_renderedNodeType": 0,
       "_rootNodeID": 0,

@@ -24,7 +24,7 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
     const { tables } = this.props;
     return (
       <Wrapper>
-        {this.props.floors.map((plan, i) =>
+        {this.props.floors ? this.props.floors.map((plan, i) =>
           <Floor
             key={i}
             name={plan.name}
@@ -35,7 +35,7 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
             projects={this.props.projects}
             mapScaleFactor={plan.mapScaleFactor}
             scale={plan.scale}
-          />)}
+          />) : ''}
 
       </Wrapper>
     );

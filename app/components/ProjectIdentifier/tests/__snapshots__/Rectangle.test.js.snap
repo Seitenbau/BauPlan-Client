@@ -6,11 +6,15 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <div
-    className="sc-bdVaJa fApXVK" />,
+  "node": <styled.span
+    className="undefined projectIdentifier-reactangle"
+    color={undefined}
+    scaleFactor={undefined} />,
   "nodes": Array [
-    <div
-      className="sc-bdVaJa fApXVK" />,
+    <styled.span
+      className="undefined projectIdentifier-reactangle"
+      color={undefined}
+      scaleFactor={undefined} />,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -18,7 +22,7 @@ ShallowWrapper {
       "_calledComponentWillUnmount": false,
       "_compositeType": 0,
       "_context": Object {},
-      "_currentElement": <styled.div
+      "_currentElement": <RectangleComponent
         projects={
                 Array [
                         Object {
@@ -32,12 +36,9 @@ ShallowWrapper {
       "_debugID": 1,
       "_hostContainerInfo": null,
       "_hostParent": null,
-      "_instance": StyledComponent {
+      "_instance": RectangleComponent {
         "_reactInternalInstance": [Circular],
-        "attrs": Object {},
-        "context": Object {
-          "__styled-components__": undefined,
-        },
+        "context": Object {},
         "props": Object {
           "projects": Array [
             Object {
@@ -49,10 +50,7 @@ ShallowWrapper {
           ],
         },
         "refs": Object {},
-        "state": Object {
-          "generatedClassName": "fApXVK",
-          "theme": Object {},
-        },
+        "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
           "enqueueCallbackInternal": [Function],
@@ -71,13 +69,17 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <div
-          className="sc-bdVaJa fApXVK" />,
+        "_currentElement": <styled.span
+          className="undefined projectIdentifier-reactangle"
+          color={undefined}
+          scaleFactor={undefined} />,
         "_debugID": 2,
-        "_renderedOutput": <div
-          className="sc-bdVaJa fApXVK" />,
+        "_renderedOutput": <styled.span
+          className="undefined projectIdentifier-reactangle"
+          color={undefined}
+          scaleFactor={undefined} />,
       },
-      "_renderedNodeType": 0,
+      "_renderedNodeType": 1,
       "_rootNodeID": 0,
       "_topLevelWrapper": null,
       "_updateBatchNumber": null,
@@ -87,7 +89,7 @@ ShallowWrapper {
     "render": [Function],
   },
   "root": [Circular],
-  "unrendered": <styled.div
+  "unrendered": <RectangleComponent
     projects={
         Array [
             Object {
