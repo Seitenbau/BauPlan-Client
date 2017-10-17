@@ -18,29 +18,31 @@ export default function createRoutes(store) {
 
   return [
     {
-      path: '/',
+      path: '/*',
       name: 'home',
       getComponent(nextState, cb) {
         const importModules = Promise.all([
-          import('containers/HomePage'),
-          import('containers/HomePage/reducer'),
+          import('containers/View'),
+          import('containers/View/reducer'),
           import('containers/Plans/reducer'),
           import('containers/UiEventProvider/reducer'),
           import('containers/Plans/sagas'),
           import('containers/Table/reducer'),
           import('containers/Img/reducer'),
           import('containers/JumpView/reducer'),
+          import('containers/ScrollAnchor/reducer'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component, HomePageReducer, PlansReducer, UiEventProviderReducer, PlansSaga, TableReducer, ImgReducer, JumpViewReducer]) => {
-          injectReducer('home', HomePageReducer.default);
+        importModules.then(([component, ViewReducer, PlansReducer, UiEventProviderReducer, PlansSaga, TableReducer, ImgReducer, JumpViewReducer, scrollAnchorReducer]) => {
+          injectReducer('home', ViewReducer.default);
           injectReducer('plans', PlansReducer.default);
           injectReducer('uiEvents', UiEventProviderReducer.default);
           injectReducer('table', TableReducer.default);
           injectReducer('img', ImgReducer.default);
           injectReducer('jumpView', JumpViewReducer.default);
+          injectReducer('scrollAnchor', scrollAnchorReducer.default);
           injectSagas(PlansSaga.default);
           renderRoute(component);
         });

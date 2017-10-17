@@ -24,7 +24,7 @@ export function* getTables() {
       rotation: 0,
       number: 1,
       projects: [1, 2],
-      planId: 'EG',
+      planId: 'F0',
     }, {
       name: 'Christina Freud',
       x: 2.50,
@@ -33,7 +33,7 @@ export function* getTables() {
       rotation: 180,
       projects: 1,
       number: 2,
-      planId: 'OG',
+      planId: 'F0',
     }, {
       name: 'Martina Huber',
       x: 3,
@@ -41,7 +41,7 @@ export function* getTables() {
       floor: 0,
       rotation: 245,
       number: 2,
-      planId: 'EG',
+      planId: 'F1',
     }, {
       name: 'Jan Friedmann',
       x: 3.50,
@@ -49,7 +49,7 @@ export function* getTables() {
       floor: 0,
       rotation: 90,
       number: 3,
-      planId: 'OG',
+      planId: 'F0',
     }]
   ));
 }

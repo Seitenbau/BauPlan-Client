@@ -4,6 +4,7 @@
  *
  */
 
+import { Link } from 'react-router';
 import React, { PropTypes } from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -34,7 +35,7 @@ export class JumpView extends React.PureComponent { // eslint-disable-line react
   render() {
     return (
       <Ul className={this.props.className}>
-        {this.props.plans.map((plan, i) => <li key={i}>{plan.name}</li>)}
+        {this.props.plans.map((plan, i) => <li key={i}><Link to={`/floor/${plan.id}`}>{plan.name}</Link></li>)}
       </Ul>
     );
   }

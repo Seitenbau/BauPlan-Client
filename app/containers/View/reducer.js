@@ -11,7 +11,7 @@ import {
 
 const initialState = fromJS({});
 
-function homePageReducer(state = initialState, action) {
+function ViewReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
@@ -20,4 +20,4 @@ function homePageReducer(state = initialState, action) {
   }
 }
 
-export default homePageReducer;
+export default ViewReducer;

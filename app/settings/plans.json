@@ -2,23 +2,43 @@
   "name": "Headquarter floor 0",
   "id": "F0",
   "imageName": "sample.svg",
-  "mapScaleFactor": 30,
+  "mapScaleFactor": 60,
   "labels": [{
     "name": "Meetingroom 1",
-    "x": 15,
+    "x": 7,
     "y": 3
   }, {
     "name": "Meetingroom 3",
-    "x": 15,
+    "x": 7,
     "y": 4.7
   }, {
     "name": "Meetingroom 3",
-    "x": 15,
+    "x": 7,
     "y": 6
   }]
 }, {
   "name": "Headquarter floor 1",
-  "id": "F0",
+  "id": "F1",
+  "imageName": "sample.svg",
+  "mapScaleFactor": 15,
+  "labels": [{
+    "name": "Meetingroom 4",
+    "x": 10,
+    "y": 10
+  }]
+}, {
+  "name": "Headquarter floor 2",
+  "id": "F2",
+  "imageName": "sample.svg",
+  "mapScaleFactor": 15,
+  "labels": [{
+    "name": "Meetingroom 4",
+    "x": 10,
+    "y": 10
+  }]
+}, {
+  "name": "Headquarter floor 3",
+  "id": "F3",
   "imageName": "sample.svg",
   "mapScaleFactor": 15,
   "labels": [{
