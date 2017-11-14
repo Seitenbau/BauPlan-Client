@@ -1,7 +1,7 @@
 [{
   "name": "Headquarter floor 0",
   "id": "F0",
-  "imageName": "sample.svg",
+  "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 60,
   "labels": [{
     "name": "Meetingroom 1",
@@ -19,7 +19,7 @@
 }, {
   "name": "Headquarter floor 1",
   "id": "F1",
-  "imageName": "sample.svg",
+  "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 15,
   "labels": [{
     "name": "Meetingroom 4",
@@ -29,7 +29,7 @@
 }, {
   "name": "Headquarter floor 2",
   "id": "F2",
-  "imageName": "sample.svg",
+  "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 15,
   "labels": [{
     "name": "Meetingroom 4",
@@ -39,7 +39,7 @@
 }, {
   "name": "Headquarter floor 3",
   "id": "F3",
-  "imageName": "sample.svg",
+  "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 15,
   "labels": [{
     "name": "Meetingroom 4",

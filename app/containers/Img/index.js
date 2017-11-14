@@ -11,7 +11,7 @@ import {
   makeSelectUiSize,
 } from './selectors';
 import {
-  calculationDone,
+  dispatchCalculation,
 } from './actions';
 
 class Img extends React.PureComponent {
@@ -23,13 +23,13 @@ class Img extends React.PureComponent {
     return this.props['width-height'] !== nextProps['width-height'];
   }
   componentWillUpdate() {
-    this.props.calculationDone({
+    this.props.dispatchCalculation({
       scale: this.componentCalculateScaleFactor(),
       id: this.props.id,
     });
   }
   doCalculation() {
-    this.props.calculationDone({
+    this.props.dispatchCalculation({
       scale: this.componentCalculateScaleFactor(),
       id: this.props.id,
     });
@@ -48,7 +48,7 @@ Img.propTypes = {
   alt: PropTypes.string.isRequired,
   src: PropTypes.string.isRequired,
   className: PropTypes.string,
-  calculationDone: PropTypes.func,
+  dispatchCalculation: PropTypes.func,
   'width-height': PropTypes.string,
   mapScaleFactor: PropTypes.number,
   id: PropTypes.string,
@@ -56,7 +56,7 @@ Img.propTypes = {
 
 function mapDispatchToProps(dispatch) {
   return {
-    calculationDone: (interval) => dispatch(calculationDone(interval)),
+    dispatchCalculation: (interval) => dispatch(dispatchCalculation(interval)),
   };
 }
 

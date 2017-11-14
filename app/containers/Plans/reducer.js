@@ -16,7 +16,7 @@ import {
   // WINDOW_LIFE_RESIZE,
 } from './constants';
 import {
-  CALCULATION_DONE,
+  DISPATCH_CALCULATION,
 } from '../Img/constants';
 
 const initialState = fromJS({
@@ -41,7 +41,7 @@ function plansReducer(state = initialState, action) {
       return state.set('projects', action.data);
     case REQUEST_PROJECTS_DATA_ERROR:
       return state;
-    case CALCULATION_DONE:
+    case DISPATCH_CALCULATION:
       return state.set('floors', state.get('floors').map((plan) => {
         if (plan.id === action.data.id) {
           return { ...plan, scale: action.data.scale };

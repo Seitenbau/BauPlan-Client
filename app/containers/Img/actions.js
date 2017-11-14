@@ -1,10 +1,10 @@
 import {
-  CALCULATION_DONE,
+  DISPATCH_CALCULATION,
 } from './constants';
 
-export function calculationDone(data) {
+export function dispatchCalculation(data) {
   return {
-    type: CALCULATION_DONE,
+    type: DISPATCH_CALCULATION,
     data,
   };
 }

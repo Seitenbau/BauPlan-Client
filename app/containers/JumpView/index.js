@@ -35,7 +35,7 @@ export class JumpView extends React.PureComponent { // eslint-disable-line react
   render() {
     return (
       <Ul className={this.props.className}>
-        {this.props.plans.map((plan, i) => <li key={i}><Link to={`/floor/${plan.id}`}>{plan.name}</Link></li>)}
+        {this.props.plans.map((plan, i) => <li key={i}><Link to={`/sa/floor/${plan.id}`}>{plan.name}</Link></li>)}
       </Ul>
     );
   }

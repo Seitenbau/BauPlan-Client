@@ -8,6 +8,7 @@ import React, { PropTypes } from 'react';
 import imageLoader from 'floorplans';
 import RoomLabel from 'components/RoomLabel';
 import ScrollAnchor from 'containers/ScrollAnchor';
+import ScrollListener from 'containers/ScrollListener';
 import Table from 'containers/Table';
 import { flatten } from 'utils/helper';
 import Img from './Img';
@@ -26,35 +27,37 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
   render() {
     const floorPlanImage = imageLoader(this.props.imageName);
     return (
-      <ScrollAnchor name={`/floor/${this.props.id}`}>
-        <StyledFloor innerRef={(ref) => { this.ref = ref; }}>
-          <Label>{this.props.name}</Label>
-          <ImgWrapper >
-            <Img id={this.props.id} mapScaleFactor={this.props.mapScaleFactor} name={this.props.name} src={floorPlanImage} alt={`Floorplan ${this.props.name}`} />
-            {this.props.labels.map((label, i) =>
-              <RoomLabel
-                key={i}
-                name={label.name}
-                left={label.x}
-                top={label.y}
-                scaleFactor={this.props.scale}
-              />)}
-            {this.props.tables.map((table, j) =>
-              <Table
-                key={j}
-                scaleFactor={this.props.scale}
-                className={`table table-${j}`}
-                name={table.name}
-                number={table.number}
-                projects={this.find(table.projects)}
-                x={table.x}
-                y={table.y}
-                rotation={table.rotation}
-              />)}
+      <ScrollListener name={`/sl/floor/${this.props.id}`}>
+        <ScrollAnchor name={`/sa/floor/${this.props.id}`}>
+          <StyledFloor innerRef={(ref) => { this.ref = ref; }}>
+            <Label>{this.props.name}</Label>
+            <ImgWrapper >
+              <Img id={this.props.id} mapScaleFactor={this.props.mapScaleFactor} name={this.props.name} src={floorPlanImage} alt={`Floorplan ${this.props.name}`} />
+              {this.props.labels.map((label, i) =>
+                <RoomLabel
+                  key={i}
+                  name={label.name}
+                  left={label.x}
+                  top={label.y}
+                  scaleFactor={this.props.scale}
+                />)}
+              {this.props.tables.map((table, j) =>
+                <Table
+                  key={j}
+                  scaleFactor={this.props.scale}
+                  className={`table table-${j}`}
+                  name={table.name}
+                  number={table.number}
+                  projects={this.find(table.projects)}
+                  x={table.x}
+                  y={table.y}
+                  rotation={table.rotation}
+                />)}
 
-          </ImgWrapper>
-        </StyledFloor>
-      </ScrollAnchor>
+            </ImgWrapper>
+          </StyledFloor>
+        </ScrollAnchor>
+      </ScrollListener>
     );
   }
 }
