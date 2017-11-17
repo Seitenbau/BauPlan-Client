@@ -1,2 +1,0 @@
-export const DEFAULT_ACTION = 'app/Img/DEFAULT_ACTION';
-export const DISPATCH_CALCULATION = 'app/Img/DISPATCH_CALCULATION';

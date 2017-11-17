@@ -3,8 +3,8 @@
   "objects": {
     "tables": {
       "name": "Table",
-      "width": 1.6,
-      "depth": 0.8
+      "width": 16,
+      "depth": 8
     }
   }
 }

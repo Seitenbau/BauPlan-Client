@@ -1,10 +1,10 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import { UiEventProvider } from '../index';
+// import Icon from '../index';
 
-describe('<UiEventProvider />', () => {
+describe('<Icon />', () => {
   it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(true);
+    expect(true).toEqual(false);
   });
 });

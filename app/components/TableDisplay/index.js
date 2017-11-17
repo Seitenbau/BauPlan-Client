@@ -19,7 +19,6 @@ class TableDisplay extends React.PureComponent { // eslint-disable-line react/pr
   render() {
     return (
       <StyledTable
-        scaleFactor={this.props.scaleFactor}
         rotation={this.props.rotation}
         top={this.props.y}
         left={this.props.x}
@@ -27,9 +26,9 @@ class TableDisplay extends React.PureComponent { // eslint-disable-line react/pr
         height={config.objects.tables.depth}
         className={this.props.className}
       >
-        <TableSpan fontSize={0.8} scaleFactor={this.props.scaleFactor}>{this.props.name}</TableSpan>
-        <ProjectIdentifier scaleFactor={this.props.scaleFactor} projects={this.props.projects} />
-        <TableSpan scaleFactor={this.props.scaleFactor} fontSize={0.9} center>{prefixNumber(this.props.number)}</TableSpan>
+        <TableSpan fontSize={15}>{this.props.name}</TableSpan>
+        <ProjectIdentifier projects={this.props.projects} />
+        <TableSpan fontSize={16} center>{prefixNumber(this.props.number)}</TableSpan>
       </StyledTable>
     );
   }
@@ -51,7 +50,6 @@ TableDisplay.propTypes = {
   y: PropTypes.number,
   x: PropTypes.number,
   rotation: PropTypes.number,
-  scaleFactor: PropTypes.number,
 };
 
 export default TableDisplay;

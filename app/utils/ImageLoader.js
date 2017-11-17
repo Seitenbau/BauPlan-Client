@@ -11,4 +11,9 @@ export function imageLoader(floorPlanName) {
   return req(`./${floorPlanName}`);
 }
 
+export function iconLoader(iconName) {
+  const req = require.context('icons', true, /\.(png|jpe?g|svg)$/);
+  return req(`./${iconName}.svg`);
+}
+
 export default imageLoader;

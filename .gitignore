@@ -11,3 +11,5 @@ npm-debug.log
 
 /app/ultils/floorplans/
 !/app/ultils/floorplans/floors.svg
+
+.yarnclean

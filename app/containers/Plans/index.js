@@ -32,8 +32,6 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
             labels={plan.labels}
             tables={tables.filter((table) => table.planId === plan.id)}
             projects={this.props.projects}
-            mapScaleFactor={plan.mapScaleFactor}
-            scale={plan.scale}
           />) : ''}
 
       </Wrapper>

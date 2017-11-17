@@ -58,6 +58,17 @@ module.exports = (options) => ({
       query: {
         limit: 10000,
       },
+    }, {
+      test: /\.svg$/,
+      exclude: /node_modules/,
+      loader: 'svg-react-loader',
+      query: {
+        classIdPrefix: '[name]-[hash:8]__',
+        propsMap: {
+          fillRule: 'fill-rule',
+        },
+        xmlnsTest: /^xmlns.*$/,
+      },
     }],
   },
   plugins: options.plugins.concat([

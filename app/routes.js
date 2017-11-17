@@ -25,26 +25,18 @@ export default function createRoutes(store) {
           import('containers/View'),
           import('containers/View/reducer'),
           import('containers/Plans/reducer'),
-          import('containers/UiEventProvider/reducer'),
           import('containers/Plans/sagas'),
           import('containers/Table/reducer'),
-          import('containers/Img/reducer'),
           import('containers/JumpView/reducer'),
-          import('containers/ScrollAnchor/reducer'),
-          import('containers/ScrollListener/reducer'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component, ViewReducer, PlansReducer, UiEventProviderReducer, PlansSaga, TableReducer, ImgReducer, JumpViewReducer, ScrollAnchorReducer, ScrollListenerReducer]) => {
+        importModules.then(([component, ViewReducer, PlansReducer, PlansSaga, TableReducer, JumpViewReducer]) => {
           injectReducer('home', ViewReducer.default);
           injectReducer('plans', PlansReducer.default);
-          injectReducer('uiEvents', UiEventProviderReducer.default);
           injectReducer('table', TableReducer.default);
-          injectReducer('img', ImgReducer.default);
           injectReducer('jumpView', JumpViewReducer.default);
-          injectReducer('scrollAnchor', ScrollAnchorReducer.default);
-          injectReducer('scrollListener', ScrollListenerReducer.default);
           injectSagas(PlansSaga.default);
           renderRoute(component);
         });
