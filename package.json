@@ -240,6 +240,7 @@
     "reselect": "2.5.4",
     "sanitize.css": "4.1.0",
     "styled-components": "2.0.0-*",
+    "svg-react-loader": "^0.4.5",
     "warning": "3.0.0",
     "whatwg-fetch": "2.0.1"
   },
@@ -293,6 +294,8 @@
     "shelljs": "0.7.5",
     "sinon": "2.0.0-pre",
     "style-loader": "0.13.1",
+    "svgo": "^1.0.3",
+    "svgo-loader": "^2.1.0",
     "url-loader": "0.5.7",
     "webpack": "2.2.0-rc.3",
     "webpack-dev-middleware": "1.9.0",
