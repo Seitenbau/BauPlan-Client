@@ -34,6 +34,7 @@ const StyledLink = styled(Link)`
   &:active,
   &:focus,
   &:hover {
+    outline: none;
     background-color: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.secondary}
   }

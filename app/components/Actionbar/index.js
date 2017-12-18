@@ -23,6 +23,7 @@ const Iconwrapper = styled(Link)`
   &:active,
   &:focus,
   &:hover {
+    outline: none;
     background-color: ${(props) => props.theme.colors.primary};
     svg  {
       fill: ${(props) => props.theme.colors.secondary};
