@@ -31,6 +31,8 @@ const StyledLink = styled(Link)`
   &:visited {
     color: ${(props) => props.theme.colors.primary};
   }
+  &:active,
+  &:focus,
   &:hover {
     background-color: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.secondary}

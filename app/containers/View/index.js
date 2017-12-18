@@ -17,8 +17,8 @@ export default class HomePage extends React.PureComponent { // eslint-disable-li
         <Header />
         <Bar color="primary" position="left" />
         <Plans />
-        <JumpView />
         <Actionbar />
+        <JumpView />
       </div>
     );
   }

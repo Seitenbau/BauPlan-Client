@@ -6,8 +6,8 @@
 
 import React from 'react';
 import styled from 'styled-components';
+import SearchField from 'containers/SearchField';
 import { rem } from '../../utils/helper';
-// import styled from 'styled-components';
 
 const Title = styled.h3`
   margin: 0;
@@ -19,17 +19,11 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const FormDiv = styled.div`
-  flex-grow: 2;
-`;
-
 class Header extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
       <Wrapper>
-        <FormDiv>
-          <input type="text" value="test" />
-        </FormDiv>
+        <SearchField />
         <Title>BAUPLAN</Title>
       </Wrapper>
     );
