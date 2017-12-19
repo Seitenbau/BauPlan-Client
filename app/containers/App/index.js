@@ -14,7 +14,6 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import Wrapper from './wrapper';
 
 class App extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
@@ -24,9 +23,9 @@ class App extends React.PureComponent { // eslint-disable-line react/prefer-stat
 
   render() {
     return (
-      <Wrapper>
+      <div>
         {React.Children.toArray(this.props.children)}
-      </Wrapper>
+      </div>
     );
   }
 }

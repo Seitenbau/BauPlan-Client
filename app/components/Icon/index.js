@@ -1,25 +1,20 @@
-/**
-*
-* Icon
-*
-*/
-
 import React, { PropTypes } from 'react';
-// import styled from 'styled-components';
+import { rem } from '../../utils/helper';
+import Iconset from '../../utils/images';
+// import fullGear from './gear_full.svg';
 
-
-class Icon extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export default class Icon extends React.Component { //eslint-disable-line
 
   render() {
+    const MyIcon = Iconset[this.props.name ? this.props.name : 0];
     return (
-      <div>
-      </div>
+      <MyIcon className={this.props.className} width={rem(this.props.width)} height={rem(this.props.height)} />
     );
   }
 }
-
 Icon.propTypes = {
-  src: PropTypes.string,
+  name: PropTypes.string,
+  width: PropTypes.number,
+  height: PropTypes.number,
+  className: PropTypes.string,
 };
-
-export default Icon;

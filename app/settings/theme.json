@@ -3,8 +3,9 @@
     "primary": "#022032",
     "secondary": "#00FF00",
     "backgroundColor": "#F2F5F6",
-    "white": "#00000",
-    "black": "#FFFFFF"
+    "white": "#FFFFFF",
+    "black": "#000000",
+    "lightBackground": "#E6E5DA"
   },
   "plans": {
     "marginBottom": 40,

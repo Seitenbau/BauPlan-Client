@@ -1,9 +1,9 @@
 // import React from 'react';
 // import { shallow } from 'enzyme';
 
-// import Icon from '../index';
+// import { SearchField } from '../index';
 
-describe('<Icon />', () => {
+describe('<SearchField />', () => {
   it('Expect to have unit tests specified', () => {
     expect(true).toEqual(false);
   });

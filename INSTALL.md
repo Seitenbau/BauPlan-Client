@@ -24,3 +24,6 @@
 
    edit the theme.json, till your fine withe the style
    > *NOTE:* that the theme for Objects are not editable in the theme.json, as it is needed in the system
+
+* Add a Iconset
+  - change the SVGs in app/utils/images. Map them to the right key in the index.js

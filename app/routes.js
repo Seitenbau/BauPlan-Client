@@ -28,16 +28,20 @@ export default function createRoutes(store) {
           import('containers/Plans/sagas'),
           import('containers/Table/reducer'),
           import('containers/JumpView/reducer'),
+          import('containers/SearchField/reducer'),
+          import('containers/SearchField/sagas'),
         ]);
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component, ViewReducer, PlansReducer, PlansSaga, TableReducer, JumpViewReducer]) => {
-          injectReducer('home', ViewReducer.default);
+        importModules.then(([component, ViewReducer, PlansReducer, PlansSaga, TableReducer, JumpViewReducer, SearchFieldReducer, SearchFieldSagas]) => {
+          injectReducer('view', ViewReducer.default);
           injectReducer('plans', PlansReducer.default);
           injectReducer('table', TableReducer.default);
           injectReducer('jumpView', JumpViewReducer.default);
+          injectReducer('searchField', SearchFieldReducer.default);
           injectSagas(PlansSaga.default);
+          injectSagas(SearchFieldSagas.default);
           renderRoute(component);
         });
 
