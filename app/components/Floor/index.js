@@ -4,7 +4,8 @@
 *
 */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import imageLoader from 'utils/ImageLoader';
 import RoomLabel from 'components/RoomLabel';
 import Table from 'containers/Table';

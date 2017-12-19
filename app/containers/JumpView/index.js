@@ -4,7 +4,8 @@
  *
  */
 
-import React, { PropTypes } from 'react';
+import React from 'react';
+import { PropTypes } from 'prop-types';
 import { Link } from 'react-router';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
@@ -31,7 +32,10 @@ const StyledLink = styled(Link)`
   &:visited {
     color: ${(props) => props.theme.colors.primary};
   }
+  &:active,
+  &:focus,
   &:hover {
+    outline: none;
     background-color: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.secondary}
   }
