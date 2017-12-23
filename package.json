@@ -1,7 +1,6 @@
 {
-  "name": "bauplan-cra",
+  "name": "bauplan-client",
   "version": "0.1.0",
-  "private": true,
   "dependencies": {
     "immutable": "^3.8.2",
     "prop-types": "^15.6.0",
