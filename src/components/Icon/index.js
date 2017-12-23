@@ -1,17 +1,15 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import { rem } from '../../utils/helper';
 import Iconset from '../../utils/images';
-// import fullGear from './gear_full.svg';
+import StyledIcon from './styledIcon';
 
 export default class Icon extends React.Component { //eslint-disable-line
 
   render() {
     const MyIcon = Iconset[this.props.name ? this.props.name : 0];
-    return null;
-    // return (
-    //   <MyIcon className={this.props.className} width={rem(this.props.width)} height={rem(this.props.height)} />
-    // );
+    return (
+      <StyledIcon src={MyIcon} className={this.props.className} {...this.props} />
+    );
   }
 }
 Icon.propTypes = {
