@@ -1,15 +1,19 @@
 import styled from 'styled-components';
 import { rem, shadeColor } from 'utils/helper';
 
-const Tabel = styled.div`
+// we use attrs for attributes which are often changing
+const Table = styled.div.attrs({
+    style: (props) => ({
+      height: rem(props.height),
+      width: rem(props.width),
+      left:  rem(props.left),
+      top:  rem(props.top),
+    }),
+  })`
   background-color: #d3d3d3;
   position: absolute;
   box-sizing: border-box;
-  height: ${(props) => rem(props.height)};
-  width: ${(props) => rem(props.width)};
   border: 1px solid ${shadeColor('#d3d3d3', -0.8)};
-  left: ${(props) => rem(props.left)};
-  top: ${(props) => rem(props.top)};
   transform: rotate(${(props) => props.rotation}deg);
   :after {
     content: "";
@@ -19,7 +23,7 @@ const Tabel = styled.div`
     border-top: none;
     height: 100%;
     width: 100%;
-    top: ${(props) => rem(props.height)};
+    top: 100%;
   }
   :hover {
     .projectIdentifier-reactangle {
@@ -28,4 +32,4 @@ const Tabel = styled.div`
   }
 `;
 
-export default Tabel;
+export default Table;
