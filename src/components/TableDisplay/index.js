@@ -32,9 +32,9 @@ class TableDisplay extends React.PureComponent { // eslint-disable-line react/pr
         height={height}
         className={this.props.className}
       >
-        <TableSpan fontSize={15}>{this.props.name}</TableSpan>
+        <TableSpan fontSize={1.5}>{this.props.name}</TableSpan>
         <ProjectIdentifier projects={this.props.projects} />
-        <TableSpan fontSize={16} center>{prefixNumber(this.props.number)}</TableSpan>
+        <TableSpan fontSize={1.6} center>{prefixNumber(this.props.number)}</TableSpan>
       </StyledTable>
     );
   }
