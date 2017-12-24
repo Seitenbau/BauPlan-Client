@@ -13,7 +13,6 @@ import {
   REQUEST_TABLE_DATA_ERROR,
   REQUEST_PROJECTS_DATA_SUCCESS,
   REQUEST_PROJECTS_DATA_ERROR,
-  // WINDOW_LIFE_RESIZE,
 } from './constants';
 
 const initialState = fromJS({

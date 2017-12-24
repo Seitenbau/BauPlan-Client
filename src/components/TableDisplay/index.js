@@ -18,13 +18,18 @@ class TableDisplay extends React.PureComponent { // eslint-disable-line react/pr
 
 
   render() {
+    const x = this.props.x * this.props.scaleFactor;
+    const y = this.props.y * this.props.scaleFactor;
+    const width = config.objects.tables.width * this.props.scaleFactor;
+    const height = config.objects.tables.depth * this.props.scaleFactor;
+
     return (
       <StyledTable
         rotation={this.props.rotation}
-        top={this.props.y}
-        left={this.props.x}
-        width={config.objects.tables.width}
-        height={config.objects.tables.depth}
+        top={y}
+        left={x}
+        width={width}
+        height={height}
         className={this.props.className}
       >
         <TableSpan fontSize={15}>{this.props.name}</TableSpan>
@@ -50,6 +55,7 @@ TableDisplay.propTypes = {
   })),
   y: PropTypes.number,
   x: PropTypes.number,
+  scaleFactor: PropTypes.number,
   rotation: PropTypes.number,
 };
 

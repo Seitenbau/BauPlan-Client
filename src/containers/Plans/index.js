@@ -30,6 +30,7 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
             name={plan.name}
             id={plan.id}
             imageName={plan.imageName}
+            mapScaleFactor={plan.mapScaleFactor ? plan.mapScaleFactor : 1}
             labels={plan.labels}
             tables={tables.filter((table) => table.planId === plan.id)}
             projects={this.props.projects}

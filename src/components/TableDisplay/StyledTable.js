@@ -5,11 +5,11 @@ const Tabel = styled.div`
   background-color: #d3d3d3;
   position: absolute;
   box-sizing: border-box;
-  height: ${(props) => rem((props.height / 2) * 10)};
-  width: ${(props) => rem((props.width / 2) * 10)};
+  height: ${(props) => rem(props.height)};
+  width: ${(props) => rem(props.width)};
   border: 1px solid ${shadeColor('#d3d3d3', -0.8)};
-  left: ${(props) => rem((props.left / 2) * 10)};
-  top: ${(props) => rem((props.top / 2) * 10)};
+  left: ${(props) => rem(props.left)};
+  top: ${(props) => rem(props.top)};
   transform: rotate(${(props) => props.rotation}deg);
   :after {
     content: "";
@@ -19,7 +19,7 @@ const Tabel = styled.div`
     border-top: none;
     height: 100%;
     width: 100%;
-    top: ${(props) => rem((props.height / 2) * 10)};
+    top: ${(props) => rem(props.height)};
   }
   :hover {
     .projectIdentifier-reactangle {

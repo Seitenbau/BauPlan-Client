@@ -6,7 +6,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import _ from 'lodash';
+import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import makeSelectUiEventProvider from './selectors';
@@ -54,7 +54,7 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     resize: (sizing) => dispatch(windowLifeResize(sizing)),
-    onResizeHandler: _.throttle((sizing) => dispatch(windowLifeResize(sizing)), 100),
+    onResizeHandler: debounce((sizing) => dispatch(windowLifeResize(sizing)), 10),
   };
 }
 

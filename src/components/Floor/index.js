@@ -10,12 +10,20 @@ import imageLoader from 'utils/ImageLoader';
 import RoomLabel from 'components/RoomLabel';
 import Table from 'containers/Table';
 import { flatten } from 'utils/helper';
-import Img from './Img';
+import ScaleImg from './ScaleImg';
 import StyledFloor from './StyledFloor';
 import ImgWrapper from './ImgWrapper';
 import Label from './label';
 
-class Floor extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+class Floor extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      imageScaleFactor : 1,
+    }
+  }
+
   find(id) {
     const ids = flatten([id]);
     if (typeof id !== 'undefined') {
@@ -23,16 +31,29 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
     }
     return [];
   }
+
+  handleResize(val) {
+    this.setState({'imageScaleFactor': val});
+  }
+
   render() {
     const floorPlanImage = imageLoader(this.props.imageName);
+    const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
     return (
       <StyledFloor innerRef={(ref) => { this.ref = ref; }}>
         <Label>{this.props.name}</Label>
         <ImgWrapper >
-          <Img id={this.props.id} name={this.props.name} src={floorPlanImage} alt={`Floorplan ${this.props.name}`} />
+          <ScaleImg
+            id={this.props.id}
+            name={this.props.name}
+            src={floorPlanImage}
+            alt={`Floorplan ${this.props.name}`}
+            handleResize={this.handleResize.bind(this)}
+          />
           {this.props.labels.map((label, i) =>
             <RoomLabel
               key={i}
+              scaleFactor={scaleFactor}
               name={label.name}
               left={label.x}
               top={label.y}
@@ -40,6 +61,7 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
           {this.props.tables.map((table, j) =>
             <Table
               key={j}
+              scaleFactor={scaleFactor}
               className={`table table-${j}`}
               name={table.name}
               number={table.number}
@@ -55,9 +77,12 @@ class Floor extends React.PureComponent { // eslint-disable-line react/prefer-st
   }
 }
 
+
+
 Floor.propTypes = {
   name: PropTypes.string.isRequired,
   imageName: PropTypes.string.isRequired,
+  mapScaleFactor: PropTypes.number,
   labels: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,

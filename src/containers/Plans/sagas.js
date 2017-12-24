@@ -18,8 +18,8 @@ export function* getTables() {
   yield put(requestTableDataSuccess(
     [{
       name: 'Tim Dresner',
-      x: 175,
-      y: 120,
+      x: 15,
+      y: 20,
       floor: 0,
       rotation: 0,
       number: 1,
@@ -27,8 +27,8 @@ export function* getTables() {
       planId: 'F0',
     }, {
       name: 'Christina Freud',
-      x: 175,
-      y: 111,
+      x: 20,
+      y: 12,
       floor: 0,
       rotation: 180,
       projects: 1,
@@ -36,7 +36,7 @@ export function* getTables() {
       planId: 'F0',
     }, {
       name: 'Martina Huber',
-      x: 110,
+      x: 30,
       y: 25,
       floor: 1,
       rotation: 245,
@@ -45,8 +45,8 @@ export function* getTables() {
       planId: 'F1',
     }, {
       name: 'Jan Friedmann',
-      x: 162,
-      y: 115,
+      x: 25,
+      y: 11,
       floor: 0,
       rotation: 90,
       projects: 1,

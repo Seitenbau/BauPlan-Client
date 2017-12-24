@@ -5,21 +5,23 @@ import { createSelector } from 'reselect';
  */
 const selectUiEventProviderDomain = () => (state) => state.get('uiEvents');
 
-/**
- * Other specific selectors
- */
 
 
 /**
  * Default selector used by UiEventProvider
  */
-
 const makeSelectUiEventProvider = () => createSelector(
   selectUiEventProviderDomain(),
   (substate) => substate
 );
 
+const makeSelectUiSize = () => createSelector(
+  selectUiEventProviderDomain(),
+  (substate) => substate.get('width-height')
+);
+
 export default makeSelectUiEventProvider;
 export {
   selectUiEventProviderDomain,
+  makeSelectUiSize
 };

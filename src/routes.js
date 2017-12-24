@@ -24,6 +24,7 @@ export default function createRoutes(store) {
         const importModules = Promise.all([
           import('containers/View'),
           import('containers/View/reducer'),
+          import('containers/UiEventProvider/reducer'),
           import('containers/Plans/reducer'),
           import('containers/Plans/sagas'),
           import('containers/Table/reducer'),
@@ -34,8 +35,18 @@ export default function createRoutes(store) {
 
         const renderRoute = loadModule(cb);
 
-        importModules.then(([component, ViewReducer, PlansReducer, PlansSaga, TableReducer, JumpViewReducer, SearchFieldReducer, SearchFieldSagas]) => {
+        importModules.then(([
+            component,
+            ViewReducer,
+            UiEventProviderReducer,
+            PlansReducer,
+            PlansSaga,
+            TableReducer,
+            JumpViewReducer,
+            SearchFieldReducer,
+            SearchFieldSagas]) => {
           injectReducer('view', ViewReducer.default);
+          injectReducer('uiEvents', UiEventProviderReducer.default);
           injectReducer('plans', PlansReducer.default);
           injectReducer('table', TableReducer.default);
           injectReducer('jumpView', JumpViewReducer.default);
