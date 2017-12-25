@@ -1,5 +1,5 @@
 [{
-  "name": "Headquarter floor 0",
+  "name": "Headquarter 1st floor ",
   "id": "F0",
   "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 60,
@@ -17,7 +17,7 @@
     "y": 6
   }]
 }, {
-  "name": "Headquarter floor 1",
+  "name": "Headquarter 2nd floor",
   "id": "F1",
   "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 50,
@@ -27,7 +27,7 @@
     "y": 5
   }]
 }, {
-  "name": "Headquarter floor 2",
+  "name": "Headquarter 3rd floor",
   "id": "F2",
   "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 50,
@@ -37,7 +37,7 @@
     "y": 8
   }]
 }, {
-  "name": "Headquarter floor 3",
+  "name": "Headquarter 4th floor",
   "id": "F3",
   "imageName": "Bauplan_Sample.png",
   "mapScaleFactor": 50,
