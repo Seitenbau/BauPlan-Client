@@ -33,3 +33,4 @@ const Table = styled.div.attrs({
 `;
 
 export default Table;
+

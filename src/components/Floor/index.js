@@ -39,10 +39,11 @@ class Floor extends React.Component {
   render() {
     const floorPlanImage = imageLoader(this.props.imageName);
     const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
+
     return (
       <StyledFloor innerRef={(ref) => { this.ref = ref; }}>
         <Label>{this.props.name}</Label>
-        <ImgWrapper >
+        <ImgWrapper>
           <ScaleImg
             id={this.props.id}
             name={this.props.name}
@@ -54,6 +55,7 @@ class Floor extends React.Component {
             <RoomLabel
               key={i}
               scaleFactor={scaleFactor}
+
               name={label.name}
               left={label.x}
               top={label.y}
@@ -77,12 +79,11 @@ class Floor extends React.Component {
   }
 }
 
-
-
 Floor.propTypes = {
   name: PropTypes.string.isRequired,
   imageName: PropTypes.string.isRequired,
   mapScaleFactor: PropTypes.number,
+
   labels: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.object,

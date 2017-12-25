@@ -68,6 +68,7 @@ const render = (messages) => {
           />
         </ThemeProvider>
       </UiEventProvider>
+
     </Provider>,
     document.getElementById('root')
   );
