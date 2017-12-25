@@ -6,7 +6,7 @@ const wrapper = styled.div`
   position: absolute;
   left: 0;
   right: 0;
-  width: ${(props) => props.theme.plans.width}vw;
+  width: ${(props) => props.theme.plans.width};
 `;
 
 export default wrapper;

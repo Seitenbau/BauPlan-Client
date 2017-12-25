@@ -10,6 +10,7 @@ const label = styled('h4').attrs({
   })`
   margin: 0;
   position: absolute;
+  transform: translate(-50%, -50%);
   color: ${(props) => props.theme.plans.color};
   font-family: ${(props) => props.theme.plans.roomName.font};
   font-size: ${(props) => props.theme.plans.roomName.size};

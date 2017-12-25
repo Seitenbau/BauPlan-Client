@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { rem } from 'utils/helper';
 
 const Span = styled.span`
   display: block;
