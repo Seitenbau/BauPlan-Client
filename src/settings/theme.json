@@ -21,7 +21,7 @@
       "font": "Helvetica"
     },
     "roomName": {
-      "size": 16,
+      "size": "1.8vmin",
       "font": "Helvetica"
     }
   }

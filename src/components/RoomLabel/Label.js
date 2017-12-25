@@ -12,7 +12,7 @@ const label = styled('h4').attrs({
   position: absolute;
   color: ${(props) => props.theme.plans.color};
   font-family: ${(props) => props.theme.plans.roomName.font};
-  font-size: ${(props) => rem(props.theme.plans.roomName.size)};
+  font-size: ${(props) => props.theme.plans.roomName.size};
   opacity: 0.2;
 `;
 
