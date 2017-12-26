@@ -3,7 +3,7 @@
  * Scroll functionality in one place for use on any component
  */
 import React from 'react';
-import scroll from 'scroll-to';
+import scrollToComponent from 'react-scroll-to-component';
 
 
 // This function takes a component...
@@ -12,40 +12,22 @@ export default function withScrollTarget(WrappedComponent) {
   // ...and returns another component...
   return class extends React.Component {
 
+    duration = 1000;
+
     componentDidUpdate(prevProps, prevState) {
       if (prevProps !== this.props && this.props.active) {
-        const offset = this.calculateScrollOffset(this.wrapper);
-        scroll(0, offset);
+        scrollToComponent(this.wrapper, {
+          align: 'top',
+          duration: this.duration,
+        });
       }
-    }
-
-    calculateScrollOffset(element, offset) {
-      offset = offset || 0; // additional offset to top
-
-      const body = document.body,
-          html = document.documentElement;
-      const elementRect = element.getBoundingClientRect();
-      const clientHeight = html.clientHeight;
-
-      const documentHeight = Math.max(
-        body.scrollHeight,
-        body.offsetHeight,
-        html.clientHeight,
-        html.scrollHeight,
-        html.offsetHeight
-      );
-
-      const scrollPosition = elementRect.top;
-      const maxScrollPosition = documentHeight - clientHeight;
-
-      return Math.min(scrollPosition + offset + window.pageYOffset, maxScrollPosition);
     }
 
     render() {
       return (
         // extra div to be safe as ref doesn't work properly with styled components :(
         <div ref={(ref) => { this.wrapper = ref; }}>
-          <WrappedComponent  {...this.props} />
+          <WrappedComponent {...this.props} />
         </div>
       );
     }

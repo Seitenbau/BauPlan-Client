@@ -17,8 +17,9 @@ import {
 } from './constants';
 
 
-
-const initialState = fromJS({});
+const initialState = fromJS({
+  nextActiveFloor: false,
+});
 initialState.set('plans', []);
 initialState.set('tables', []);
 initialState.set('projects', []);
@@ -42,7 +43,7 @@ function plansReducer(state = initialState, action) {
     case REQUEST_PROJECTS_DATA_ERROR:
       return state;
     case FLOOR_IN_VIEWPORT:
-      return state.set('activePlanId', action.props.id);
+      return state.set('nextActiveFloor', action.props.id);
     default:
       return state;
   }

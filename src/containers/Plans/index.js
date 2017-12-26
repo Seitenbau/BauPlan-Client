@@ -22,7 +22,7 @@ import {
   makeSelectPlansData,
   makeSelectTables,
   makeSelectProjects,
-  makeSelectActivePlanId,
+  makeSelectNextActiveFloor,
 } from './selectors';
 
 import Wrapper from './PlansWrapper';
@@ -39,8 +39,8 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props && this.props.active) {
-      // this.props.history.push('/new/url');
+    if (prevProps !== this.props && prevProps.nextActiveFloor !== this.props.nextActiveFloor) {
+      this.props.history.push(`/floor/${this.props.nextActiveFloor}`);
     }
   }
 
@@ -62,9 +62,8 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
   }
 
   render() {
-    const { projects, plans, activePlanId } = this.props;
+    const { projects, plans } = this.props;
     const { params } = this.props.match;
-    console.log(activePlanId, 'test');
     return (
       <Wrapper>
         {plans ? plans.map((plan, i) =>
@@ -93,7 +92,6 @@ Plans.propTypes = {
   tables: PropTypes.array,
   projects: PropTypes.array,
   plans: PropTypes.array,
-  activePlanId: PropTypes.string,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -108,7 +106,7 @@ const mapStateToProps = createStructuredSelector({
   plans: makeSelectPlansData(),
   tables: makeSelectTables(),
   projects: makeSelectProjects(),
-  activePlanId: makeSelectActivePlanId(),
+  nextActiveFloor : makeSelectNextActiveFloor(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

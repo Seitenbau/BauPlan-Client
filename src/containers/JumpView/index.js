@@ -10,14 +10,10 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
-import { compose } from 'redux';
 
-import injectReducer from 'utils/injectReducer';
+import { makeSelectPlansData } from 'containers/Plans/selectors';
 
 import { rem } from '../../utils/helper';
-
-import reducer from './reducer';
-import { makeSelectPlansData, makeSelectActivePlanId } from 'containers/Plans/selectors';
 
 
 const Ul = styled.ul`
@@ -66,19 +62,8 @@ JumpView.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   plans: makeSelectPlansData(),
-  activePlanId: makeSelectActivePlanId(),
 });
 
-function mapDispatchToProps(dispatch) {
-  return {
-    dispatch,
-  };
-}
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
-const withReducer = injectReducer({ key: 'jumpView', reducer });
 
-export default compose(
-  withReducer,
-  withConnect,
-)(JumpView);
+export default connect(mapStateToProps)(JumpView);

@@ -21,7 +21,7 @@ import { announceVisible  } from './actions';
 
 class Floor extends React.Component {
 
-  maxOffsetToTop = 160;
+  maxOffsetToTop = 100;
 
   constructor(props) {
     super(props);
@@ -43,7 +43,7 @@ class Floor extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', debounce(this.isElementInViewport.bind(this), 10));
+    window.addEventListener('scroll', debounce(this.isElementInViewport, 50).bind(this));
   }
 
   componentWillUnmount() {
