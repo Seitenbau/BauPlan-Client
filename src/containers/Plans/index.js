@@ -35,10 +35,10 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
   }
 
   render() {
-    const { tables } = this.props;
+    const { tables, projects, floors } = this.props;
     return (
       <Wrapper>
-        {this.props.floors ? this.props.floors.map((plan, i) =>
+        {floors ? floors.map((plan, i) =>
           <Floor
             key={i}
             name={plan.name}
@@ -47,7 +47,7 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
             mapScaleFactor={plan.mapScaleFactor ? plan.mapScaleFactor : 1}
             labels={plan.labels}
             tables={tables.filter((table) => table.planId === plan.id)}
-            projects={this.props.projects}
+            projects={projects}
           />) : ''}
 
       </Wrapper>
@@ -56,12 +56,12 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
 }
 
 Plans.propTypes = {
-  tables: PropTypes.array.isRequired,
+  tables: PropTypes.array,
   projects: PropTypes.array,
   floors: PropTypes.array,
 };
 
-export function mapDispatchToProps(dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     requestTableData: (evt) => dispatch(requestTableData()),
     requestProjectData: (evt) => dispatch(requestProjectData()),

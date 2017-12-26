@@ -16,18 +16,19 @@ import {
 } from './constants';
 
 
-const initialState = fromJS({
-  floors: [],
-  tables: [],
-  projects: [],
-});
+const initialState = fromJS({});
+initialState.set('floors', []);
+initialState.set('tables', []);
+initialState.set('projects', []);
 
 function plansReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
     case REQUEST_FLOORS_SUCCESS:
-      return state.set('floors', action.data.map((data) => Object.assign({}, data, { scale: typeof data.scale !== 'undefined' ? data.scale : 1 })));
+      const newFloors = action.data.map((data) =>
+        Object.assign({}, data, { scale: typeof data.scale !== 'undefined' ? data.scale : 1 }));
+      return state.set('floors', newFloors);
     case REQUEST_FLOORS_ERROR:
       return state;
     case REQUEST_TABLE_DATA_SUCCESS:

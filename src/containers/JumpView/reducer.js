@@ -12,9 +12,8 @@ import {
   DEFAULT_ACTION,
 } from './constants';
 
-const initialState = fromJS({
-  plans: [],
-});
+const initialState = fromJS({});
+initialState.set('plans', []);
 
 function jumpViewReducer(state = initialState, action) {
   switch (action.type) {
