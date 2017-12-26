@@ -6,9 +6,9 @@
 
 import {
   DEFAULT_ACTION,
-  REQUEST_FLOORS,
-  REQUEST_FLOORS_SUCCESS,
-  REQUEST_FLOORS_ERROR,
+  REQUEST_PLANS,
+  REQUEST_PLANS_SUCCESS,
+  REQUEST_PLANS_ERROR,
   REQUEST_TABLE_DATA,
   REQUEST_TABLE_DATA_SUCCESS,
   REQUEST_TABLE_DATA_ERROR,
@@ -25,20 +25,20 @@ export function defaultAction() {
 
 export function requestPlans() {
   return {
-    type: REQUEST_FLOORS,
+    type: REQUEST_PLANS,
   };
 }
 
 export function requestPlansSuccess(data) {
   return {
-    type: REQUEST_FLOORS_SUCCESS,
+    type: REQUEST_PLANS_SUCCESS,
     data,
   };
 }
 
 export function requestPlansError(error) {
   return {
-    type: REQUEST_FLOORS_ERROR,
+    type: REQUEST_PLANS_ERROR,
     error,
   };
 }

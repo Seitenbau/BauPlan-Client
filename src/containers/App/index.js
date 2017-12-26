@@ -15,7 +15,7 @@ import View from 'containers/View';
 export default function App() {
   return (
     <Switch>
-      <Route exact path="/" component={View} />
+      <Route path="/" component={View} />
     </Switch>
   );
 }

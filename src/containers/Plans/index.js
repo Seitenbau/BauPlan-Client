@@ -9,10 +9,11 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import withScrollTarget from 'components/ScrollTarget';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-import Floor from 'components/Floor';
+import Floor from 'containers/Floor';
 import saga from './sagas';
 import reducer from './reducer';
 import { requestTableData, requestProjectData, requestPlans  } from './actions';
@@ -21,12 +22,15 @@ import {
   makeSelectPlansData,
   makeSelectTables,
   makeSelectProjects,
+  makeSelectActivePlanId,
 } from './selectors';
 
 import Wrapper from './PlansWrapper';
 
 
-export class Plans extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+const FloorWithScrollTarget = withScrollTarget(Floor);
+
+export class Plans extends React.Component { // eslint-disable-line react/prefer-stateless-function
 
   componentDidMount() {
     this.props.requestTableData();
@@ -34,19 +38,45 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
     this.props.requestPlans();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps !== this.props && this.props.active) {
+      // this.props.history.push('/new/url');
+    }
+  }
+
+  /**
+   * Get the tables for a single floor
+   * and additionally set the active table
+   * @param {object} plan
+   */
+  getFilteredTables(plan) {
+    const { params } = this.props.match;
+    return this.props.tables
+      .filter((table) => table.planId === plan.id)
+      .map((table) => {
+        // set active table
+        table.active = params.type === 'table'
+          && (params.identifier === table.name || params.identifier === table.id);
+        return table;
+      });
+  }
+
   render() {
-    const { tables, projects, floors } = this.props;
+    const { projects, plans, activePlanId } = this.props;
+    const { params } = this.props.match;
+    console.log(activePlanId, 'test');
     return (
       <Wrapper>
-        {floors ? floors.map((plan, i) =>
-          <Floor
+        {plans ? plans.map((plan, i) =>
+          <FloorWithScrollTarget
             key={i}
             name={plan.name}
             id={plan.id}
+            active={params.type === 'floor' && plan.id === params.identifier}
             imageName={plan.imageName}
             mapScaleFactor={plan.mapScaleFactor ? plan.mapScaleFactor : 1}
             labels={plan.labels}
-            tables={tables.filter((table) => table.planId === plan.id)}
+            tables={this.getFilteredTables(plan)}
             projects={projects}
           />) : ''}
 
@@ -55,10 +85,15 @@ export class Plans extends React.PureComponent { // eslint-disable-line react/pr
   }
 }
 
+Plans.defaultProps = {
+  plans: [],
+};
+
 Plans.propTypes = {
   tables: PropTypes.array,
   projects: PropTypes.array,
-  floors: PropTypes.array,
+  plans: PropTypes.array,
+  activePlanId: PropTypes.string,
 };
 
 function mapDispatchToProps(dispatch) {
@@ -70,9 +105,10 @@ function mapDispatchToProps(dispatch) {
 }
 
 const mapStateToProps = createStructuredSelector({
-  floors: makeSelectPlansData(),
+  plans: makeSelectPlansData(),
   tables: makeSelectTables(),
   projects: makeSelectProjects(),
+  activePlanId: makeSelectActivePlanId(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

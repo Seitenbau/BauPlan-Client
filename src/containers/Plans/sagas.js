@@ -1,11 +1,12 @@
-import { put, takeLatest } from 'redux-saga/effects';
 import plans from 'settings/plans.json';
-import { requestTableDataSuccess, requestProjectDataSuccess, requestPlansSuccess } from './actions';
 import {
   REQUEST_TABLE_DATA,
   REQUEST_PROJECTS_DATA,
-  REQUEST_FLOORS,
+  REQUEST_PLANS,
 } from './constants';
+import { requestTableDataSuccess, requestProjectDataSuccess, requestPlansSuccess } from './actions';
+import { put, takeLatest } from 'redux-saga/effects';
+
 
 export function* getTables() {
   yield put(requestTableDataSuccess(
@@ -72,5 +73,5 @@ export function* getPlans() {
 export default function* defaultSaga() {
   yield takeLatest(REQUEST_TABLE_DATA, getTables);
   yield takeLatest(REQUEST_PROJECTS_DATA, getProjects);
-  yield takeLatest(REQUEST_FLOORS, getPlans);
+  yield takeLatest(REQUEST_PLANS, getPlans);
 }

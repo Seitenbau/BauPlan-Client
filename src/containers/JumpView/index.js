@@ -17,7 +17,7 @@ import injectReducer from 'utils/injectReducer';
 import { rem } from '../../utils/helper';
 
 import reducer from './reducer';
-import { makeSelectPlans } from './selectors';
+import { makeSelectPlansData, makeSelectActivePlanId } from 'containers/Plans/selectors';
 
 
 const Ul = styled.ul`
@@ -65,7 +65,8 @@ JumpView.propTypes = {
 };
 
 const mapStateToProps = createStructuredSelector({
-  plans: makeSelectPlans(),
+  plans: makeSelectPlansData(),
+  activePlanId: makeSelectActivePlanId(),
 });
 
 function mapDispatchToProps(dispatch) {
