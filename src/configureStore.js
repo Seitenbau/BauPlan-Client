@@ -1,5 +1,5 @@
 /**
- * Create the store with asynchronously loaded reducers
+ * Create the store with dynamic reducers
  */
 
 import { createStore, applyMiddleware, compose } from 'redux';
@@ -7,6 +7,17 @@ import { fromJS } from 'immutable';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
+
+// import viewReducer from 'containers/View/reducer';
+// import uiEventProviderReducer from 'containers/UiEventProvider/reducer';
+// import plansReducer from 'containers/Plans/reducer';
+// import tableReducer from 'containers/Table/reducer';
+// import jumpViewReducer from 'containers/JumpView/reducer';
+// import searchFieldReducer from 'containers/SearchField/reducer';
+
+// import searchFieldSagas from 'containers/SearchField/sagas';
+// import plansSagas from 'containers/Plans/sagas';
+
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -28,8 +39,13 @@ export default function configureStore(initialState = {}, history) {
   const composeEnhancers =
     process.env.NODE_ENV !== 'production' &&
     typeof window === 'object' &&
-    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
-      window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : compose;
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+      ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+        // TODO Try to remove when `react-router-redux` is out of beta, LOCATION_CHANGE should not be fired more than once after hot reloading
+        // Prevent recomputing reducers for `replaceReducer`
+        shouldHotReload: false,
+      })
+      : compose;
   /* eslint-enable */
 
   const store = createStore(
@@ -40,18 +56,18 @@ export default function configureStore(initialState = {}, history) {
 
   // Extensions
   store.runSaga = sagaMiddleware.run;
-  store.asyncReducers = {}; // Async reducer registry
+
+  // Reducer registry
+  store.injectedReducers = {};
+
+  // Saga registry
+  store.injectedSagas = {};
 
   // Make reducers hot reloadable, see http://mxs.is/googmo
   /* istanbul ignore next */
   if (module.hot) {
     module.hot.accept('./reducers', () => {
-      import('./reducers').then((reducerModule) => {
-        const createReducers = reducerModule.default;
-        const nextReducers = createReducers(store.asyncReducers);
-
-        store.replaceReducer(nextReducers);
-      });
+      store.replaceReducer(createReducer(store.injectedReducers));
     });
   }
 

@@ -15,6 +15,7 @@ import {
   REQUEST_PROJECTS_DATA_ERROR,
 } from './constants';
 
+
 const initialState = fromJS({
   floors: [],
   tables: [],

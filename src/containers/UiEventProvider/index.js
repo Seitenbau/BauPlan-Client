@@ -8,9 +8,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { createStructuredSelector } from 'reselect';
+import injectReducer from 'utils/injectReducer';
+
 import makeSelectUiEventProvider from './selectors';
 import { windowLifeResize } from './actions';
+import reducer from './reducer';
+
 
 export class UiEventProvider extends React.Component {
 
@@ -58,4 +63,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UiEventProvider);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'uiEvents', reducer });
+
+export default compose(
+  withReducer,
+  withConnect,
+)(UiEventProvider);

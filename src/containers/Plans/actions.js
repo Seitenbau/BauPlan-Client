@@ -15,7 +15,6 @@ import {
   REQUEST_PROJECTS_DATA,
   REQUEST_PROJECTS_DATA_SUCCESS,
   REQUEST_PROJECTS_DATA_ERROR,
-  // WINDOW_LIFE_RESIZE,
 } from './constants';
 
 export function defaultAction() {
@@ -84,9 +83,4 @@ export function requestProjectDataError(error) {
   };
 }
 
-// export function windowLifeResize(data) {
-//   return {
-//     type: WINDOW_LIFE_RESIZE,
-//     data,
-//   };
-// }
+

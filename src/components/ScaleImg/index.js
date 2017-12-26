@@ -7,8 +7,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { makeSelectUiSize } from '../../containers/UiEventProvider/selectors';
+
 import { createStructuredSelector } from 'reselect';
+
+import { makeSelectUiSize } from '../../containers/UiEventProvider/selectors';
 
 
 class ScaleImg extends React.Component {

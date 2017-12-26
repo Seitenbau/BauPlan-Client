@@ -8,7 +8,14 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
 import Floor from 'components/Floor';
+import saga from './sagas';
+import reducer from './reducer';
+import { requestTableData, requestProjectData, requestPlans  } from './actions';
 
 import {
   makeSelectPlansData,
@@ -20,6 +27,13 @@ import Wrapper from './PlansWrapper';
 
 
 export class Plans extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
+  componentDidMount() {
+    this.props.requestTableData();
+    this.props.requestProjectData();
+    this.props.requestPlans();
+  }
+
   render() {
     const { tables } = this.props;
     return (
@@ -47,9 +61,11 @@ Plans.propTypes = {
   floors: PropTypes.array,
 };
 
-function mapDispatchToProps(dispatch) {
+export function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    requestTableData: (evt) => dispatch(requestTableData()),
+    requestProjectData: (evt) => dispatch(requestProjectData()),
+    requestPlans: (evt) => dispatch(requestPlans()),
   };
 }
 
@@ -59,4 +75,12 @@ const mapStateToProps = createStructuredSelector({
   projects: makeSelectProjects(),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Plans);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'plans', reducer });
+const withSaga = injectSaga({ key: 'plans', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(Plans);

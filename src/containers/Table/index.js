@@ -8,9 +8,14 @@ import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { compose } from 'redux';
+
+import injectReducer from 'utils/injectReducer';
 import TableDisplay from 'components/TableDisplay';
 
+import reducer from './reducer';
 import makeSelectTable from './selectors';
+
 
 export class Table extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
@@ -53,4 +58,10 @@ const mapStateToProps = createStructuredSelector({
 });
 
 
-export default connect(mapStateToProps)(Table);
+const withConnect = connect(mapStateToProps);
+const withReducer = injectReducer({ key: 'table', reducer });
+
+export default compose(
+  withReducer,
+  withConnect,
+)(Table);

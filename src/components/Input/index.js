@@ -9,6 +9,7 @@ import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import { rem, shadeColor } from '../../utils/helper';
 
+
 const Container = styled.span`
   background-color: ${(props) => shadeColor(props.theme.colors.primary, 0.9)};
   height: ${rem(35)};

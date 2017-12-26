@@ -11,6 +11,7 @@ import { rem } from 'utils/helper';
 import Wrapper from './Wrapper';
 import Rectangle from './Rectangle';
 
+
 const Absolute = styled.div`
   position: absolute;
   margin: 0 ${rem(-1)} ${rem(-1)} 0;

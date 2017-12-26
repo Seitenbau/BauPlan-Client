@@ -4,16 +4,9 @@ import { requestTableDataSuccess, requestProjectDataSuccess, requestPlansSuccess
 import {
   REQUEST_TABLE_DATA,
   REQUEST_PROJECTS_DATA,
+  REQUEST_FLOORS,
 } from './constants';
 
-// Individual exports for testing
-export function* defaultSaga() {
-  // See example in containers/HomePage/sagas.js
-  yield takeLatest(REQUEST_TABLE_DATA, getTables);
-  yield takeLatest(REQUEST_PROJECTS_DATA, getProjects);
-}
-
-/* parameter : action */
 export function* getTables() {
   yield put(requestTableDataSuccess(
     [{
@@ -72,14 +65,12 @@ export function* getProjects() {
   ));
 }
 
-export function* getPLans() {
+export function* getPlans() {
   yield put(requestPlansSuccess(plans));
 }
 
-// All sagas to be loaded
-export default [
-  defaultSaga,
-  getPLans,
-  getTables,
-  getProjects,
-];
+export default function* defaultSaga() {
+  yield takeLatest(REQUEST_TABLE_DATA, getTables);
+  yield takeLatest(REQUEST_PROJECTS_DATA, getProjects);
+  yield takeLatest(REQUEST_FLOORS, getPlans);
+}

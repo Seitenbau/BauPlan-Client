@@ -7,13 +7,21 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Icon from 'components/Icon';
 import Input from 'components/Input';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+
+import { rem } from '../../utils/helper';
+
 import { focus, blur, input } from './actions';
 import makeSelectSearchField, { selectValue } from './selectors';
-import { rem } from '../../utils/helper';
+import reducer from './reducer';
+import saga from './sagas';
+
 
 const Button = styled.button`
   height: ${rem(35)};
@@ -104,4 +112,12 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchField);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'searchField', reducer });
+const withSaga = injectSaga({ key: 'searchField', saga });
+
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect,
+)(SearchField);
