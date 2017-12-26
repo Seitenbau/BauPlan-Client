@@ -6,7 +6,9 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
+
 import Label from './Label';
+
 
 function RoomLabel(props) {
   const x = props.left * props.scaleFactor;
