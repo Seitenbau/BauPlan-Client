@@ -1,4 +1,4 @@
-import plans from 'settings/plans.json';
+import plans from 'floorplans/plans.json';
 import {
   REQUEST_TABLE_DATA,
   REQUEST_PROJECTS_DATA,
