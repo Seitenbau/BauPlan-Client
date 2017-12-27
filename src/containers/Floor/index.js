@@ -57,7 +57,6 @@ class Floor extends React.Component {
     const rect = this.wrapper.getBoundingClientRect();
     const buffer = 10;
     const inViewport = rect.top < buffer && Math.abs(rect.top) < rect.height;
-    console.log(this.props.id, rect.top, rect.height);
     if(inViewport) {
       this.props.announceVisible(this.props);
     }
