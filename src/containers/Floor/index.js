@@ -25,7 +25,7 @@ const TableWithScrollTarget = withScrollTarget(Table);
 
 class Floor extends React.Component {
 
-  maxOffsetToTop = 100;
+  maxOffsetToTop = 25;
 
   constructor(props) {
     super(props);
@@ -93,6 +93,8 @@ class Floor extends React.Component {
               className={`table table-${j}`}
               name={table.name}
               number={table.number}
+              active={table.active}
+              scrollOffset={-60}
               projects={this.find(table.projects)}
               x={table.x}
               y={table.y}

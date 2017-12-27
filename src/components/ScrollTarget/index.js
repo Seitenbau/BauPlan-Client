@@ -17,6 +17,7 @@ export default function withScrollTarget(WrappedComponent) {
     componentDidUpdate(prevProps, prevState) {
       if (prevProps !== this.props && this.props.active) {
         scrollToComponent(this.wrapper, {
+          offset: this.props.scrollOffset || 0,
           align: 'top',
           duration: this.duration,
         });
@@ -25,10 +26,7 @@ export default function withScrollTarget(WrappedComponent) {
 
     render() {
       return (
-        // extra div to be safe as ref doesn't work properly with styled components :(
-        <div ref={(ref) => { this.wrapper = ref; }}>
-          <WrappedComponent {...this.props} />
-        </div>
+        <WrappedComponent ref={(ref) => { this.wrapper = ref; }} {...this.props} />
       );
     }
   };
