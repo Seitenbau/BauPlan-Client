@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectPlansData, makeSelectNextActiveFloor } from 'containers/Plans/selectors';
+import { makeSelectPlansData, makeSelectActiveScrolledToFloor } from 'containers/Plans/selectors';
 
 import { rem } from '../../utils/helper';
 
@@ -43,14 +43,13 @@ const StyledLink = styled(Link)`
 export class JumpView extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    const { className, plans, nextActiveFloor } = this.props;
-
+    const { className, plans, activeScrolledToFloor } = this.props;
     return (
       <Ul className={className}>
         {plans.map((plan, i) =>
           <li key={i}>
             <StyledLink
-              active={nextActiveFloor === plan.id ? 'active' : undefined}
+              active={activeScrolledToFloor === plan.id ? 'active' : undefined}
               to={`/floor/${plan.id}`}
             >
               {plan.name}
@@ -67,7 +66,7 @@ JumpView.defaultProps = {
 JumpView.propTypes = {
   plans: PropTypes.array,
   className: PropTypes.string,
-  nextActiveFloor: PropTypes.oneOfType([
+  activeScrolledToFloor: PropTypes.oneOfType([
     PropTypes.string,
     PropTypes.bool,
   ]),
@@ -75,7 +74,7 @@ JumpView.propTypes = {
 
 const mapStateToProps = createStructuredSelector({
   plans: makeSelectPlansData(),
-  nextActiveFloor : makeSelectNextActiveFloor(),
+  activeScrolledToFloor : makeSelectActiveScrolledToFloor(),
 });
 
 

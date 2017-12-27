@@ -19,9 +19,9 @@ const makeSelectProjects = () => createSelector(
   (substate) => substate.get('projects')
 );
 
-const makeSelectNextActiveFloor = () => createSelector(
+const makeSelectActiveScrolledToFloor = () => createSelector(
   selectPlansDomain(),
-  (substate) => substate.get('nextActiveFloor')
+  (substate) => substate.get('activeScrolledToFloor')
 );
 
 export {
@@ -29,5 +29,5 @@ export {
   makeSelectPlansData,
   makeSelectTables,
   makeSelectProjects,
-  makeSelectNextActiveFloor,
+  makeSelectActiveScrolledToFloor,
 };

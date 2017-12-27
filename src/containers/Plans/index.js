@@ -22,7 +22,7 @@ import {
   makeSelectPlansData,
   makeSelectTables,
   makeSelectProjects,
-  makeSelectNextActiveFloor,
+  makeSelectActiveScrolledToFloor,
 } from './selectors';
 
 import Wrapper from './PlansWrapper';
@@ -36,13 +36,8 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
     this.props.requestTableData();
     this.props.requestProjectData();
     this.props.requestPlans();
-  }
+    this.distanceToTop = this.wrapper.getBoundingClientRect().top;
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.nextActiveFloor !== this.props.nextActiveFloor) {
-      this.props.history.push(`/floor/${this.props.nextActiveFloor}`);
-      console.log('next active floor', this.props.nextActiveFloor);
-    }
   }
 
   /**
@@ -62,14 +57,26 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
       });
   }
 
+
+  shouldComponentUpdate(nextProps, nextState) {
+    // We need to prevent a rerendering when active scrolled to floor changes
+    // as this triggers scrolling to the active floor,
+    // which is not desired behavior wenn user is scrolling
+    if(nextProps.activeScrolledToFloor !== this.props.activeScrolledToFloor) {
+      return false;
+    }
+    return true;
+  }
+
   render() {
     const { projects, plans } = this.props;
     const { params } = this.props.match;
     return (
-      <Wrapper>
+      <Wrapper innerRef={(ref) => { this.wrapper = ref; }}>
         {plans ? plans.map((plan, i) =>
           <FloorWithScrollTarget
             key={i}
+            wrapperDistanceToTop={this.distanceToTop}
             name={plan.name}
             id={plan.id}
             active={params.type === 'floor' && plan.id === params.identifier}
@@ -107,7 +114,7 @@ const mapStateToProps = createStructuredSelector({
   plans: makeSelectPlansData(),
   tables: makeSelectTables(),
   projects: makeSelectProjects(),
-  nextActiveFloor : makeSelectNextActiveFloor(),
+  activeScrolledToFloor : makeSelectActiveScrolledToFloor(),
 });
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);

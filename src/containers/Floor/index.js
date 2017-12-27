@@ -20,12 +20,9 @@ import ImgWrapper from './ImgWrapper';
 import Label from './label';
 import { announceVisible  } from './actions';
 
-
 const TableWithScrollTarget = withScrollTarget(Table);
 
 class Floor extends React.Component {
-
-  maxOffsetToTop = 25;
 
   constructor(props) {
     super(props);
@@ -33,6 +30,7 @@ class Floor extends React.Component {
       imageScaleFactor : 1,
     }
   }
+
 
   find(id) {
     const ids = flatten([id]);
@@ -57,7 +55,7 @@ class Floor extends React.Component {
   isElementInViewport () {
     const offsetTop = this.wrapper.getBoundingClientRect().top;
     const inViewport = offsetTop >= 0;
-    if(inViewport && offsetTop <= this.maxOffsetToTop) {
+    if(inViewport && offsetTop < this.props.wrapperDistanceToTop) {
       this.props.announceVisible(this.props);
     }
   }
@@ -111,6 +109,7 @@ Floor.propTypes = {
   name: PropTypes.string.isRequired,
   imageName: PropTypes.string.isRequired,
   mapScaleFactor: PropTypes.number,
+  wrapperDistanceToTop: PropTypes.number,
   active: PropTypes.bool,
   labels: PropTypes.oneOfType([
     PropTypes.array,
