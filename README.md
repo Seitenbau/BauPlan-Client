@@ -43,6 +43,11 @@ You have to setup your floor plans and the rest of the app by looking at the con
 * [Create-React-App](https://github.com/facebookincubator/create-react-app)
 * [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
 
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
+
 ## Acknowledgments
 
 * Many thanks to SEITENBAU for supporting this project and lettings us open source it
