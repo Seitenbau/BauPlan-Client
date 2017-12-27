@@ -1,14 +1,13 @@
 /**
-*
-* Floor
-*
-*/
+ *
+ * Floor
+ *
+ */
 
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import imageLoader from 'utils/ImageLoader';
 import RoomLabel from 'components/RoomLabel';
 import Table from 'containers/Table';
 import { flatten } from 'utils/helper';
@@ -19,55 +18,60 @@ import ScaleImg from './ScaleImg';
 import StyledFloor from './StyledFloor';
 import ImgWrapper from './ImgWrapper';
 import Label from './label';
-import { announceVisible  } from './actions';
-
+import { announceVisible } from './actions';
 
 const TableWithScrollTarget = withScrollTarget(Table);
 
-class Floor extends React.Component {
-
+export class Floor extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      imageScaleFactor : 1,
-    }
+      imageScaleFactor: 1
+    };
   }
 
   find(id) {
     const ids = flatten([id]);
     if (typeof id !== 'undefined') {
-      return this.props.projects.filter((e) => ids.indexOf(e.id) > -1);
+      return this.props.projects.filter(e => ids.indexOf(e.id) > -1);
     }
     return [];
   }
 
   handleResize(val) {
-    this.setState({'imageScaleFactor': val});
+    this.setState({ imageScaleFactor: val });
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', throttle(this.isElementInViewport, 10).bind(this));
+    window.addEventListener(
+      'scroll',
+      throttle(this.isElementInViewport, 10).bind(this)
+    );
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.isElementInViewport);
   }
 
-  isElementInViewport () {
+  isElementInViewport() {
     const rect = this.wrapper.getBoundingClientRect();
     const buffer = 10;
     const inViewport = rect.top < buffer && Math.abs(rect.top) < rect.height;
-    if(inViewport) {
+    if (inViewport) {
       this.props.announceVisible(this.props);
     }
   }
 
   render() {
-    const floorPlanImage = imageLoader(this.props.imageName);
+    const floorPlanImage = require('floorplans/images/' + this.props.imageName);
     const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
 
     return (
-      <StyledFloor innerRef={(ref) => { this.wrapper = ref; }}>
+      <StyledFloor
+        innerRef={ref => {
+          this.wrapper = ref;
+        }}
+      >
         <Label>{this.props.name}</Label>
         <ImgWrapper>
           <ScaleImg
@@ -77,15 +81,16 @@ class Floor extends React.Component {
             alt={`Floorplan ${this.props.name}`}
             handleResize={this.handleResize.bind(this)}
           />
-          {this.props.labels.map((label, i) =>
+          {this.props.labels.map((label, i) => (
             <RoomLabel
               key={i}
               scaleFactor={scaleFactor}
               name={label.name}
               left={label.x}
               top={label.y}
-            />)}
-          {this.props.tables.map((table, j) =>
+            />
+          ))}
+          {this.props.tables.map((table, j) => (
             <Link key={j} to={`/table/${table.name}`}>
               <TableWithScrollTarget
                 scaleFactor={scaleFactor}
@@ -100,8 +105,7 @@ class Floor extends React.Component {
                 rotation={table.rotation}
               />
             </Link>
-            )}
-
+          ))}
         </ImgWrapper>
       </StyledFloor>
     );
@@ -113,22 +117,19 @@ Floor.propTypes = {
   imageName: PropTypes.string.isRequired,
   mapScaleFactor: PropTypes.number,
   active: PropTypes.bool,
-  labels: PropTypes.oneOfType([
-    PropTypes.array,
-    PropTypes.object,
-  ]),
+  labels: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
   id: PropTypes.string,
   tables: PropTypes.array,
-  projects: PropTypes.array,
+  projects: PropTypes.array
 };
 
 function mapDispatchToProps(dispatch) {
   return {
-    announceVisible: (props, position) => dispatch(announceVisible(props, position)),
+    announceVisible: (props, position) =>
+      dispatch(announceVisible(props, position))
   };
 }
 
 const mapStateToProps = () => ({});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Floor);
-

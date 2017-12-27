@@ -1,8 +1,8 @@
 /**
-*
-* Actionbar
-*
-*/
+ *
+ * Actionbar
+ *
+ */
 
 import React from 'react';
 import { Link } from 'react-router-dom';
@@ -16,17 +16,17 @@ const Iconwrapper = styled(Link)`
   display: block;
   padding: ${rem(5)};
   margin-bottom: ${rem(5)};
-  color: ${(props) => props.theme.colors.primary};
+  color: ${props => props.theme.colors.primary};
   &:visited {
-    color: ${(props) => props.theme.colors.primary};
+    color: ${props => props.theme.colors.primary};
   }
   &:active,
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${(props) => props.theme.colors.primary};
-    svg  {
-      fill: ${(props) => props.theme.colors.secondary};
+    background-color: ${props => props.theme.colors.primary};
+    svg {
+      fill: ${props => props.theme.colors.secondary};
     }
   }
 `;
@@ -43,9 +43,5 @@ function Actionbar() {
     </Bar>
   );
 }
-
-Actionbar.propTypes = {
-
-};
 
 export default Actionbar;

@@ -1,10 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
+import { Floor } from '../index';
 import Label from '../label';
-import Floor from '../index';
-jest.mock('floorplans');
-
 
 describe('<Floor />', () => {
   const testName = 'testName 232412412423 ~~`af asd ` テストです。';
@@ -12,15 +10,13 @@ describe('<Floor />', () => {
     <Floor
       name={testName}
       short={'bla'}
-      imageName={'sample.svg'}
+      imageName={'Bauplan_Sample.svg'}
       labels={[]}
       tables={[]}
     />
   );
 
   it('Expect to have a correct floor name displayed', () => {
-    expect(renderedComponent.contains(
-      <Label>{testName}</Label>
-    )).toEqual(true);
+    expect(renderedComponent.contains(<Label>{testName}</Label>)).toEqual(true);
   });
 });
