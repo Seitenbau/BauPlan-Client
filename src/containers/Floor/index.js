@@ -12,7 +12,7 @@ import imageLoader from 'utils/ImageLoader';
 import RoomLabel from 'components/RoomLabel';
 import Table from 'containers/Table';
 import { flatten } from 'utils/helper';
-import debounce from 'lodash/debounce';
+import throttle from 'lodash/debounce';
 import withScrollTarget from 'components/ScrollTarget';
 
 import ScaleImg from './ScaleImg';
@@ -46,7 +46,7 @@ class Floor extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('scroll', debounce(this.isElementInViewport, 50).bind(this));
+    window.addEventListener('scroll', throttle(this.isElementInViewport, 10).bind(this));
   }
 
   componentWillUnmount() {
@@ -54,9 +54,11 @@ class Floor extends React.Component {
   }
 
   isElementInViewport () {
-    const offsetTop = this.wrapper.getBoundingClientRect().top;
-    const inViewport = offsetTop >= 0;
-    if(inViewport && offsetTop < this.props.wrapperDistanceToTop) {
+    const rect = this.wrapper.getBoundingClientRect();
+    const buffer = 10;
+    const inViewport = rect.top < buffer && Math.abs(rect.top) < rect.height;
+    console.log(this.props.id, rect.top, rect.height);
+    if(inViewport) {
       this.props.announceVisible(this.props);
     }
   }
@@ -111,7 +113,6 @@ Floor.propTypes = {
   name: PropTypes.string.isRequired,
   imageName: PropTypes.string.isRequired,
   mapScaleFactor: PropTypes.number,
-  wrapperDistanceToTop: PropTypes.number,
   active: PropTypes.bool,
   labels: PropTypes.oneOfType([
     PropTypes.array,

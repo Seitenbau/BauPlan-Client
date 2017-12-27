@@ -43,10 +43,7 @@ function plansReducer(state = initialState, action) {
     case REQUEST_PROJECTS_DATA_ERROR:
       return state;
     case FLOOR_IN_VIEWPORT:
-      if(state.get('activeScrolledToFloor') !== action.props.id) {
-        return state.set('activeScrolledToFloor', action.props.id);
-      }
-      return state;
+      return state.set('activeScrolledToFloor', action.props.id);
     default:
       return state;
   }

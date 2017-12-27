@@ -36,8 +36,6 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
     this.props.requestTableData();
     this.props.requestProjectData();
     this.props.requestPlans();
-    this.distanceToTop = this.wrapper.getBoundingClientRect().top;
-
   }
 
   /**
@@ -77,7 +75,6 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
         {plans ? plans.map((plan, i) =>
           <FloorWithScrollTarget
             key={i}
-            wrapperDistanceToTop={this.distanceToTop}
             name={plan.name}
             id={plan.id}
             active={params.type === 'floor' && plan.id === params.identifier}
