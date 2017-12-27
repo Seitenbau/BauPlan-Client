@@ -17,7 +17,7 @@
       "width": 50
     },
     "floorName": {
-      "size": "2vmin",
+      "size": "2vw",
       "font": "Helvetica"
     },
     "roomName": {
