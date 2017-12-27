@@ -4,7 +4,6 @@
     "plugin:import/warnings"
   ],
   "rules": {
-    "import/order": 1,
-    "import/newline-after-import": [1, {"count" : 2}]
+    "import/order": 1
   }
 }
