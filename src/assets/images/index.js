@@ -7,6 +7,6 @@ const Iconset = {
   gear,
   magnifyGlass,
   buddy,
-  deleteIcon,
+  deleteIcon
 };
 export default Iconset;
