@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Label /> Expect to match Snapshot 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <styled.h4
+    left={100}
+    theme={
+        Object {
+            "plans": Object {
+              "color": "#FFFFFF",
+              "roomName": Object {
+                "font": "Helvetica",
+                "size": 16,
+              },
+            },
+          }
+    }
+    top={100}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "sc-bdVaJa cGOvrb",
+      "style": Object {
+        "left": "6.25rem",
+        "top": "6.25rem",
+      },
+    },
+    "ref": null,
+    "rendered": null,
+    "type": "h4",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "sc-bdVaJa cGOvrb",
+        "style": Object {
+          "left": "6.25rem",
+          "top": "6.25rem",
+        },
+      },
+      "ref": null,
+      "rendered": null,
+      "type": "h4",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;
