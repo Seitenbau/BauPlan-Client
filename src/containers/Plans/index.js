@@ -71,6 +71,7 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
   render() {
     const { projects, plans } = this.props;
     const { params } = this.props.match;
+
     return (
       <Wrapper innerRef={(ref) => { this.wrapper = ref; }}>
         {plans ? plans.map((plan, i) =>

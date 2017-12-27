@@ -20,6 +20,7 @@ import ImgWrapper from './ImgWrapper';
 import Label from './label';
 import { announceVisible  } from './actions';
 
+
 const TableWithScrollTarget = withScrollTarget(Table);
 
 class Floor extends React.Component {
@@ -30,7 +31,6 @@ class Floor extends React.Component {
       imageScaleFactor : 1,
     }
   }
-
 
   find(id) {
     const ids = flatten([id]);
@@ -79,7 +79,6 @@ class Floor extends React.Component {
             <RoomLabel
               key={i}
               scaleFactor={scaleFactor}
-
               name={label.name}
               left={label.x}
               top={label.y}

@@ -14,14 +14,27 @@ export default function withScrollTarget(WrappedComponent) {
 
     duration = 1000;
 
+    componentDidMount() {
+      // wait for next event loop to finish render
+      setTimeout(() => {
+        if(this.props.active) {
+          this.scrollToComponent();
+        }
+      }, 0);
+    }
+
     componentDidUpdate(prevProps, prevState) {
       if (prevProps !== this.props && this.props.active) {
-        scrollToComponent(this.wrapper, {
-          offset: this.props.scrollOffset || 0,
-          align: 'top',
-          duration: this.duration,
-        });
+        this.scrollToComponent();
       }
+    }
+
+    scrollToComponent() {
+      scrollToComponent(this.wrapper, {
+        offset: this.props.scrollOffset || 0,
+        align: 'top',
+        duration: this.duration,
+      });
     }
 
     render() {
