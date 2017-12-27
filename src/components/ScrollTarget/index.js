@@ -30,6 +30,7 @@ export default function withScrollTarget(WrappedComponent) {
     }
 
     scrollToComponent() {
+      console.log(this.wrapper);
       scrollToComponent(this.wrapper, {
         offset: this.props.scrollOffset || 0,
         align: 'top',

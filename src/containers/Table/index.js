@@ -7,7 +7,6 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 
@@ -21,18 +20,16 @@ import makeSelectTable from './selectors';
 export class Table extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <Link to={`/table/${this.props.name}`}>
-        <TableDisplay
-          scaleFactor={this.props.scaleFactor}
-          className={this.props.className}
-          name={this.props.name}
-          number={this.props.number}
-          projects={this.props.projects}
-          x={this.props.x}
-          y={this.props.y}
-          rotation={this.props.rotation}
-        />
-      </Link>
+      <TableDisplay
+        scaleFactor={this.props.scaleFactor}
+        className={this.props.className}
+        name={this.props.name}
+        number={this.props.number}
+        projects={this.props.projects}
+        x={this.props.x}
+        y={this.props.y}
+        rotation={this.props.rotation}
+      />
     );
   }
 }

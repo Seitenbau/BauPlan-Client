@@ -5,6 +5,7 @@
 */
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import imageLoader from 'utils/ImageLoader';
@@ -84,19 +85,21 @@ class Floor extends React.Component {
               top={label.y}
             />)}
           {this.props.tables.map((table, j) =>
-            <TableWithScrollTarget
-              key={j}
-              scaleFactor={scaleFactor}
-              className={`table table-${j}`}
-              name={table.name}
-              number={table.number}
-              active={table.active}
-              scrollOffset={-60}
-              projects={this.find(table.projects)}
-              x={table.x}
-              y={table.y}
-              rotation={table.rotation}
-            />)}
+            <Link key={j} to={`/table/${table.name}`}>
+              <TableWithScrollTarget
+                scaleFactor={scaleFactor}
+                className={`table table-${j}`}
+                name={table.name}
+                number={table.number}
+                active={table.active}
+                scrollOffset={-60}
+                projects={this.find(table.projects)}
+                x={table.x}
+                y={table.y}
+                rotation={table.rotation}
+              />
+            </Link>
+            )}
 
         </ImgWrapper>
       </StyledFloor>
