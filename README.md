@@ -1,8 +1,10 @@
-# Bauplan Client
+[![Build Status](https://travis-ci.org/Seitenbau/BauPlan-Client.svg?branch=master)](https://travis-ci.org/Seitenbau/BauPlan-Client)
+[![Build Status](https://travis-ci.org/Seitenbau/BauPlan-Client.svg?branch=dev)](https://travis-ci.org/Seitenbau/BauPlan-Client)
+# Bauplan Client 
 
 Bauplan is an app to show the floor layout of an organization. It helps to easily find where people are located in a building. It also allows to plan and organize where people should be seated and easily move them around and adjust the floor plan accordingly.
 
-This is the client part of the app, you can see a demo of it here: [Demo](https://github.com/user/repo/blob/branch/other_file.md).
+This is the client part of the app, you can see a demo of it [here](https://seitenbau.github.io/BauPlan-Client/).
 
 ## Getting Started
 
@@ -12,7 +14,7 @@ This is an experimental apprenticeship project. The goal of the project is to tr
 
 ### Prerequisites
 
-While you can see how the app works just from the frontend, for the app to be useful you also need to get the [backend](https://github.com/user/repo/blob/branch/other_file.md) part up running and configure it accordingly.
+While you can see how the app works just from the frontend, for the app to be useful you also need to get a backend part up running and configure it accordingly.
 
 
 ### Installing
@@ -27,27 +29,19 @@ yarn start
 ### Adding floor plans
 You can put your floor plans as images or svg to
 ```
- app/floorplans
+ src/floorplans
 ```
+Adjust the ```src/floorplans/plans.json``` accordingly.
 ### Configuration
 You have to setup your floor plans and the rest of the app by looking at the configuration files in
 ```
- app/settings
+ src/settings
 ```
-
 
 ## Built With
 
+* [Create-React-App](https://github.com/facebookincubator/create-react-app)
 * [React Boilerplate](https://github.com/react-boilerplate/react-boilerplate)
-
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
 ## Acknowledgments
 
