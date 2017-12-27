@@ -8,16 +8,6 @@ import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import createReducer from './reducers';
 
-// import viewReducer from 'containers/View/reducer';
-// import uiEventProviderReducer from 'containers/UiEventProvider/reducer';
-// import plansReducer from 'containers/Plans/reducer';
-// import tableReducer from 'containers/Table/reducer';
-// import jumpViewReducer from 'containers/JumpView/reducer';
-// import searchFieldReducer from 'containers/SearchField/reducer';
-
-// import searchFieldSagas from 'containers/SearchField/sagas';
-// import plansSagas from 'containers/Plans/sagas';
-
 
 const sagaMiddleware = createSagaMiddleware();
 
