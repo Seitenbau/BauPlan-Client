@@ -12,12 +12,16 @@ import RoomLabel from 'components/RoomLabel';
 import Table from 'containers/Table';
 import { flatten } from 'utils/helper';
 import debounce from 'lodash/debounce';
+import withScrollTarget from 'components/ScrollTarget';
+
 import ScaleImg from './ScaleImg';
 import StyledFloor from './StyledFloor';
 import ImgWrapper from './ImgWrapper';
 import Label from './label';
 import { announceVisible  } from './actions';
 
+
+const TableWithScrollTarget = withScrollTarget(Table);
 
 class Floor extends React.Component {
 
@@ -83,7 +87,7 @@ class Floor extends React.Component {
               top={label.y}
             />)}
           {this.props.tables.map((table, j) =>
-            <Table
+            <TableWithScrollTarget
               key={j}
               scaleFactor={scaleFactor}
               className={`table table-${j}`}

@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectPlansData } from 'containers/Plans/selectors';
+import { makeSelectPlansData, makeSelectNextActiveFloor } from 'containers/Plans/selectors';
 
 import { rem } from '../../utils/helper';
 
@@ -19,9 +19,8 @@ import { rem } from '../../utils/helper';
 const Ul = styled.ul`
   list-style: none;
   position: fixed;
-  right: 30px;
+  right: 0;
   padding: ${rem(60)} ${rem(50)} 0 0;
-  color: ${(props) => props.theme.colors.primary};
   & li {
     margin-bottom: ${rem(10)};
   }
@@ -30,9 +29,6 @@ const StyledLink = styled(Link)`
   margin-bottom: ${rem(20)};
   padding: ${rem(5)};
   text-decoration: none;
-  &:visited {
-    color: ${(props) => props.theme.colors.primary};
-  }
   &:active,
   &:focus,
   &:hover {
@@ -40,13 +36,26 @@ const StyledLink = styled(Link)`
     background-color: ${(props) => props.theme.colors.primary};
     color: ${(props) => props.theme.colors.secondary}
   }
+  background-color: ${props => props.active ? props.theme.colors.primary : 'transparent'};
+  color: ${props => props.active ? props.theme.colors.secondary : props.theme.colors.primary};
 `;
 
 export class JumpView extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+
   render() {
+    const { className, plans, nextActiveFloor } = this.props;
+
     return (
-      <Ul className={this.props.className}>
-        {this.props.plans.map((plan, i) => <li key={i}><StyledLink to={`/floor/${plan.id}`}>{plan.name}</StyledLink></li>)}
+      <Ul className={className}>
+        {plans.map((plan, i) =>
+          <li key={i}>
+            <StyledLink
+              active={nextActiveFloor === plan.id ? 'active' : undefined}
+              to={`/floor/${plan.id}`}
+            >
+              {plan.name}
+            </StyledLink>
+          </li>)}
       </Ul>
     );
   }
@@ -58,10 +67,15 @@ JumpView.defaultProps = {
 JumpView.propTypes = {
   plans: PropTypes.array,
   className: PropTypes.string,
+  nextActiveFloor: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
 };
 
 const mapStateToProps = createStructuredSelector({
   plans: makeSelectPlansData(),
+  nextActiveFloor : makeSelectNextActiveFloor(),
 });
 
 

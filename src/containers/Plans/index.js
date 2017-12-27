@@ -39,8 +39,9 @@ export class Plans extends React.Component { // eslint-disable-line react/prefer
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps !== this.props && prevProps.nextActiveFloor !== this.props.nextActiveFloor) {
+    if (prevProps.nextActiveFloor !== this.props.nextActiveFloor) {
       this.props.history.push(`/floor/${this.props.nextActiveFloor}`);
+      console.log('next active floor', this.props.nextActiveFloor);
     }
   }
 
