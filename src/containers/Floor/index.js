@@ -63,7 +63,6 @@ export class Floor extends React.Component {
   }
 
   render() {
-    const floorPlanImage = require('floorplans/images/' + this.props.imageName);
     const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
 
     return (
@@ -77,7 +76,7 @@ export class Floor extends React.Component {
           <ScaleImg
             id={this.props.id}
             name={this.props.name}
-            src={floorPlanImage}
+            src={this.props.imageUri}
             alt={`Floorplan ${this.props.name}`}
             handleResize={this.handleResize.bind(this)}
           />
@@ -114,7 +113,7 @@ export class Floor extends React.Component {
 
 Floor.propTypes = {
   name: PropTypes.string.isRequired,
-  imageName: PropTypes.string.isRequired,
+  imageUri: PropTypes.string.isRequired,
   mapScaleFactor: PropTypes.number,
   active: PropTypes.bool,
   labels: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
@@ -130,6 +129,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const mapStateToProps = () => ({});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Floor);
+export default connect(() => ({}), mapDispatchToProps)(Floor);
