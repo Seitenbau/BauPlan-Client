@@ -13,12 +13,11 @@ import {
   REQUEST_TABLE_DATA_SUCCESS,
   REQUEST_TABLE_DATA_ERROR,
   REQUEST_PROJECTS_DATA_SUCCESS,
-  REQUEST_PROJECTS_DATA_ERROR,
+  REQUEST_PROJECTS_DATA_ERROR
 } from './constants';
 
-
 const initialState = fromJS({
-  nextActiveFloor: false,
+  nextActiveFloor: false
 });
 initialState.set('plans', []);
 initialState.set('tables', []);
@@ -29,8 +28,11 @@ function plansReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case REQUEST_PLANS_SUCCESS:
-      const newPlans = action.data.map((data) =>
-        Object.assign({}, data, { scale: typeof data.scale !== 'undefined' ? data.scale : 1 }));
+      const newPlans = action.data.map(data =>
+        Object.assign({}, data, {
+          scale: typeof data.scale !== 'undefined' ? data.scale : 1
+        })
+      );
       return state.set('floors', newPlans);
     case REQUEST_PLANS_ERROR:
       return state;

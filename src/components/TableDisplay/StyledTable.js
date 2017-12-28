@@ -3,20 +3,20 @@ import { rem, shadeColor } from 'utils/helper';
 
 // we use attrs for attributes which are often changing
 const Table = styled.div.attrs({
-    style: (props) => ({
-      height: rem(props.height),
-      width: rem(props.width),
-      left:  rem(props.left),
-      top:  rem(props.top),
-    }),
-  })`
+  style: props => ({
+    height: rem(props.height),
+    width: rem(props.width),
+    left: rem(props.left),
+    top: rem(props.top)
+  })
+})`
   background-color: #d3d3d3;
   position: absolute;
   box-sizing: border-box;
   border: 1px solid ${shadeColor('#d3d3d3', -0.8)};
-  transform: rotate(${(props) => props.rotation}deg);
+  transform: rotate(${props => props.rotation}deg);
   :after {
-    content: "";
+    content: '';
     display: block;
     position: absolute;
     border: 1px dashed ${shadeColor('#d3d3d3', -0.8)};
@@ -33,4 +33,3 @@ const Table = styled.div.attrs({
 `;
 
 export default Table;
-

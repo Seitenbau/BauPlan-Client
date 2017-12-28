@@ -11,7 +11,6 @@ import { Switch, Route } from 'react-router-dom';
 
 import View from 'containers/View';
 
-
 export default function App() {
   return (
     <Switch>

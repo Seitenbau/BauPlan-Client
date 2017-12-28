@@ -1,8 +1,8 @@
 /**
-*
-* ScaleImg
-*
-*/
+ *
+ * ScaleImg
+ *
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
 import { makeSelectUiSize } from '../../containers/UiEventProvider/selectors';
-
 
 class ScaleImg extends React.Component {
   constructor(props) {
@@ -33,7 +32,15 @@ class ScaleImg extends React.Component {
   }
   render() {
     return (
-      <img ref={(ref) => { this.img = ref; }} onLoad={this.doCalculation} src={this.props.src} alt={this.props.alt} className={this.props.className} />
+      <img
+        ref={ref => {
+          this.img = ref;
+        }}
+        onLoad={this.doCalculation}
+        src={this.props.src}
+        alt={this.props.alt}
+        className={this.props.className}
+      />
     );
   }
 }
@@ -45,11 +52,11 @@ ScaleImg.propTypes = {
   calculationDone: PropTypes.func,
   'width-height': PropTypes.string,
   id: PropTypes.string,
-  handleResize: PropTypes.func,
+  handleResize: PropTypes.func
 };
 
 const mapStateToProps = createStructuredSelector({
-  'width-height': makeSelectUiSize(),
+  'width-height': makeSelectUiSize()
 });
 
 export default connect(mapStateToProps)(ScaleImg);

@@ -5,16 +5,11 @@
  */
 
 import { fromJS } from 'immutable';
-import {
-  DEFAULT_ACTION,
-  FOCUSED,
-  BLUR,
-  INPUT,
-} from './constants';
+import { DEFAULT_ACTION, FOCUSED, BLUR, INPUT } from './constants';
 
 const initialState = fromJS({
   focused: false,
-  value: '',
+  value: ''
 });
 
 function searchFieldReducer(state = initialState, action) {

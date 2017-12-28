@@ -7,13 +7,17 @@ const Rectangle = styled.span`
   width: ${rem(9)};
   height: ${rem(9)};
   border: 1px solid #000000;
-  background-color: ${(prop) => prop.color};
+  background-color: ${prop => prop.color};
 `;
 
-class RectangleComponent extends React.Component { // eslint-disable-line react/prefer-stateless-function
+class RectangleComponent extends React.Component {
   render() {
     return (
-      <Rectangle scaleFactor={this.props.scaleFactor} className={`${this.props.className} projectIdentifier-reactangle`} color={this.props.color} />
+      <Rectangle
+        scaleFactor={this.props.scaleFactor}
+        className={`${this.props.className} projectIdentifier-reactangle`}
+        color={this.props.color}
+      />
     );
   }
 }
@@ -21,7 +25,7 @@ class RectangleComponent extends React.Component { // eslint-disable-line react/
 RectangleComponent.propTypes = {
   className: PropTypes.string,
   color: PropTypes.string,
-  scaleFactor: PropTypes.number,
+  scaleFactor: PropTypes.number
 };
 
 export default RectangleComponent;

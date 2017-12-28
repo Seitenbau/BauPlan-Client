@@ -11,10 +11,12 @@ import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 
-import { makeSelectPlansData, makeSelectActiveScrolledToFloor } from 'containers/Plans/selectors';
+import {
+  makeSelectPlansData,
+  makeSelectActiveScrolledToFloor
+} from 'containers/Plans/selectors';
 
 import { rem } from '../../utils/helper';
-
 
 const Ul = styled.ul`
   list-style: none;
@@ -33,20 +35,23 @@ const StyledLink = styled(Link)`
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.secondary}
+    background-color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.secondary};
   }
-  background-color: ${props => props.active ? props.theme.colors.primary : 'transparent'};
-  color: ${props => props.active ? props.theme.colors.secondary : props.theme.colors.primary};
+  background-color: ${props =>
+    props.active ? props.theme.colors.primary : 'transparent'};
+  color: ${props =>
+    props.active ? props.theme.colors.secondary : props.theme.colors.primary};
 `;
 
-export class JumpView extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class JumpView extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
 
   render() {
     const { className, plans, activeScrolledToFloor } = this.props;
     return (
       <Ul className={className}>
-        {plans.map((plan, i) =>
+        {plans.map((plan, i) => (
           <li key={i}>
             <StyledLink
               active={activeScrolledToFloor === plan.id ? 'active' : undefined}
@@ -54,29 +59,25 @@ export class JumpView extends React.PureComponent { // eslint-disable-line react
             >
               {plan.name}
             </StyledLink>
-          </li>)}
+          </li>
+        ))}
       </Ul>
     );
   }
 }
 
 JumpView.defaultProps = {
-  plans: [],
+  plans: []
 };
 JumpView.propTypes = {
   plans: PropTypes.array,
   className: PropTypes.string,
-  activeScrolledToFloor: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.bool,
-  ]),
+  activeScrolledToFloor: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
 const mapStateToProps = createStructuredSelector({
   plans: makeSelectPlansData(),
-  activeScrolledToFloor : makeSelectActiveScrolledToFloor(),
+  activeScrolledToFloor: makeSelectActiveScrolledToFloor()
 });
-
-
 
 export default connect(mapStateToProps)(JumpView);

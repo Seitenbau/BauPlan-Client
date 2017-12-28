@@ -5,15 +5,10 @@
  */
 
 import { fromJS } from 'immutable';
-import {
-  DEFAULT_ACTION,
-  LOGIN_SUCCESS,
-  LOGOUT_SUCCESS,
-
-} from './constants';
+import { DEFAULT_ACTION, LOGIN_SUCCESS, LOGOUT_SUCCESS } from './constants';
 
 const initialState = fromJS({
-  logedin: false,
+  logedin: false
 });
 
 function ViewReducer(state = initialState, action) {

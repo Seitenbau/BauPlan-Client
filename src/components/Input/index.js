@@ -1,17 +1,16 @@
 /**
-*
-* Input
-*
-*/
+ *
+ * Input
+ *
+ */
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
 import { rem, shadeColor } from '../../utils/helper';
 
-
 const Container = styled.span`
-  background-color: ${(props) => shadeColor(props.theme.colors.primary, 0.9)};
+  background-color: ${props => shadeColor(props.theme.colors.primary, 0.9)};
   height: ${rem(35)};
   display: inline-flex;
   justify-content: space-between;
@@ -23,7 +22,8 @@ const InputField = styled.input`
   border: none;
   border-radius: 0;
   margin-left: 5px;
-  border: ${rem(1)} solid ${(props) => shadeColor(props.theme.colors.primary, 0.9)};
+  border: ${rem(1)} solid
+    ${props => shadeColor(props.theme.colors.primary, 0.9)};
   font-style: italic;
 
   &:focus {
@@ -32,7 +32,7 @@ const InputField = styled.input`
   }
 `;
 
-class Input extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class Input extends React.PureComponent {
   render() {
     return (
       <Container>
@@ -58,7 +58,7 @@ Input.propTypes = {
   onBlur: PropTypes.func,
   autoFocus: PropTypes.bool,
   value: PropTypes.string,
-  onInput: PropTypes.func,
+  onInput: PropTypes.func
 };
 
 export default Input;

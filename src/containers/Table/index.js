@@ -16,8 +16,7 @@ import TableDisplay from 'components/TableDisplay';
 import reducer from './reducer';
 import makeSelectTable from './selectors';
 
-
-export class Table extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class Table extends React.PureComponent {
   render() {
     return (
       <TableDisplay
@@ -36,32 +35,27 @@ export class Table extends React.PureComponent { // eslint-disable-line react/pr
 
 Table.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  projects: PropTypes.arrayOf(PropTypes.shape({
-    id: PropTypes.number,
-    name: PropTypes.string,
-    short: PropTypes.string,
-    color: PropTypes.string,
-  })),
+  number: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  projects: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      name: PropTypes.string,
+      short: PropTypes.string,
+      color: PropTypes.string
+    })
+  ),
   x: PropTypes.number,
   y: PropTypes.number,
   rotation: PropTypes.number,
   className: PropTypes.string,
-  scaleFactor: PropTypes.number,
+  scaleFactor: PropTypes.number
 };
 
 const mapStateToProps = createStructuredSelector({
-  Table: makeSelectTable(),
+  Table: makeSelectTable()
 });
-
 
 const withConnect = connect(mapStateToProps);
 const withReducer = injectReducer({ key: 'table', reducer });
 
-export default compose(
-  withReducer,
-  withConnect,
-)(Table);
+export default compose(withReducer, withConnect)(Table);

@@ -13,7 +13,6 @@ import { ConnectedRouter } from 'react-router-redux';
 import { ThemeProvider } from 'styled-components';
 import createHistory from 'history/createBrowserHistory';
 
-
 // Import root app
 import App from 'containers/App';
 import UiEventProvider from 'containers/UiEventProvider';
@@ -21,7 +20,7 @@ import UiEventProvider from 'containers/UiEventProvider';
 import configureStore from './configureStore';
 
 // Import CSS reset and Global Styles
-import 'sanitize.css'
+import 'sanitize.css';
 import './global-styles';
 import theme from './settings/theme.json';
 
@@ -32,7 +31,7 @@ const store = configureStore(initialState, history);
 
 const MOUNT_NODE = document.getElementById('root');
 
-const render = (messages) => {
+const render = messages => {
   ReactDOM.render(
     <Provider store={store}>
       <UiEventProvider>

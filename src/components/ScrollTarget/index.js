@@ -5,19 +5,16 @@
 import React from 'react';
 import scrollToComponent from 'react-scroll-to-component';
 
-
 // This function takes a component...
 export default function withScrollTarget(WrappedComponent) {
-
   // ...and returns another component...
   return class extends React.Component {
-
     duration = 1000;
 
     componentDidMount() {
       // wait for next event loop to finish render
       setTimeout(() => {
-        if(this.props.active) {
+        if (this.props.active) {
           this.scrollToComponent();
         }
       }, 0);
@@ -33,18 +30,19 @@ export default function withScrollTarget(WrappedComponent) {
       scrollToComponent(this.wrapper, {
         offset: this.props.scrollOffset || 0,
         align: 'top',
-        duration: this.duration,
+        duration: this.duration
       });
     }
 
     render() {
       return (
-        <WrappedComponent ref={(ref) => { this.wrapper = ref; }} {...this.props} />
+        <WrappedComponent
+          ref={ref => {
+            this.wrapper = ref;
+          }}
+          {...this.props}
+        />
       );
     }
   };
-
 }
-
-
-

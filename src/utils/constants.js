@@ -1,4 +1,3 @@
-
 export const REM_BASE = 16;
 export const RESTART_ON_REMOUNT = '@@saga-injector/restart-on-remount';
 export const DAEMON = '@@saga-injector/daemon';

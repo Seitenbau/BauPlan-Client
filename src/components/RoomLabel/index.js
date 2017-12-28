@@ -1,14 +1,13 @@
 /**
-*
-* RoomLabel
-*
-*/
+ *
+ * RoomLabel
+ *
+ */
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
 import Label from './Label';
-
 
 function RoomLabel(props) {
   const x = props.left * props.scaleFactor;
@@ -26,7 +25,7 @@ RoomLabel.propTypes = {
   left: PropTypes.number,
   top: PropTypes.number,
   className: PropTypes.string,
-  scaleFactor: PropTypes.number,
+  scaleFactor: PropTypes.number
 };
 
 export default RoomLabel;
