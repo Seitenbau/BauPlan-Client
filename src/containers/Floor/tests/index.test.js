@@ -10,7 +10,7 @@ describe('<Floor />', () => {
     <Floor
       name={testName}
       short={'bla'}
-      imageName={'Bauplan_Sample.svg'}
+      imageUri={'Bauplan_Sample.svg'}
       labels={[]}
       tables={[]}
     />
