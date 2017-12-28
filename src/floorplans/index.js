@@ -5,7 +5,9 @@ import plans from './plans.json';
  */
 export function getFloorPlans() {
   return plans.map(plan => {
-    plan.imageUri = require('./images/' + plan.imageName);
+    plan.imageUri = !plan.imageUri
+      ? require('./images/' + plan.imageName)
+      : plan.imageUri;
     return plan;
   });
 }
