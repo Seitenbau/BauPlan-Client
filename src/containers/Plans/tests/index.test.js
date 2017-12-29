@@ -15,6 +15,6 @@ describe('<Plans />', () => {
         requestPlans={() => []}
       />
     );
-    expect(renderedComponent).toHaveLength(1);
+    expect(renderedComponent.exists()).toBe(true);
   });
 });

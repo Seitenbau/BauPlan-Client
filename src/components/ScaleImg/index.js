@@ -12,7 +12,7 @@ import { createStructuredSelector } from 'reselect';
 
 import { makeSelectUiSize } from '../../containers/UiEventProvider/selectors';
 
-class ScaleImg extends React.Component {
+export class ScaleImg extends React.Component {
   constructor(props) {
     super(props);
     this.doCalculation = this.doCalculation.bind(this);

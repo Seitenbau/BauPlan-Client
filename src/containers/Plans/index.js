@@ -30,8 +30,6 @@ import Wrapper from './PlansWrapper';
 const FloorWithScrollTarget = withScrollTarget(Floor);
 
 export class Plans extends React.Component {
-  // eslint-disable-line react/prefer-stateless-function
-
   componentDidMount() {
     this.props.requestTableData();
     this.props.requestProjectData();
@@ -108,13 +106,11 @@ Plans.propTypes = {
   plans: PropTypes.array
 };
 
-function mapDispatchToProps(dispatch) {
-  return {
-    requestTableData: evt => dispatch(requestTableData()),
-    requestProjectData: evt => dispatch(requestProjectData()),
-    requestPlans: evt => dispatch(requestPlans())
-  };
-}
+const mapDispatchToProps = dispatch => ({
+  requestTableData: evt => dispatch(requestTableData()),
+  requestProjectData: evt => dispatch(requestProjectData()),
+  requestPlans: evt => dispatch(requestPlans())
+});
 
 const mapStateToProps = createStructuredSelector({
   plans: makeSelectPlansData(),

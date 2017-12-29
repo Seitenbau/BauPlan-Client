@@ -7,7 +7,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-class Img extends React.PureComponent {
+export class Img extends React.PureComponent {
   render() {
     return (
       <img

@@ -6,7 +6,7 @@ import React from 'react';
 import scrollToComponent from 'react-scroll-to-component';
 
 // This function takes a component...
-export default function withScrollTarget(WrappedComponent) {
+export function withScrollTarget(WrappedComponent) {
   // ...and returns another component...
   return class extends React.Component {
     duration = 1000;
@@ -46,3 +46,5 @@ export default function withScrollTarget(WrappedComponent) {
     }
   };
 }
+
+export default withScrollTarget;

@@ -3,9 +3,7 @@ import { PropTypes } from 'prop-types';
 import Iconset from 'assets/images';
 import StyledIcon from './styledIcon';
 
-export default class Icon extends React.Component {
-  //eslint-disable-line
-
+export class Icon extends React.Component {
   render() {
     const MyIcon = Iconset[this.props.name ? this.props.name : 0];
     return (
@@ -23,3 +21,5 @@ Icon.propTypes = {
   height: PropTypes.number,
   className: PropTypes.string
 };
+
+export default Icon;

@@ -11,7 +11,7 @@ import Actionbar from 'components/Actionbar';
 import Bar from 'components/Bar';
 import Header from 'components/Header';
 
-export default class View extends React.PureComponent {
+export class View extends React.PureComponent {
   render() {
     return (
       <div>
@@ -26,3 +26,5 @@ export default class View extends React.PureComponent {
     );
   }
 }
+
+export default View;

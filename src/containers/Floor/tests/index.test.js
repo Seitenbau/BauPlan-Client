@@ -16,6 +16,10 @@ describe('<Floor />', () => {
     />
   );
 
+  it('Component renders', () => {
+    expect(renderedComponent.exists()).toBe(true);
+  });
+
   it('Expect to have a correct floor name displayed', () => {
     expect(renderedComponent.contains(<Label>{testName}</Label>)).toEqual(true);
   });

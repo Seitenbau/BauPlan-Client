@@ -1,14 +1,11 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-//
-// import Img from '../index';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-describe('<Img />', () => {
-  // const testText = 'Here we are now entertain us';
-  // const testSrc = 'bla.img';
-  // const renderedComponent = shallow(<Img src={testSrc} alt={testText} />);
+import { ScaleImg } from '../index';
 
-  it('Expect Img to have alt text', () => {
-    expect(true).toEqual(true);
+describe('<ScaleImg />', () => {
+  const renderedComponent = shallow(<ScaleImg alt="bla" src="test.png" />);
+  it('Component renders', () => {
+    expect(renderedComponent.exists()).toBe(true);
   });
 });

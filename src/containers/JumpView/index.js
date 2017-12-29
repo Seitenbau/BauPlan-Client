@@ -45,8 +45,6 @@ const StyledLink = styled(Link)`
 `;
 
 export class JumpView extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
-
   render() {
     const { className, plans, activeScrolledToFloor } = this.props;
     return (

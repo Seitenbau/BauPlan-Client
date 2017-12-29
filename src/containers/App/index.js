@@ -11,10 +11,12 @@ import { Switch, Route } from 'react-router-dom';
 
 import View from 'containers/View';
 
-export default function App() {
+export function App() {
   return (
     <Switch>
       <Route path="/" component={View} />
     </Switch>
   );
 }
+
+export default App;
