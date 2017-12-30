@@ -61,7 +61,10 @@ export class Plans extends React.Component {
     if (nextProps.activeScrolledToFloor !== this.props.activeScrolledToFloor) {
       return false;
     }
-    return true;
+    if (nextProps !== this.props) {
+      return true;
+    }
+    return false;
   }
 
   render() {
