@@ -55,9 +55,10 @@ export class Plans extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    // We need to prevent a rerendering when active scrolled to floor changes
-    // as this triggers scrolling to the active floor,
-    // which is not desired behavior wenn user is scrolling
+    // We need to prevent a rerendering when activeScrolledToFloor changes,
+    // as changing the props triggers rerendering of the component, and therefore
+    // scrolling to the active floor.
+    // This is undesirable, when the user himself is scrolling
     if (nextProps.activeScrolledToFloor !== this.props.activeScrolledToFloor) {
       return false;
     }
