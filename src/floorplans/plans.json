@@ -1,49 +1,64 @@
-[{
-  "name": "Headquarter 1st floor",
-  "id": "F0",
-  "imageName": "Bauplan_Sample.png",
-  "mapScaleFactor": 60,
-  "labels": [{
-    "name": "Meetingroom 1",
-    "x": 31,
-    "y": 6
-  }, {
-    "name": "Meetingroom 2",
-    "x": 31,
-    "y": 20
-  }, {
-    "name": "Meetingroom 3",
-    "x": 19,
-    "y": 6
-  }]
-}, {
-  "name": "Headquarter 2nd floor",
-  "id": "F1",
-  "imageName": "Bauplan_Sample.png",
-  "mapScaleFactor": 50,
-  "labels": [{
-    "name": "Meetingroom 4",
-    "x": 10,
-    "y": 5
-  }]
-}, {
-  "name": "Headquarter 3rd floor",
-  "id": "F2",
-  "imageName": "Bauplan_Sample.png",
-  "mapScaleFactor": 50,
-  "labels": [{
-    "name": "Meetingroom 5",
-    "x": 37,
-    "y": 8
-  }]
-}, {
-  "name": "Headquarter 4th floor",
-  "id": "F3",
-  "imageName": "Bauplan_Sample.png",
-  "mapScaleFactor": 50,
-  "labels": [{
-    "name": "Meetingroom 6",
-    "x": 13,
-    "y": 25
-  }]
-}]
+[
+  {
+    "name": "Headquarter 1st floor",
+    "id": "F0",
+    "imageName": "Bauplan_Sample.svg",
+    "mapScaleFactor": 60,
+    "labels": [
+      {
+        "name": "Meetingroom 1",
+        "x": 31,
+        "y": 6
+      },
+      {
+        "name": "Meetingroom 2",
+        "x": 31,
+        "y": 20
+      },
+      {
+        "name": "Meetingroom 3",
+        "x": 19,
+        "y": 6
+      }
+    ]
+  },
+  {
+    "name": "Headquarter 2nd floor",
+    "id": "F1",
+    "imageName": "Bauplan_Sample.svg",
+    "mapScaleFactor": 50,
+    "labels": [
+      {
+        "name": "Meetingroom 4",
+        "x": 10,
+        "y": 5
+      }
+    ]
+  },
+  {
+    "name": "Headquarter 3rd floor",
+    "id": "F2",
+    "imageName": "Bauplan_Sample.svg",
+    "mapScaleFactor": 50,
+    "labels": [
+      {
+        "name": "Meetingroom 5",
+        "x": 37,
+        "y": 8
+      }
+    ]
+  },
+  {
+    "name": "Headquarter 4th floor",
+    "id": "F3",
+    "imageName": "Bauplan_Sample.svg",
+    "mapScaleFactor": 50,
+    "labels": [
+      {
+        "name": "Meetingroom 6",
+        "x": 13,
+        "y": 25
+      }
+    ]
+  }
+]
