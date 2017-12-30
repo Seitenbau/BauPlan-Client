@@ -23,7 +23,7 @@ export function* getTables() {
         rotation: 0,
         number: 1,
         projects: [1, 2],
-        planId: 'F0'
+        planId: '1F'
       },
       {
         name: 'Christina Freud',
@@ -33,7 +33,7 @@ export function* getTables() {
         rotation: 180,
         projects: 1,
         number: 2,
-        planId: 'F0'
+        planId: '1F'
       },
       {
         name: 'Martina Huber',
@@ -43,7 +43,7 @@ export function* getTables() {
         rotation: 245,
         projects: 2,
         number: 2,
-        planId: 'F1'
+        planId: '2F'
       },
       {
         name: 'Jan Friedmann',
@@ -53,7 +53,7 @@ export function* getTables() {
         rotation: 90,
         projects: 1,
         number: 3,
-        planId: 'F0'
+        planId: '1F'
       }
     ])
   );
