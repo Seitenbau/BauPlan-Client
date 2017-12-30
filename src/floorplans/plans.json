@@ -1,7 +1,7 @@
 [
   {
     "name": "Headquarter 1st floor",
-    "id": "F0",
+    "id": "1F",
     "imageName": "Bauplan_Sample.svg",
     "mapScaleFactor": 60,
     "labels": [
@@ -24,7 +24,7 @@
   },
   {
     "name": "Headquarter 2nd floor",
-    "id": "F1",
+    "id": "2F",
     "imageName": "Bauplan_Sample.svg",
     "mapScaleFactor": 50,
     "labels": [
@@ -37,7 +37,7 @@
   },
   {
     "name": "Headquarter 3rd floor",
-    "id": "F2",
+    "id": "3F",
     "imageName": "Bauplan_Sample.svg",
     "mapScaleFactor": 50,
     "labels": [
@@ -50,7 +50,7 @@
   },
   {
     "name": "Headquarter 4th floor",
-    "id": "F3",
+    "id": "4F",
     "imageName": "Bauplan_Sample.svg",
     "mapScaleFactor": 50,
     "labels": [
