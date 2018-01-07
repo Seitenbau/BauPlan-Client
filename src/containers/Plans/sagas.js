@@ -21,7 +21,7 @@ export function* getTables() {
         y: 20,
         floor: 0,
         rotation: 0,
-        number: 1,
+        id: 1,
         projects: [1, 2],
         planId: '1F'
       },
@@ -32,7 +32,7 @@ export function* getTables() {
         floor: 0,
         rotation: 180,
         projects: 1,
-        number: 2,
+        id: 2,
         planId: '1F'
       },
       {
@@ -42,7 +42,7 @@ export function* getTables() {
         floor: 1,
         rotation: 245,
         projects: 2,
-        number: 2,
+        id: 2,
         planId: '2F'
       },
       {
@@ -52,7 +52,7 @@ export function* getTables() {
         floor: 0,
         rotation: 90,
         projects: 1,
-        number: 3,
+        id: 3,
         planId: '1F'
       }
     ])

@@ -49,7 +49,8 @@ export class Plans extends React.Component {
         // set active table
         table.active =
           params.type === 'table' &&
-          (params.identifier === table.name || params.identifier === table.id);
+          (params.identifier === table.name ||
+            params.identifier === table.id.toString());
         return table;
       });
   }
