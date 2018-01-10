@@ -2,7 +2,6 @@
 # Bauplan Client 
 [![Build Status](https://travis-ci.org/Seitenbau/BauPlan-Client.svg?branch=master)](https://travis-ci.org/Seitenbau/BauPlan-Client) [![Dependencies](https://david-dm.org/Seitenbau/BauPlan-Client.svg)](https://david-dm.org/Seitenbau/BauPlan-Client)
 [![codecov](https://codecov.io/gh/Seitenbau/BauPlan-Client/branch/master/graph/badge.svg)](https://codecov.io/gh/Seitenbau/BauPlan-Client)
-[![bitHound Code](https://www.bithound.io/github/Seitenbau/BauPlan-Client/badges/code.svg)](https://www.bithound.io/github/Seitenbau/BauPlan-Client)
 
 
 Bauplan is an app to show the floor layout of an organization. It helps to easily find where people are located in a building. It also allows to plan and organize where people should be seated and easily move them around and adjust the floor plan accordingly.

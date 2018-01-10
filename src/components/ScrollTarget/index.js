@@ -2,8 +2,9 @@
  * ScrollTarget Higher Order Component
  * Scroll functionality in one place for use on any component
  */
+
 import React from 'react';
-import scrollToComponent from 'react-scroll-to-component';
+const scrollToComponent = require('react-scroll-to-component');
 
 // This function takes a component...
 export function withScrollTarget(WrappedComponent) {

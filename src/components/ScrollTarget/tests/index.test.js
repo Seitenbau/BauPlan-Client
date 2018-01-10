@@ -5,6 +5,8 @@ import { withScrollTarget } from '../index';
 
 const testString = 'bla';
 
+jest.mock('tween');
+
 class TestComponent extends React.Component {
   render() {
     return <h1>Hello, {this.props.title}</h1>;
