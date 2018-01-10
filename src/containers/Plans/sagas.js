@@ -22,7 +22,7 @@ export function* getTables() {
         floor: 0,
         rotation: 0,
         id: 1,
-        projects: [1, 2],
+        projects: ['HR', 'FD'],
         planId: '1F'
       },
       {
@@ -31,7 +31,7 @@ export function* getTables() {
         y: 12,
         floor: 0,
         rotation: 180,
-        projects: 1,
+        projects: 'FD',
         id: 2,
         planId: '1F'
       },
@@ -41,7 +41,7 @@ export function* getTables() {
         y: 25,
         floor: 1,
         rotation: 245,
-        projects: 2,
+        projects: 'HR',
         id: 2,
         planId: '2F'
       },
@@ -51,7 +51,7 @@ export function* getTables() {
         y: 11,
         floor: 0,
         rotation: 90,
-        projects: 1,
+        projects: 'FD',
         id: 3,
         planId: '1F'
       }
@@ -63,15 +63,13 @@ export function* getProjects() {
   yield put(
     requestProjectDataSuccess([
       {
-        id: 1,
         name: 'Human Resources',
-        short: 'HR',
+        id: 'HR',
         color: '#FFFF00'
       },
       {
-        id: 2,
         name: 'Financial Department',
-        short: 'FD',
+        id: 'FD',
         color: '#FF00FF'
       }
     ])

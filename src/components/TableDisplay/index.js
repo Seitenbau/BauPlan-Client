@@ -7,15 +7,12 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import ProjectIdentifier from 'components/ProjectIdentifier';
-import { prefixNumber } from 'utils/helper';
 import config from 'settings/config.json';
 
 import StyledTable from './StyledTable';
 import TableSpan from './TableSpan';
 
 export class TableDisplay extends React.PureComponent {
-  // eslint-disable-line react/prefer-stateless-function
-
   render() {
     const x = this.props.x * this.props.scaleFactor;
     const y = this.props.y * this.props.scaleFactor;
@@ -34,7 +31,7 @@ export class TableDisplay extends React.PureComponent {
         <TableSpan fontSize={1.5}>{this.props.name}</TableSpan>
         <ProjectIdentifier projects={this.props.projects} />
         <TableSpan fontSize={1.6} center>
-          {prefixNumber(this.props.number)}
+          {this.props.number}
         </TableSpan>
       </StyledTable>
     );
@@ -47,9 +44,8 @@ TableDisplay.propTypes = {
   number: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   projects: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string.required,
       name: PropTypes.string,
-      short: PropTypes.string,
       color: PropTypes.string
     })
   ),

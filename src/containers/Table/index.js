@@ -9,6 +9,7 @@ import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
+import { prefixNumber } from 'utils/helper';
 
 import injectReducer from 'utils/injectReducer';
 import TableDisplay from 'components/TableDisplay';
@@ -18,12 +19,13 @@ import makeSelectTable from './selectors';
 
 export class Table extends React.PureComponent {
   render() {
+    const tableNumber = prefixNumber(parseInt(this.props.id, 10));
     return (
       <TableDisplay
         scaleFactor={this.props.scaleFactor}
         className={this.props.className}
         name={this.props.name}
-        number={this.props.number}
+        number={tableNumber}
         projects={this.props.projects}
         x={this.props.x}
         y={this.props.y}
@@ -35,12 +37,11 @@ export class Table extends React.PureComponent {
 
 Table.propTypes = {
   name: PropTypes.string.isRequired,
-  number: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]).isRequired,
   projects: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number,
+      id: PropTypes.string.required,
       name: PropTypes.string,
-      short: PropTypes.string,
       color: PropTypes.string
     })
   ),

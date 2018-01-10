@@ -95,7 +95,7 @@ export class Floor extends React.Component {
                 scaleFactor={scaleFactor}
                 className={`table table-${j}`}
                 name={table.name}
-                number={table.number}
+                id={table.id}
                 active={table.active}
                 scrollOffset={-60}
                 projects={this.find(table.projects)}
