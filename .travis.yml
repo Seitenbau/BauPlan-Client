@@ -8,7 +8,7 @@ script:
   - npm run test
   - npm run build
 
-after_success: 'npm run coveralls'
+after_success: 'npm run codecov'
 
 cache:
   yarn: true

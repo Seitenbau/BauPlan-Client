@@ -22,7 +22,7 @@
     "styled-components": "^2.4.0"
   },
   "devDependencies": {
-    "coveralls": "^3.0.0",
+    "codecov": "^3.0.0",
     "enzyme": "^3.2.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "gh-pages": "^1.1.0",
@@ -40,7 +40,7 @@
     "test": "react-scripts test --env=jsdom --coverage",
     "test:watch": "react-scripts test --env=jsdom --watchAll",
     "eject": "react-scripts eject",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "codecov": "cat ./coverage/lcov.info | codecov"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
