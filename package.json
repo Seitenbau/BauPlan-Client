@@ -34,6 +34,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "predeploy": "npm run build",
+    "postinstall": "node -e 'require(\"./src/utils/copySampleData.js\").run()'",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
