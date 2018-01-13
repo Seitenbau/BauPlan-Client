@@ -10,12 +10,12 @@ describe('Move sample data to folder', () => {
 
   beforeEach(() => {
     // Set up some mocked out file info before each test
-    require('fs').__setMockFiles(MOCK_FILE_INFO);
+    require('ncp').__setMockFiles(MOCK_FILE_INFO);
   });
 
   test('includes all files in the directory', () => {
     copySampleData('/path/from', '/path/to');
-    const allFiles = require('fs').__getMockFiles();
+    const allFiles = require('ncp').__getMockFiles();
     expect(allFiles['/path/to']).toBeDefined();
     expect(allFiles['/path/to']).toEqual(['file1.js', 'file2.js']);
   });

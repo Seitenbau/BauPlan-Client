@@ -1,11 +1,12 @@
 const fs = require('fs');
+const ncp = require('ncp').ncp;
 
 const copySampleData = (
   sourcePath = 'src/sampleDataProviders',
-  targetPath = 'dataProviders'
+  targetPath = 'src/dataProviders'
 ) => {
   const copyFolder = () =>
-    fs.rename(sourcePath, targetPath, function(err) {
+    ncp(sourcePath, targetPath, function(err) {
       if (err) throw err;
       console.log('Moving sample data complete');
     });
