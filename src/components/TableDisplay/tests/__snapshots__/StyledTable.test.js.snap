@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<TableDisplay /> Expect StyledTable to have styles defined 1`] = `
+ShallowWrapper {
+  "length": 1,
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <styled.div
+    height={80}
+    left={100}
+    rotation={90}
+    top={100}
+    width={40}
+/>,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "className": "sc-bdVaJa cbMnIG",
+      "height": 80,
+      "style": Object {
+        "height": "5rem",
+        "left": "6.25rem",
+        "top": "6.25rem",
+        "width": "2.5rem",
+      },
+      "width": 40,
+    },
+    "ref": null,
+    "rendered": null,
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "className": "sc-bdVaJa cbMnIG",
+        "height": 80,
+        "style": Object {
+          "height": "5rem",
+          "left": "6.25rem",
+          "top": "6.25rem",
+          "width": "2.5rem",
+        },
+        "width": 40,
+      },
+      "ref": null,
+      "rendered": null,
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+      },
+    },
+  },
+}
+`;

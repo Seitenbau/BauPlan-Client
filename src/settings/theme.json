@@ -1,0 +1,28 @@
+{
+  "colors": {
+    "primary": "#022032",
+    "secondary": "#00FF00",
+    "backgroundColor": "#F2F5F6",
+    "white": "#FFFFFF",
+    "black": "#000000",
+    "lightBackground": "#E6E5DA"
+  },
+  "plans": {
+    "marginBottom": 40,
+    "width": "85%",
+    "backgroundColor": "#FFFFFF",
+    "color": "#000000",
+    "image": {
+      "padding": "3vh 5vw 3vh 5vw",
+      "width": 50
+    },
+    "floorName": {
+      "size": "2vw",
+      "font": "Helvetica"
+    },
+    "roomName": {
+      "size": "1.3vw",
+      "font": "Helvetica"
+    }
+  }
+}
