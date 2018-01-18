@@ -9,7 +9,7 @@ stats.json
 npm-debug.log
 .idea
 
-/app/ultils/floorplans/
-!/app/ultils/floorplans/floors.svg
+# Data providers
+dataProviders
 
 .yarnclean

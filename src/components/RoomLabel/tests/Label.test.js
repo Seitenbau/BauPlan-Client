@@ -2,23 +2,24 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Label from '../Label';
 
-
 describe('<Label />', () => {
   const testData = {
     top: 100,
-    left: 100,
+    left: 100
   };
   const fakeTheme = {
     plans: {
       color: '#FFFFFF',
       roomName: {
         font: 'Helvetica',
-        size: 16,
-      },
-    },
+        size: 16
+      }
+    }
   };
 
-  const renderedComponent = shallow(<Label theme={fakeTheme} left={testData.left} top={testData.top} />);
+  const renderedComponent = shallow(
+    <Label theme={fakeTheme} left={testData.left} top={testData.top} />
+  );
   it('Expect to match Snapshot', () => {
     expect(renderedComponent).toMatchSnapshot();
   });

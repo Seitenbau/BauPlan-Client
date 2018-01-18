@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "react-app",
+    "plugin:import/warnings"
+  ],
+  "rules": {
+    "import/order": 1
+  }
+}

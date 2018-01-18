@@ -4,13 +4,10 @@
 // import theme from './theme.json';
 // FIXME: why no import allowed?  import { shallow } from 'enzyme';
 
-import {
-  REM_BASE,
- } from './constants';
-
+import { REM_BASE } from './constants';
 
 export function rem(pix) {
-  return `${(parseFloat(pix / REM_BASE, 10))}rem`;
+  return `${parseFloat(pix / REM_BASE, 10)}rem`;
 }
 
 /*
@@ -24,14 +21,20 @@ export function shadeColor(color, percent) {
   const t = percent < 0 ? 0 : 255;
   const p = percent < 0 ? percent * -1 : percent;
   const R = f >> 16;
-  const G = f >> 8 & 0x00FF;
-  const B = f & 0x0000FF;
+  const G = (f >> 8) & 0x00ff;
+  const B = f & 0x0000ff;
 
-  return "#"+(0x1000000 +
-            (Math.round((t - R) * p) + R) * 0x10000 +
-            (Math.round((t - G) * p) + G) * 0x100 +
-            (Math.round((t - B) * p) + B))
-            .toString(16).slice(1);
+  return (
+    '#' +
+    (
+      0x1000000 +
+      (Math.round((t - R) * p) + R) * 0x10000 +
+      (Math.round((t - G) * p) + G) * 0x100 +
+      (Math.round((t - B) * p) + B)
+    )
+      .toString(16)
+      .slice(1)
+  );
 }
 /* eslint-enabel */
 

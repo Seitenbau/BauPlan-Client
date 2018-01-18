@@ -7,13 +7,20 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import styled from 'styled-components';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Icon from 'components/Icon';
 import Input from 'components/Input';
+import injectReducer from 'utils/injectReducer';
+import injectSaga from 'utils/injectSaga';
+
+import { rem } from '../../utils/helper';
+
 import { focus, blur, input } from './actions';
 import makeSelectSearchField, { selectValue } from './selectors';
-import { rem } from '../../utils/helper';
+import reducer from './reducer';
+import saga from './sagas';
 
 const Button = styled.button`
   height: ${rem(35)};
@@ -23,9 +30,9 @@ const Button = styled.button`
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${(props) => props.theme.colors.primary};
+    background-color: ${props => props.theme.colors.primary};
     svg {
-      fill: ${(props) => props.theme.colors.secondary}
+      fill: ${props => props.theme.colors.secondary};
     }
   }
 `;
@@ -34,7 +41,8 @@ const Form = styled.form`
   flex-grow: 2;
 `;
 
-export class SearchField extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+export class SearchField extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   constructor(props) {
     super(props);
     this.onFocus = this.onFocus.bind(this);
@@ -50,26 +58,33 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
     this.props.dispatch(blur());
   }
   onInput() {
-    return (e) => this.props.dispatch(input({
-      value: e.target.value,
-    }));
+    return e =>
+      this.props.dispatch(
+        input({
+          value: e.target.value
+        })
+      );
   }
   onSubmit() {
-    return (e) => {
+    return e => {
       e.preventDefault();
     };
   }
   empty() {
-    this.props.dispatch(input({
-      value: '',
-    }));
+    this.props.dispatch(
+      input({
+        value: ''
+      })
+    );
   }
   render() {
     return (
       <Form onSubmit={this.onSubmit()}>
         <Input
           autoFocus
-          ref={(ref) => { this.inputRef = ref; }}
+          ref={ref => {
+            this.inputRef = ref;
+          }}
           value={this.props.value}
           placeholder="Suche..."
           onFocus={this.onFocus}
@@ -79,9 +94,14 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
           <Button>
             <Icon name={'magnifyGlass'} width={20} height={20} />
           </Button>
-          {this.props.value && this.props.value.length > 0 ? <Button onClick={this.empty}>
-            <Icon name={'deleteIcon'} width={20} height={20} />
-          </Button> : ''}
+
+          {this.props.value && this.props.value.length > 0 ? (
+            <Button onClick={this.empty}>
+              <Icon name={'deleteIcon'} width={20} height={20} />
+            </Button>
+          ) : (
+            ''
+          )}
         </Input>
       </Form>
     );
@@ -90,18 +110,22 @@ export class SearchField extends React.PureComponent { // eslint-disable-line re
 
 SearchField.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.string
 };
 
 const mapStateToProps = createStructuredSelector({
   SearchField: makeSelectSearchField(),
-  value: selectValue(),
+  value: selectValue()
 });
 
 function mapDispatchToProps(dispatch) {
   return {
-    dispatch,
+    dispatch
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SearchField);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withReducer = injectReducer({ key: 'searchField', reducer });
+const withSaga = injectSaga({ key: 'searchField', saga });
+
+export default compose(withReducer, withSaga, withConnect)(SearchField);

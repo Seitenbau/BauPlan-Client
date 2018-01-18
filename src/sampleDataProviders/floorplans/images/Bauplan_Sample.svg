@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="2481" height="1771">
+  <defs>
+    <path d="M2481 0H0v1771.25h2481V0z" id="a"/>
+    <path d="M938.55 777.68h388.85v17.92H938.55v-17.92z" id="b"/>
+    <path d="M937.72 796.44v-20.01h390.93v20.01H937.72zm2.08-2.09h386.76v-15.83H939.8v15.83z" id="c"/>
+    <path d="M1534.11 777.68v-41.26h-17.92v41.26H1422v17.92h94.19v41.26h17.92V795.6h268.4v-17.92h-268.4z" id="d"/>
+    <path d="M1803.34 776.85v20h-268.4v41.26h-20v-41.26h-94.61v-20h94.61v-41.26h20v41.26h268.4zm-285.9 2.08h-94.61v15.84h94.61v41.26h15.84v-41.26h268.39v-15.84h-268.39v-41.26h-15.84v41.26z" id="e"/>
+    <path d="M1199.45 1592.87c3.75-4.58 7.92-8.75 11.67-13.33 6.67-7.5 12.92-15.01 19.59-22.51v-.41.41c2.08 2.5 4.58 5.42 7.08 7.92 2.38 2.75 21.38 24.76 23.76 27.51.41.41.83.83.83 1.25h-21.25v56.26h-21.68v-56.26h-19.58c-.42 0-.42-.42-.84-.42 0-.42.34-.33.42-.42z" id="f"/>
+    <path d="M2173.43 121.7H290.07v1417.41h893.54v-17.92H938.55V980.23h245.06v-17.92H767.26v-35.84h-17.5v53.76h171.29v540.96H307.57V139.2h442.19v692.66h17.5V795.6h76.69v-17.92h-76.69V139.2h748.93v502.62h17.92V139.2h639.32v638.48h-276.32v17.92h276.32v725.59h-639.32V931.47h-17.92v30.84h-237.97v17.92h237.97v540.96h-237.97v17.92h912.71V121.7h-17.5z" id="g"/>
+    <path d="M1276.97 1539.95v-20.01h238.39V981.06h-238.39v-20h238.39V929.8h20v589.72h637.23V796.44h-276.31v-20.01h276.31V140.45h-637.65v502.62h-20V140.45H768.51v636.4h76.69v20h-76.69v36.26h-20V140.45H308.82v1379.91H919.8v-539.3H748.51v-55.84h20v36.26h416.35v20H939.8v538.88h245.06v20H288.82V120.45h1903.36v1419.5h-915.21zm-986.07-2.09h891.46v-15.84H937.72V978.98h245.06v-15.84H766.43v-36.26h-15.84v51.68h171.29v543.05H306.74V138.37h443.85v692.66h15.84v-36.26h76.68v-15.84h-76.68V138.37h751.01v502.61h15.84V138.37h641.4v640.56h-276.32v15.84h276.32v727.67h-641.82V932.3h-15.84v31.26h-238.39v15.84h238.39v543.04h-238.39v15.42h911.05V122.53H290.9v1415.33z" id="h"/>
+  </defs>
+  <use xlink:href="#a" fill="#fff"/>
+  <use xlink:href="#a" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  <use xlink:href="#b" fill="#b2b2b2"/>
+  <use xlink:href="#b" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  <use xlink:href="#c"/>
+  <use xlink:href="#c" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  <use xlink:href="#d" fill="#b2b2b2"/>
+  <use xlink:href="#d" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  <g>
+    <use xlink:href="#e"/>
+    <use xlink:href="#e" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  </g>
+  <g>
+    <use xlink:href="#f" fill="#706f6f"/>
+    <use xlink:href="#f" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  </g>
+  <g>
+    <use xlink:href="#g" fill="#b2b2b2"/>
+    <use xlink:href="#g" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  </g>
+  <g>
+    <use xlink:href="#h"/>
+    <use xlink:href="#h" fill-opacity="0" stroke="#000" stroke-opacity="0"/>
+  </g>
+</svg>

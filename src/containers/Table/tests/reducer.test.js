@@ -1,4 +1,3 @@
-
 import { fromJS } from 'immutable';
 import tableParentReducer from '../reducer';
 

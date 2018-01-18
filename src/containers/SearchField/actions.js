@@ -4,34 +4,29 @@
  *
  */
 
-import {
-  DEFAULT_ACTION,
-  FOCUSED,
-  BLUR,
-  INPUT,
-} from './constants';
+import { DEFAULT_ACTION, FOCUSED, BLUR, INPUT } from './constants';
 
 export function defaultAction() {
   return {
-    type: DEFAULT_ACTION,
+    type: DEFAULT_ACTION
   };
 }
 
 export function focus() {
   return {
-    type: FOCUSED,
+    type: FOCUSED
   };
 }
 
 export function blur() {
   return {
-    type: BLUR,
+    type: BLUR
   };
 }
 
 export function input(data) {
   return {
     type: INPUT,
-    data,
+    data
   };
 }

@@ -1,10 +1,11 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow } from 'enzyme';
 
-// import Bar from '../index';
+import Bar from '../index';
 
 describe('<Bar />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('should render', () => {
+    const renderedComponent = shallow(<Bar />);
+    expect(renderedComponent.exists()).toEqual(true);
   });
 });

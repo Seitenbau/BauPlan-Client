@@ -1,16 +1,11 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-//
-// import App from '../index';
+import React from 'react';
+import { shallow } from 'enzyme';
+
+import { App } from '../index';
 
 describe('<App />', () => {
-  it('should render its children', () => {
-    // const children = (<h1>Test</h1>);
-    // const renderedComponent = shallow(
-    //   <App>
-    //     {children}
-    //   </App>
-    // );
-    expect(true).toBe(true);
+  const renderedComponent = shallow(<App />);
+  it('Component renders', () => {
+    expect(renderedComponent.exists()).toBe(true);
   });
 });

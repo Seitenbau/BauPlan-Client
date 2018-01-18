@@ -1,10 +1,13 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
+import React from 'react';
+import { shallow, mount } from 'enzyme';
 
-// import { SearchField } from '../index';
+import { SearchField } from '../index';
 
 describe('<SearchField />', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('Displays a search empty field', () => {
+    const renderedComponent = shallow(
+      <SearchField value={''} dispatch={() => false} />
+    );
+    expect(renderedComponent.exists()).toEqual(true);
   });
 });

@@ -9,7 +9,7 @@
   },
   "plans": {
     "marginBottom": 40,
-    "width": 60,
+    "width": "85%",
     "backgroundColor": "#FFFFFF",
     "color": "#000000",
     "image": {
@@ -17,11 +17,11 @@
       "width": 50
     },
     "floorName": {
-      "size": 24,
+      "size": "2vw",
       "font": "Helvetica"
     },
     "roomName": {
-      "size": 16,
+      "size": "1.3vw",
       "font": "Helvetica"
     }
   }
