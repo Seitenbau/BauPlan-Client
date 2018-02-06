@@ -12,15 +12,18 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import Icon from 'components/Icon';
 import Input from 'components/Input';
+import ObjectList from 'components/ObjectList';
+import { focus, blur, input } from './actions';
+import makeSelectSearchField, { selectValue, selectTables } from './selectors';
+import { makeSelectTables } from '../Plans/selectors';
+import { rem } from '../../utils/helper';
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
-
-import { rem } from '../../utils/helper';
-
-import { focus, blur, input } from './actions';
-import makeSelectSearchField, { selectValue } from './selectors';
-import reducer from './reducer';
 import saga from './sagas';
+import TableDisplay from 'components/TableDisplay';
+
+import reducer from './reducer';
+
 
 const Button = styled.button`
   height: ${rem(35)};
@@ -39,6 +42,7 @@ const Button = styled.button`
 
 const Form = styled.form`
   flex-grow: 2;
+  z-index: 3;
 `;
 
 export class SearchField extends React.PureComponent {
@@ -50,6 +54,7 @@ export class SearchField extends React.PureComponent {
     this.onInput = this.onInput.bind(this);
     this.empty = this.empty.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
+    this.onEmptySearch = this.onEmptySearch.bind(this);
   }
   onFocus() {
     this.props.dispatch(focus());
@@ -65,10 +70,20 @@ export class SearchField extends React.PureComponent {
         })
       );
   }
+  onEmptySearch() {
+    return () => this.dispatchInput('*');
+  }
   onSubmit() {
     return e => {
       e.preventDefault();
     };
+  }
+  dispatchInput(value) {
+    this.props.dispatch(
+      input({
+        value,
+      })
+    );
   }
   empty() {
     this.props.dispatch(
@@ -76,6 +91,12 @@ export class SearchField extends React.PureComponent {
         value: ''
       })
     );
+  }
+  filterTables(search) {
+    if (search === '*') {
+      return this.props.tables;
+    }
+    return this.props.tables.filter((table) => table.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
   }
   render() {
     return (
@@ -103,6 +124,7 @@ export class SearchField extends React.PureComponent {
             ''
           )}
         </Input>
+        <ObjectList hits={this.filterTables(this.props.value)} search={this.props.value} active={this.props.value && this.props.value.length > 0} />
       </Form>
     );
   }
@@ -110,12 +132,14 @@ export class SearchField extends React.PureComponent {
 
 SearchField.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  value: PropTypes.string
+  value: PropTypes.string,
+  tables: PropTypes.array,
 };
 
 const mapStateToProps = createStructuredSelector({
   SearchField: makeSelectSearchField(),
-  value: selectValue()
+  value: selectValue(),
+  tables: makeSelectTables()
 });
 
 function mapDispatchToProps(dispatch) {
@@ -126,6 +150,5 @@ function mapDispatchToProps(dispatch) {
 
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'searchField', reducer });
-const withSaga = injectSaga({ key: 'searchField', saga });
 
-export default compose(withReducer, withSaga, withConnect)(SearchField);
+export default compose(withConnect, withReducer)(SearchField);

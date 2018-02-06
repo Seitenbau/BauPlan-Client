@@ -15,14 +15,15 @@ const BarDiv = styled.div`
   height: 100%;
   background-color: ${props => props.theme.colors[props.color]};
   top: 0;
-  ${props => (props.left ? 'left' : 'right')}: 0;
+  z-index: 2;
+  ${(props) => props.left ? 'left' : 'right'}: 0;
 `;
 
 class Bar extends React.PureComponent {
   // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <BarDiv color={this.props.color} left={this.props.position === 'left'}>
+      <BarDiv className={this.props.className} color={this.props.color} left={this.props.position === 'left'}>
         {React.Children.toArray(this.props.children)}
       </BarDiv>
     );
@@ -32,7 +33,8 @@ class Bar extends React.PureComponent {
 Bar.propTypes = {
   color: PropTypes.string,
   position: PropTypes.string,
-  children: PropTypes.node
+  children: PropTypes.node,
+  className: PropTypes.string,
 };
 
 export default Bar;

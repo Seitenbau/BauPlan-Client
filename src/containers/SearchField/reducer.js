@@ -9,13 +9,11 @@ import { DEFAULT_ACTION, FOCUSED, BLUR, INPUT } from './constants';
 
 const initialState = fromJS({
   focused: false,
-  value: ''
+  value: '',
 });
 
 function searchFieldReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
     case FOCUSED:
       return state.set('focused', true);
     case BLUR:

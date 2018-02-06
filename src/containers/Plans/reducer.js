@@ -17,11 +17,11 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  nextActiveFloor: false
+  nextActiveFloor: false,
+  plans: [],
+  tables: [],
+  projects: [],
 });
-initialState.set('plans', []);
-initialState.set('tables', []);
-initialState.set('projects', []);
 
 function plansReducer(state = initialState, action) {
   switch (action.type) {

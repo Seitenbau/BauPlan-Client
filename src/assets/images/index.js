@@ -2,6 +2,7 @@ import gear from './gear.svg';
 import magnifyGlass from './magnifying_glass.svg';
 import buddy from './buddy.svg';
 import deleteIcon from './delete.svg';
+import menu from './menu.svg';
 
 const Iconset = {
   gear,

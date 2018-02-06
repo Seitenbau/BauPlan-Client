@@ -18,6 +18,10 @@ const Title = styled.h3`
 const Wrapper = styled.div`
   padding: ${rem(10)} ${rem(40)};
   display: flex;
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: ${(props) => props.theme.colors.headerColor}
 `;
 
 class Header extends React.PureComponent {
@@ -25,7 +29,6 @@ class Header extends React.PureComponent {
   render() {
     return (
       <Wrapper>
-        <SearchField />
         <Title>Bauplan</Title>
       </Wrapper>
     );
