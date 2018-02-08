@@ -5,18 +5,24 @@ import { createSelector } from 'reselect';
 const selectPlansDomain = () => state => state.get('plans');
 
 const makeSelectPlansData = () =>
-  createSelector(selectPlansDomain(), substate => substate.get('floors'));
+  createSelector(selectPlansDomain(), substate => {
+    return substate ? substate.get('floors') : [];
+  });
 
 const makeSelectTables = () =>
-  createSelector(selectPlansDomain(), substate => substate.get('tables'));
+  createSelector(selectPlansDomain(), substate => {
+    return substate ? substate.get('tables') : [];
+  });
 
 const makeSelectProjects = () =>
-  createSelector(selectPlansDomain(), substate => substate.get('projects'));
+  createSelector(selectPlansDomain(), substate => {
+    return substate ? substate.get('projects') : [];
+  });
 
 const makeSelectActiveScrolledToFloor = () =>
-  createSelector(selectPlansDomain(), substate =>
-    substate.get('activeScrolledToFloor')
-  );
+  createSelector(selectPlansDomain(), substate => {
+    return substate ? substate.get('activeScrolledFloor') : null;
+  });
 
 export {
   selectPlansDomain,

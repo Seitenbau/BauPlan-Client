@@ -24,7 +24,6 @@ import TableDisplay from 'components/TableDisplay';
 
 import reducer from './reducer';
 
-
 const Button = styled.button`
   height: ${rem(35)};
   width: ${rem(35)};
@@ -81,7 +80,7 @@ export class SearchField extends React.PureComponent {
   dispatchInput(value) {
     this.props.dispatch(
       input({
-        value,
+        value
       })
     );
   }
@@ -93,10 +92,12 @@ export class SearchField extends React.PureComponent {
     );
   }
   filterTables(search) {
-    if (search === '*') {
+    if (!this.props.tables.length || search === '*') {
       return this.props.tables;
     }
-    return this.props.tables.filter((table) => table.name.toLowerCase().indexOf(search.toLowerCase()) > -1);
+    return this.props.tables.filter(
+      table => table.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+    );
   }
   render() {
     return (
@@ -124,7 +125,11 @@ export class SearchField extends React.PureComponent {
             ''
           )}
         </Input>
-        <ObjectList hits={this.filterTables(this.props.value)} search={this.props.value} active={this.props.value && this.props.value.length > 0} />
+        <ObjectList
+          hits={this.filterTables(this.props.value)}
+          search={this.props.value}
+          active={this.props.value && this.props.value.length > 0}
+        />
       </Form>
     );
   }
@@ -133,7 +138,7 @@ export class SearchField extends React.PureComponent {
 SearchField.propTypes = {
   dispatch: PropTypes.func.isRequired,
   value: PropTypes.string,
-  tables: PropTypes.array,
+  tables: PropTypes.array
 };
 
 const mapStateToProps = createStructuredSelector({
