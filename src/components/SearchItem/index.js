@@ -28,7 +28,7 @@ const StyledLink = styled(Link)`
 class SearchItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
   render() {
     return (
-      <StyledLink to={`/${this.props.prefix}/${this.props.name.toLowerCase()}`}>
+      <StyledLink to={`/${this.props.prefix}/${this.props.name}`}>
         {this.props.name}
       </StyledLink>
     );

@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import RoomLabel from 'components/RoomLabel';
@@ -19,6 +18,7 @@ import StyledFloor from './StyledFloor';
 import ImgWrapper from './ImgWrapper';
 import Label from './label';
 import { announceVisible } from './actions';
+import StyledLink from './Link';
 
 const TableWithScrollTarget = withScrollTarget(Table);
 
@@ -90,7 +90,7 @@ export class Floor extends React.Component {
             />
           ))}
           {this.props.tables.map((table, j) => (
-            <Link key={j} to={`/table/${table.name}`}>
+            <StyledLink key={j} to={`/table/${table.name}`}>
               <TableWithScrollTarget
                 scaleFactor={scaleFactor}
                 className={`table table-${j}`}
@@ -103,7 +103,7 @@ export class Floor extends React.Component {
                 y={table.y}
                 rotation={table.rotation}
               />
-            </Link>
+            </StyledLink>
           ))}
         </ImgWrapper>
       </StyledFloor>

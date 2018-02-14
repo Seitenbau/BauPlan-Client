@@ -11,15 +11,7 @@ import SearchItem from 'components/SearchItem';
 import { rem } from '../../utils/helper';
 
 const Container = styled.div`
-  background-color: ${(props) => props.theme.colors.headerColor};
-  color: ${(props) => props.theme.colors.primary};
-  width: 20vw;
-  height: 100%;
-  position: fixed;
-  z-index: 2;
-  margin-left: ${(props) => !props.active ? '-20vw' : 0};
-  transition: all 0.375s ease-in;
-  padding:  ${rem(10)};
+  margin-bottom: ${rem(10)};
 `;
 
 const HeadSpan = styled.span`
@@ -33,8 +25,8 @@ class ObjectList extends React.PureComponent { // eslint-disable-line react/pref
   render() {
     return (
       <Container active={this.props.active}>
-        <HeadSpan>Personen:</HeadSpan>
-        {this.props.hits.map((hit) => <SearchItem prefix={'table'} name={hit.name} />)}
+        <HeadSpan>{this.props.label}:</HeadSpan>
+        {this.props.hits.length > 0 ? this.props.hits.map((hit) => <SearchItem prefix={'table'} name={hit.name} />) : <span>-</span>}
       </Container>
     );
   }
@@ -43,6 +35,7 @@ class ObjectList extends React.PureComponent { // eslint-disable-line react/pref
 ObjectList.propTypes = {
   active: PropTypes.bool,
   hits: PropTypes.array,
+  label: PropTypes.string,
 };
 
 export default ObjectList;

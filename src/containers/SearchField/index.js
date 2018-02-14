@@ -13,21 +13,31 @@ import { createStructuredSelector } from 'reselect';
 import Icon from 'components/Icon';
 import Input from 'components/Input';
 import ObjectList from 'components/ObjectList';
-import { focus, blur, input } from './actions';
-import makeSelectSearchField, { selectValue, selectTables } from './selectors';
-import { makeSelectTables } from '../Plans/selectors';
-import { rem } from '../../utils/helper';
 import injectReducer from 'utils/injectReducer';
-import injectSaga from 'utils/injectSaga';
-import saga from './sagas';
-import TableDisplay from 'components/TableDisplay';
+import { makeSelectTables, makeSelectProjects } from '../Plans/selectors';
+import { rem } from '../../utils/helper';
+import { focus, blur, input } from './actions';
+import makeSelectSearchField, { selectValue } from './selectors';
 
 import reducer from './reducer';
-
+const Container = styled.div`
+  margin-left: ${(props) => !props.active ? '-20vw' : 0};
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 20vw;
+  position: fixed;
+  z-index: 2;
+  background-color: ${(props) => props.theme.colors.headerColor};
+  color: ${(props) => props.theme.colors.primary};
+  transition: all 0.375s ease-in;
+  padding:  ${rem(10)};
+`
 const Button = styled.button`
   height: ${rem(35)};
   width: ${rem(35)};
   cursor: pointer;
+  border: none;
   &:active,
   &:focus,
   &:hover {
@@ -70,7 +80,7 @@ export class SearchField extends React.PureComponent {
       );
   }
   onEmptySearch() {
-    return () => this.dispatchInput('*');
+    this.dispatchInput('*');
   }
   onSubmit() {
     return e => {
@@ -99,6 +109,17 @@ export class SearchField extends React.PureComponent {
       table => table.name.toLowerCase().indexOf(search.toLowerCase()) > -1
     );
   }
+  filterProjects(search) {
+    if (!this.props.projects.length || search === '*') {
+      return this.props.projects;
+    }
+
+    return this.props.projects.filter(
+      project => project.name.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
+      project.id.toLowerCase().indexOf(search.toLowerCase()) > -1
+    )
+
+  }
   render() {
     return (
       <Form onSubmit={this.onSubmit()}>
@@ -113,9 +134,11 @@ export class SearchField extends React.PureComponent {
           onBlur={this.onBlur}
           onInput={this.onInput()}
         >
-          <Button>
-            <Icon name={'magnifyGlass'} width={20} height={20} />
-          </Button>
+          {this.props.value === '' ? (
+            <Button onClick={this.onEmptySearch}>
+              <Icon name={'magnifyGlass'} width={20} height={20} />
+            </Button>
+          ) : '' }
 
           {this.props.value && this.props.value.length > 0 ? (
             <Button onClick={this.empty}>
@@ -125,11 +148,21 @@ export class SearchField extends React.PureComponent {
             ''
           )}
         </Input>
-        <ObjectList
-          hits={this.filterTables(this.props.value)}
-          search={this.props.value}
-          active={this.props.value && this.props.value.length > 0}
-        />
+        <Container
+          active={this.props.value && this.props.value.length > 0}>
+          <ObjectList
+            label={'Personen'}
+            hits={this.filterTables(this.props.value)}
+            search={this.props.value}
+            active={this.props.value && this.props.value.length > 0}
+          />
+          <ObjectList
+            label={'Projekte'}
+            hits={this.filterProjects(this.props.value)}
+            search={this.props.value}
+            active={this.props.value && this.props.value.length > 0}
+          />
+        </Container>
       </Form>
     );
   }
@@ -144,7 +177,8 @@ SearchField.propTypes = {
 const mapStateToProps = createStructuredSelector({
   SearchField: makeSelectSearchField(),
   value: selectValue(),
-  tables: makeSelectTables()
+  tables: makeSelectTables(),
+  projects: makeSelectProjects(),
 });
 
 function mapDispatchToProps(dispatch) {
