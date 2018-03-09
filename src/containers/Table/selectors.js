@@ -1,5 +1,4 @@
 import { createSelector } from 'reselect';
-
 /**
  * Direct selector to the table state domain
  */

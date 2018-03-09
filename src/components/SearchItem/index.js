@@ -30,6 +30,7 @@ class SearchItem extends React.PureComponent { // eslint-disable-line react/pref
     return (
       <StyledLink to={`/${this.props.prefix}/${this.props.name}`}>
         {this.props.name}
+        {this.props.children}
       </StyledLink>
     );
   }

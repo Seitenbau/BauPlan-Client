@@ -7,7 +7,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import SearchItem from 'components/SearchItem';
 import { rem } from '../../utils/helper';
 
 const Container = styled.div`
@@ -23,12 +22,15 @@ const HeadSpan = styled.span`
 class ObjectList extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
 
   render() {
-    return (
-      <Container active={this.props.active}>
-        <HeadSpan>{this.props.label}:</HeadSpan>
-        {this.props.hits.length > 0 ? this.props.hits.map((hit) => <SearchItem prefix={'table'} name={hit.name} />) : <span>-</span>}
-      </Container>
-    );
+    if(this.props.children && this.props.children.length > 0) {
+      return (
+        <Container active={this.props.active}>
+          <HeadSpan>{this.props.label}:</HeadSpan>
+          {this.props.children}
+        </Container>
+      );
+    }
+    return (<span></span>)
   }
 }
 

@@ -11,7 +11,7 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  active: ['table', 'tim'],
+  active: [],
 });
 
 function TableReducer(state = initialState, action) {
@@ -19,11 +19,8 @@ function TableReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case LOCATION_CHANGE: {
-      console.log(action.payload.pathname.split('/').splice(1, 2));
       const t = action.payload.pathname.split('/').splice(1, 2);
-      state.set('active', fromJS(t));
-      console.log(state.get('active'));
-      return state;
+      return state.set('active', fromJS(t));
     }
     default:
       return state;
