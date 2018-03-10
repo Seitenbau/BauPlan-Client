@@ -1,13 +1,14 @@
 {
   "main.css": "static/css/main.3acf9bfd.css",
   "main.css.map": "static/css/main.3acf9bfd.css.map",
-  "main.js": "static/js/main.32a8b309.js",
-  "main.js.map": "static/js/main.32a8b309.js.map",
-  "static\\media\\Bauplan_Sample.png": "static/media/Bauplan_Sample.1431f25b.png",
-  "static\\media\\Bauplan_Sample.svg": "static/media/Bauplan_Sample.c5a5989b.svg",
-  "static\\media\\buddy.svg": "static/media/buddy.396d7952.svg",
-  "static\\media\\delete.svg": "static/media/delete.24449572.svg",
-  "static\\media\\gear.svg": "static/media/gear.499f4151.svg",
-  "static\\media\\magnifying_glass.svg": "static/media/magnifying_glass.cbb5b8a4.svg",
-  "static\\media\\menu.svg": "static/media/menu.e80eb0cc.svg"
+  "main.js": "static/js/main.c9dc50b2.js",
+  "main.js.map": "static/js/main.c9dc50b2.js.map",
+  "static/media/Bauplan_Sample.png": "static/media/Bauplan_Sample.1431f25b.png",
+  "static/media/Bauplan_Sample.svg": "static/media/Bauplan_Sample.fd007445.svg",
+  "static/media/arrow.svg": "static/media/arrow.cd89c535.svg",
+  "static/media/buddy.svg": "static/media/buddy.f27c0f19.svg",
+  "static/media/delete.svg": "static/media/delete.aabb8447.svg",
+  "static/media/gear.svg": "static/media/gear.499f4151.svg",
+  "static/media/magnifying_glass.svg": "static/media/magnifying_glass.835693b5.svg",
+  "static/media/menu.svg": "static/media/menu.e80eb0cc.svg"
 }
