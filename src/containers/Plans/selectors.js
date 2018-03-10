@@ -11,7 +11,7 @@ const makeSelectPlansData = () =>
 
 const makeSelectTables = () =>
   createSelector(selectPlansDomain(), substate => {
-    return substate ? substate.get('tables'): [];
+    return substate ? substate.get('tables') : [];
   });
 
 const makeSelectProjects = () =>
@@ -21,24 +21,26 @@ const makeSelectProjects = () =>
 
 const makeSelectActiveScrolledToFloor = () =>
   createSelector(selectPlansDomain(), substate => {
-    return substate ? substate.get('activeScrolledFloor') : null;
+    return substate ? substate.get('activeScrolledToFloor') : null;
   });
 
 const makeSelectTablesWithProjects = () =>
-createSelector(
-  makeSelectTables(),
-  makeSelectProjects(),
-  (tables, projects) => {
-    return tables.map(table => {
-      if (typeof table.projects === 'object') {
-        table.projects = table.projects.map(prid => projects.filter(pr => pr.id === prid)[0])
-      } else {
-        table.projects = [projects.filter(pr => pr.id === table.projects)[0]];
-      }
-      return table;
-    })
-  }
-)
+  createSelector(
+    makeSelectTables(),
+    makeSelectProjects(),
+    (tables, projects) => {
+      return tables.map(table => {
+        if (typeof table.projects === 'object') {
+          table.projects = table.projects.map(
+            prid => projects.filter(pr => pr.id === prid)[0]
+          );
+        } else {
+          table.projects = [projects.filter(pr => pr.id === table.projects)[0]];
+        }
+        return table;
+      });
+    }
+  );
 
 export {
   selectPlansDomain,
@@ -46,5 +48,5 @@ export {
   makeSelectTables,
   makeSelectProjects,
   makeSelectActiveScrolledToFloor,
-  makeSelectTablesWithProjects,
+  makeSelectTablesWithProjects
 };
