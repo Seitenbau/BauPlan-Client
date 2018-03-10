@@ -55,8 +55,9 @@ export class Floor extends React.Component {
 
   isElementInViewport() {
     const rect = this.wrapper.getBoundingClientRect();
-    const buffer = 10;
-    const inViewport = rect.top < buffer && Math.abs(rect.top) < rect.height;
+    const buffer = 70;
+    const inViewport =
+      rect.top < buffer && Math.abs(rect.top - buffer) < rect.height;
     if (inViewport) {
       this.props.announceVisible(this.props);
     }
