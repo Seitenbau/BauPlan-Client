@@ -1,7 +1,3 @@
-import getFloorPlanData from 'dataProviders/floorplans';
-import getTableData from 'dataProviders/tables';
-import getProjectData from 'dataProviders/projects';
-
 import {
   REQUEST_TABLE_DATA,
   REQUEST_PROJECTS_DATA,
@@ -15,15 +11,18 @@ import {
 import { put, takeLatest } from 'redux-saga/effects';
 
 export function* getTables() {
-  yield put(requestTableDataSuccess(getTableData()));
+  const module = yield import(process.env.REACT_APP_DATAPROVIDER_TABLES);
+  yield put(requestTableDataSuccess(module.default()));
 }
 
 export function* getProjects() {
-  yield put(requestProjectDataSuccess(getProjectData()));
+  const module = yield import(process.env.REACT_APP_DATAPROVIDER_PROJECTS);
+  yield put(requestProjectDataSuccess(module.default()));
 }
 
 export function* getPlans() {
-  yield put(requestPlansSuccess(getFloorPlanData()));
+  const module = yield import(process.env.REACT_APP_DATAPROVIDER_FLOORPLANS);
+  yield put(requestPlansSuccess(module.default()));
 }
 
 export default function* defaultSaga() {
