@@ -39,10 +39,13 @@ export class Plans extends React.Component {
   /**
    * Get the tables for a single floor
    * and additionally set the active table
-   * @param {object} plan
+   * @param {array} plan
    */
   getFilteredTables(plan) {
     const { params } = this.props.match;
+    if (!this.props.tables) {
+      return [];
+    }
     return this.props.tables
       .filter(table => table.planId === plan.id)
       .map(table => {
@@ -79,7 +82,7 @@ export class Plans extends React.Component {
           this.wrapper = ref;
         }}
       >
-        {plans
+        {plans && plans.length
           ? plans.map((plan, i) => (
               <FloorWithScrollTarget
                 key={i}
