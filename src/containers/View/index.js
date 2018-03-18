@@ -10,7 +10,7 @@ import JumpView from 'containers/JumpView';
 import Actionbar from 'components/Actionbar';
 import Bar from 'components/Bar';
 import Header from 'components/Header';
-import SearchField from 'containers/SearchField';
+import Search from 'containers/Search';
 import styled from 'styled-components';
 
 const Title = styled.h3`
@@ -25,7 +25,7 @@ export class View extends React.PureComponent {
     return (
       <div>
         <Header>
-          <SearchField />
+          <Search />
           <Title>Bauplan</Title>
         </Header>
         <Bar color="primary" position="left" />

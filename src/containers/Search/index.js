@@ -60,7 +60,7 @@ const Form = styled.form`
   z-index: 3;
 `;
 
-export class SearchField extends React.PureComponent {
+export class Search extends React.PureComponent {
   constructor(props) {
     super(props);
     this.state = { active: false };
@@ -214,7 +214,7 @@ export class SearchField extends React.PureComponent {
   }
 }
 
-SearchField.propTypes = {
+Search.propTypes = {
   dispatch: PropTypes.func.isRequired,
   value: PropTypes.string,
   tables: PropTypes.instanceOf(Iterable),
@@ -238,4 +238,4 @@ function mapDispatchToProps(dispatch) {
 const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'searchField', reducer });
 
-export default compose(withConnect, withReducer)(SearchField);
+export default compose(withConnect, withReducer)(Search);
