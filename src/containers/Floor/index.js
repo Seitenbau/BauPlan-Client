@@ -65,47 +65,49 @@ export class Floor extends React.Component {
 
   render() {
     const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
-
+    const { name, labels, imageUri, id, tables } = this.props;
     return (
       <StyledFloor
         innerRef={ref => {
           this.wrapper = ref;
         }}
       >
-        <Label>{this.props.name}</Label>
+        <Label>{name}</Label>
         <ImgWrapper>
           <ScaleImg
-            id={this.props.id}
-            name={this.props.name}
-            src={this.props.imageUri}
-            alt={`Floorplan ${this.props.name}`}
+            id={id}
+            name={name}
+            src={imageUri}
+            alt={`Floorplan ${name}`}
             handleResize={this.handleResize.bind(this)}
           />
-          {this.props.labels.map((label, i) => (
-            <RoomLabel
-              key={i}
-              scaleFactor={scaleFactor}
-              name={label.name}
-              left={label.x}
-              top={label.y}
-            />
-          ))}
-          {this.props.tables.map((table, j) => (
-            <StyledLink key={j} to={`/table/${table.name}`}>
-              <TableWithScrollTarget
+          {labels &&
+            labels.map((label, i) => (
+              <RoomLabel
+                key={i}
                 scaleFactor={scaleFactor}
-                className={`table table-${j}`}
-                name={table.name}
-                id={table.id}
-                active={table.active}
-                scrollOffset={-60}
-                projects={this.find(table.projects)}
-                x={table.x}
-                y={table.y}
-                rotation={table.rotation}
+                name={label.name}
+                left={label.x}
+                top={label.y}
               />
-            </StyledLink>
-          ))}
+            ))}
+          {tables &&
+            tables.map((table, j) => (
+              <StyledLink key={j} to={`/table/${table.name}`}>
+                <TableWithScrollTarget
+                  scaleFactor={scaleFactor}
+                  className={`table table-${j}`}
+                  name={table.name}
+                  id={table.id}
+                  active={table.active}
+                  scrollOffset={-60}
+                  projects={this.find(table.projects)}
+                  x={table.x}
+                  y={table.y}
+                  rotation={table.rotation}
+                />
+              </StyledLink>
+            ))}
         </ImgWrapper>
       </StyledFloor>
     );

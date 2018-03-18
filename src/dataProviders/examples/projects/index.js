@@ -1,4 +1,4 @@
-const getTables = () => [
+const getProjects = () => [
   {
     name: 'Human Resources',
     id: 'HR',
@@ -11,4 +11,4 @@ const getTables = () => [
   }
 ];
 
-export default getTables;
+export default getProjects;

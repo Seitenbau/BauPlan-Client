@@ -20,7 +20,7 @@ const initialState = fromJS({
   nextActiveFloor: false,
   plans: [],
   tables: [],
-  projects: [],
+  projects: []
 });
 
 function plansReducer(state = initialState, action) {
@@ -28,12 +28,7 @@ function plansReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case REQUEST_PLANS_SUCCESS:
-      const newPlans = action.data.map(data =>
-        Object.assign({}, data, {
-          scale: typeof data.scale !== 'undefined' ? data.scale : 1
-        })
-      );
-      return state.set('floors', newPlans);
+      return state.set('floors', action.data);
     case REQUEST_PLANS_ERROR:
       return state;
     case REQUEST_TABLE_DATA_SUCCESS:

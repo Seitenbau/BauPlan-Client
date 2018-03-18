@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import withScrollTarget from 'components/ScrollTarget';
+import { Iterable } from 'immutable';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -47,6 +48,7 @@ export class Plans extends React.Component {
       return [];
     }
     return this.props.tables
+      .toJS()
       .filter(table => table.planId === plan.id)
       .map(table => {
         // set active table
@@ -82,36 +84,34 @@ export class Plans extends React.Component {
           this.wrapper = ref;
         }}
       >
-        {plans && plans.length
-          ? plans.map((plan, i) => (
-              <FloorWithScrollTarget
-                key={i}
-                name={plan.name}
-                id={plan.id}
-                active={
-                  params.type === 'floor' && plan.id === params.identifier
-                }
-                imageUri={plan.imageUri}
-                mapScaleFactor={plan.mapScaleFactor ? plan.mapScaleFactor : 1}
-                labels={plan.labels}
-                tables={this.getFilteredTables(plan)}
-                projects={projects}
-              />
-            ))
+        {plans && plans.size
+          ? plans
+              .toJS()
+              .map((plan, i) => (
+                <FloorWithScrollTarget
+                  key={i}
+                  name={plan.name}
+                  id={plan.id}
+                  active={
+                    params.type === 'floor' && plan.id === params.identifier
+                  }
+                  imageUri={plan.imageUri}
+                  mapScaleFactor={plan.mapScaleFactor ? plan.mapScaleFactor : 1}
+                  labels={plan.labels}
+                  tables={this.getFilteredTables(plan)}
+                  projects={projects.toJS()}
+                />
+              ))
           : ''}
       </Wrapper>
     );
   }
 }
 
-Plans.defaultProps = {
-  plans: []
-};
-
 Plans.propTypes = {
-  tables: PropTypes.array,
-  projects: PropTypes.array,
-  plans: PropTypes.array
+  tables: PropTypes.instanceOf(Iterable),
+  projects: PropTypes.instanceOf(Iterable),
+  plans: PropTypes.instanceOf(Iterable)
 };
 
 const mapDispatchToProps = dispatch => ({

@@ -15,7 +15,7 @@ const getTables = () => [
     y: 12,
     floor: 0,
     rotation: 180,
-    projects: 'FD',
+    projects: ['FD'],
     id: 2,
     planId: '1F'
   },
@@ -25,7 +25,7 @@ const getTables = () => [
     y: 25,
     floor: 1,
     rotation: 245,
-    projects: 'HR',
+    projects: ['HR'],
     id: 2,
     planId: '2F'
   },
@@ -35,7 +35,7 @@ const getTables = () => [
     y: 11,
     floor: 0,
     rotation: 90,
-    projects: 'FD',
+    projects: ['FD'],
     id: 3,
     planId: '1F'
   }

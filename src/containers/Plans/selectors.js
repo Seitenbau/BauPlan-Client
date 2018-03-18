@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { fromJS } from 'immutable';
 /**
  * Direct selector to the plans state domain
  */
@@ -6,17 +7,17 @@ const selectPlansDomain = () => state => state.get('plans');
 
 const makeSelectPlansData = () =>
   createSelector(selectPlansDomain(), substate => {
-    return substate ? substate.get('floors') : [];
+    return substate ? substate.get('floors') : fromJS([]);
   });
 
 const makeSelectTables = () =>
   createSelector(selectPlansDomain(), substate => {
-    return substate ? substate.get('tables') : [];
+    return substate ? substate.get('tables') : fromJS([]);
   });
 
 const makeSelectProjects = () =>
   createSelector(selectPlansDomain(), substate => {
-    return substate ? substate.get('projects') : [];
+    return substate ? substate.get('projects') : fromJS([]);
   });
 
 const makeSelectActiveScrolledToFloor = () =>
