@@ -61,51 +61,36 @@ const Form = styled.form`
 `;
 
 export class Search extends React.PureComponent {
-  constructor(props) {
-    super(props);
-    this.state = { active: false };
-    this.onFocus = this.onFocus.bind(this);
-    this.onBlur = this.onBlur.bind(this);
-    this.onInput = this.onInput.bind(this);
-    this.empty = this.empty.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onEmptySearch = this.onEmptySearch.bind(this);
-    this.onToggleShowAll = this.onToggleShowAll.bind(this);
-    this.getActiveState = this.getActiveState.bind(this);
-  }
+  state = { active: false };
 
-  onFocus() {
+  onFocus = () => {
     this.props.dispatch(focus());
-  }
+  };
 
-  onBlur() {
+  onBlur = () => {
     this.props.dispatch(blur());
-  }
+  };
 
-  onInput() {
-    return e => {
-      this.setState({ active: true });
-      return this.props.dispatch(
-        input({
-          value: e.target.value
-        })
-      );
-    };
-  }
+  onInput = e => {
+    this.setState({ active: true });
+    return this.props.dispatch(
+      input({
+        value: e.target.value
+      })
+    );
+  };
 
-  onEmptySearch() {
+  onEmptySearch = () => {
     this.dispatchInput('*');
-  }
+  };
 
-  onSubmit() {
-    return e => {
-      e.preventDefault();
-    };
-  }
+  onSubmit = e => {
+    e.preventDefault();
+  };
 
-  onToggleShowAll() {
+  onToggleShowAll = () => {
     this.setState({ active: !this.state.active });
-  }
+  };
 
   dispatchInput(value) {
     this.setState({ active: true });
@@ -135,7 +120,7 @@ export class Search extends React.PureComponent {
     );
   }
 
-  filterProjects(search) {
+  filterProjects = search => {
     const projects = this.props.projects.toJS();
     if (!projects.length || search === '*') {
       return projects;
@@ -146,9 +131,9 @@ export class Search extends React.PureComponent {
         project.name.toLowerCase().indexOf(search.toLowerCase()) > -1 ||
         project.id.toLowerCase().indexOf(search.toLowerCase()) > -1
     );
-  }
+  };
 
-  getActiveState() {
+  onGetActiveState = () => {
     if (this.state.active) {
       if (this.props.value && this.props.value.length > 0) {
         return true;
@@ -156,11 +141,11 @@ export class Search extends React.PureComponent {
       return true;
     }
     return false;
-  }
+  };
 
   render() {
     return (
-      <Form onSubmit={this.onSubmit()}>
+      <Form onSubmit={this.onSubmit}>
         <Input
           autoFocus
           ref={ref => {
@@ -170,7 +155,7 @@ export class Search extends React.PureComponent {
           placeholder="Suche..."
           onFocus={this.onFocus}
           onBlur={this.onBlur}
-          onInput={this.onInput()}
+          onInput={this.onInput}
         >
           {this.props.value === '' ? (
             <Button onClick={this.onEmptySearch}>
@@ -196,7 +181,7 @@ export class Search extends React.PureComponent {
             />
           </Button>
         </Input>
-        <Container active={this.getActiveState}>
+        <Container active={this.onGetActiveState}>
           <ObjectList
             className="table-list"
             key={0}
