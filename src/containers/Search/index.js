@@ -73,12 +73,15 @@ export class Search extends React.PureComponent {
     this.onToggleShowAll = this.onToggleShowAll.bind(this);
     this.getActiveState = this.getActiveState.bind(this);
   }
+
   onFocus() {
     this.props.dispatch(focus());
   }
+
   onBlur() {
     this.props.dispatch(blur());
   }
+
   onInput() {
     return e => {
       this.setState({ active: true });
@@ -89,17 +92,21 @@ export class Search extends React.PureComponent {
       );
     };
   }
+
   onEmptySearch() {
     this.dispatchInput('*');
   }
+
   onSubmit() {
     return e => {
       e.preventDefault();
     };
   }
+
   onToggleShowAll() {
     this.setState({ active: !this.state.active });
   }
+
   dispatchInput(value) {
     this.setState({ active: true });
     this.props.dispatch(
@@ -108,6 +115,7 @@ export class Search extends React.PureComponent {
       })
     );
   }
+
   empty() {
     this.setState({ active: false });
     this.props.dispatch(
@@ -116,6 +124,7 @@ export class Search extends React.PureComponent {
       })
     );
   }
+
   filterTables(search) {
     const tables = this.props.tables.toJS();
     if (!tables.length || search === '*') {
@@ -125,6 +134,7 @@ export class Search extends React.PureComponent {
       table => table.name.toLowerCase().indexOf(search.toLowerCase()) > -1
     );
   }
+
   filterProjects(search) {
     const projects = this.props.projects.toJS();
     if (!projects.length || search === '*') {
@@ -137,6 +147,7 @@ export class Search extends React.PureComponent {
         project.id.toLowerCase().indexOf(search.toLowerCase()) > -1
     );
   }
+
   getActiveState() {
     if (this.state.active) {
       if (this.props.value && this.props.value.length > 0) {
@@ -146,6 +157,7 @@ export class Search extends React.PureComponent {
     }
     return false;
   }
+
   render() {
     return (
       <Form onSubmit={this.onSubmit()}>
