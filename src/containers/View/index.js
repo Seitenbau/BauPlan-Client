@@ -13,11 +13,13 @@ import Header from 'components/Header';
 import Search from 'containers/Search';
 import styled from 'styled-components';
 
-const Title = styled.h3`
+const Title = styled.h1`
   margin: 0;
   display: inline;
   flex-grow: 3;
   text-transform: uppercase;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
 `;
 
 export class View extends React.PureComponent {

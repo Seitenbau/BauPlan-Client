@@ -28,7 +28,12 @@ function plansReducer(state = initialState, action) {
     case DEFAULT_ACTION:
       return state;
     case REQUEST_PLANS_SUCCESS:
-      return state.set('floors', action.data);
+      // set default scale of 1 for plans without scale
+      const plans = action.data.map(plan => {
+        const scale = plan.get('scale') ? plan.get('scale') : 1;
+        return plan.set('scale', scale);
+      });
+      return state.set('plans', plans);
     case REQUEST_PLANS_ERROR:
       return state;
     case REQUEST_TABLE_DATA_SUCCESS:

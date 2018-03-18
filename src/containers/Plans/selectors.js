@@ -7,7 +7,7 @@ const selectPlansDomain = () => state => state.get('plans');
 
 const makeSelectPlansData = () =>
   createSelector(selectPlansDomain(), substate => {
-    return substate ? substate.get('floors') : fromJS([]);
+    return substate ? substate.get('plans') : fromJS([]);
   });
 
 const makeSelectTables = () =>

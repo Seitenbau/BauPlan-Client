@@ -1,15 +1,15 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { shallow } from 'enzyme';
 import sinon from 'sinon';
+import { fromJS } from 'immutable';
+import { Search } from '../index';
 
-import { SearchField } from '../index';
-
-describe('<SearchField />', () => {
+describe('<Search />', () => {
   it('Displays a search empty field', () => {
     const renderedComponent = shallow(
-      <SearchField
-        tables={[]}
-        projects={[]}
+      <Search
+        tables={fromJS([])}
+        projects={fromJS([])}
         value={''}
         dispatch={() => false}
       />
@@ -19,9 +19,9 @@ describe('<SearchField />', () => {
   it('should filter correctly', () => {
     const spy = sinon.spy();
     const renderedComponent = shallow(
-      <SearchField
-        tables={[{ name: 'Anthon' }, { name: 'Alf' }, { name: 'olaf' }]}
-        projects={[]}
+      <Search
+        tables={fromJS([{ name: 'Anthon' }, { name: 'Alf' }, { name: 'olaf' }])}
+        projects={fromJS([])}
         value={''}
         dispatch={spy}
       />
