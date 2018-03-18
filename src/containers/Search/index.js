@@ -6,7 +6,6 @@
 
 import React from 'react';
 import { PropTypes } from 'prop-types';
-import styled from 'styled-components';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -18,47 +17,16 @@ import injectReducer from 'utils/injectReducer';
 import SearchItem from 'components/SearchItem';
 import Badge from 'components/Badge';
 import { makeSelectProjects } from '../Plans/selectors';
-import { rem } from '../../utils/helper';
 import { focus, blur, input } from './actions';
+
+import { Button, Form, Container } from './styles';
+
 import makeSelectSearchField, {
   selectValue,
   makeSelectTablesWithProjects
 } from './selectors';
 
 import reducer from './reducer';
-const Container = styled.div`
-  margin-left: ${props => (!props.active() ? '-20vw' : 0)};
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  width: 20vw;
-  position: fixed;
-  z-index: 2;
-  background-color: ${props => props.theme.colors.headerColor};
-  color: ${props => props.theme.colors.primary};
-  transition: all 0.375s ease-in;
-  padding: ${rem(10)};
-`;
-const Button = styled.button`
-  height: ${rem(35)};
-  width: ${rem(35)};
-  cursor: pointer;
-  border: none;
-  &:active,
-  &:focus,
-  &:hover {
-    outline: none;
-    background-color: ${props => props.theme.colors.primary};
-    svg {
-      fill: ${props => props.theme.colors.secondary};
-    }
-  }
-`;
-
-const Form = styled.form`
-  flex-grow: 2;
-  z-index: 3;
-`;
 
 export class Search extends React.PureComponent {
   state = { active: false };
