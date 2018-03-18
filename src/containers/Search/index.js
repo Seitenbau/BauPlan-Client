@@ -101,14 +101,14 @@ export class Search extends React.PureComponent {
     );
   }
 
-  empty() {
+  empty = () => {
     this.setState({ active: false });
     this.props.dispatch(
       input({
         value: ''
       })
     );
-  }
+  };
 
   filterTables(search) {
     const tables = this.props.tables.toJS();
