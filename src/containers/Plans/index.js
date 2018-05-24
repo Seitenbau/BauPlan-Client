@@ -43,7 +43,6 @@ export class Plans extends React.Component {
    * @param {array} plan
    */
   getFilteredTables(plan) {
-    const { params } = this.props.match;
     if (!this.props.tables) {
       return [];
     }
@@ -51,13 +50,37 @@ export class Plans extends React.Component {
       .toJS()
       .filter(table => table.planId === plan.id)
       .map(table => {
-        // set active table
-        table.active =
-          params.type === 'table' &&
-          (params.identifier === table.name ||
-            params.identifier === table.id.toString());
+        table.active = this.isActiveTable(table);
         return table;
       });
+  }
+
+  isActiveTable(table) {
+    const { params } = this.props.match;
+
+    if (
+      params.type === 'table' &&
+      (params.identifier === table.name ||
+        params.identifier === table.id.toString())
+    ) {
+      // table is specifically selected
+      return true;
+    }
+
+    if (params.type === 'project') {
+      if (table.projects.includes(params.identifier)) {
+        // project id matches
+        return true;
+      }
+      if (
+        this.props.projects.toJS().filter(project => params.identifier).length >
+        0
+      ) {
+        // project name matches
+        return true;
+      }
+    }
+    return false;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -77,7 +100,6 @@ export class Plans extends React.Component {
   render() {
     const { projects, plans } = this.props;
     const { params } = this.props.match;
-
     return (
       <Wrapper
         innerRef={ref => {
