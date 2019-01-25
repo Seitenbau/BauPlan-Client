@@ -1,8 +1,8 @@
 /**
-*
-* SearchItem
-*
-*/
+ *
+ * SearchItem
+ *
+ */
 
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -14,21 +14,23 @@ const StyledLink = styled(Link)`
   display: block;
   padding: ${rem(5)};
   text-decoration: none;
-  color: ${(props) => props.theme.colors.primary};
+  color: ${props => props.theme.colors.primary};
 
   &:active,
   &:focus,
   &:hover {
     outline: none;
-    background-color: ${(props) => props.theme.colors.primary};
-    color: ${(props) => props.theme.colors.secondary};
+    background-color: ${props => props.theme.colors.primary};
+    color: ${props => props.theme.colors.secondary};
   }
 `;
 
-class SearchItem extends React.PureComponent { // eslint-disable-line react/prefer-stateless-function
+class SearchItem extends React.PureComponent {
+  // eslint-disable-line react/prefer-stateless-function
   render() {
+    const { name } = this.props;
     return (
-      <StyledLink to={`/${this.props.prefix}/${this.props.name}`}>
+      <StyledLink to={`/${this.props.prefix}/${name}`}>
         {this.props.name}
         {this.props.children}
       </StyledLink>
@@ -38,7 +40,7 @@ class SearchItem extends React.PureComponent { // eslint-disable-line react/pref
 
 SearchItem.propTypes = {
   name: PropTypes.string,
-  prefix: PropTypes.string,
+  prefix: PropTypes.string
 };
 
 export default SearchItem;

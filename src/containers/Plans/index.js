@@ -68,16 +68,27 @@ export class Plans extends React.Component {
     }
 
     if (params.type === 'project') {
-      if (table.projects.includes(params.identifier)) {
-        // project id matches
-        return true;
+      const projectId = this.props.projects
+        .toJS()
+        .filter(project => params.identifier === project.name)
+        .map(p => p.id)[0];
+
+      if (!table.projects.includes(projectId)) {
+        // project id dose not matches
+        return false;
       }
-      if (
-        this.props.projects.toJS().filter(project => params.identifier).length >
-        0
-      ) {
-        // project name matches
+      const { y } = table;
+      const hasHigherSiblings =
+        this.props.tables
+          .toJS()
+          .filter(t => t.id !== table.id)
+          .filter(({ projects }) => projects.includes(projectId))
+          .filter(t => t.y < y).length > 0;
+      // highest sibling will be used
+      if (!hasHigherSiblings) {
         return true;
+      } else {
+        return false;
       }
     }
     return false;
@@ -149,8 +160,15 @@ const mapStateToProps = createStructuredSelector({
   activeScrolledToFloor: makeSelectActiveScrolledToFloor()
 });
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 const withReducer = injectReducer({ key: 'plans', reducer });
 const withSaga = injectSaga({ key: 'plans', saga });
 
-export default compose(withReducer, withSaga, withConnect)(Plans);
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect
+)(Plans);

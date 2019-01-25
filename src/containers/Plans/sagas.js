@@ -32,7 +32,7 @@ export function* getPlans() {
 }
 
 export default function* defaultSaga() {
+  yield takeLatest(REQUEST_PLANS, getPlans);
   yield takeLatest(REQUEST_TABLE_DATA, getTables);
   yield takeLatest(REQUEST_PROJECTS_DATA, getProjects);
-  yield takeLatest(REQUEST_PLANS, getPlans);
 }

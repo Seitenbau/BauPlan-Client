@@ -1,8 +1,9 @@
 const getProjects = () => [
   {
-    name: 'Human Resources',
-    id: 'HR',
-    color: '#FFFF00'
+    name: 'Human Resources', // project_name
+    id: 'HR', // project_short
+    color: '#FFFF00' // project_color
+    // project_id
   },
   {
     name: 'Financial Department',

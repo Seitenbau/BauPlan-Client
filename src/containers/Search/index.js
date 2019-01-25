@@ -60,6 +60,12 @@ export class Search extends React.PureComponent {
     this.setState({ active: !this.state.active });
   };
 
+  escape = e => {
+    if (e.keyCode === 27) {
+      this.setState({ active: false });
+    }
+  };
+
   dispatchInput(value) {
     this.setState({ active: true });
     this.props.dispatch(
@@ -70,7 +76,7 @@ export class Search extends React.PureComponent {
   }
 
   empty = () => {
-    this.setState({ active: false });
+    //this.setState({ active: false });
     this.props.dispatch(
       input({
         value: ''
@@ -113,7 +119,7 @@ export class Search extends React.PureComponent {
 
   render() {
     return (
-      <Form onSubmit={this.onSubmit}>
+      <Form onSubmit={this.onSubmit} onKeyDown={this.escape}>
         <Input
           autoFocus
           ref={ref => {
@@ -166,7 +172,11 @@ export class Search extends React.PureComponent {
               </SearchItem>
             ))}
           </ObjectList>
-          <ObjectList key={1} label={'Projekte'} search={this.props.value}>
+          <ObjectList
+            key={1}
+            label={'Projekte / Abteilungen'}
+            search={this.props.value}
+          >
             {this.filterProjects(this.props.value).map((hit, i) => (
               <SearchItem key={i} prefix={'project'} name={hit.name}>
                 <Badge key={i} color={hit.color} name={hit.id} />
@@ -200,7 +210,13 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 const withReducer = injectReducer({ key: 'searchField', reducer });
 
-export default compose(withConnect, withReducer)(Search);
+export default compose(
+  withConnect,
+  withReducer
+)(Search);

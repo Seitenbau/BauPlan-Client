@@ -20,14 +20,15 @@ const getTables = () => [
     planId: '1F'
   },
   {
-    name: 'Martina Huber',
-    x: 30,
-    y: 25,
-    floor: 1,
-    rotation: 245,
-    projects: ['HR'],
-    id: 2,
-    planId: '2F'
+    name: 'Martina Huber', // text
+    x: 30, // posx value relaative to floor
+    y: 25, // posy value relaative to floor
+    floor: 1, // layout_id
+    rotation: 245, // rotation
+    projects: ['HR'], // project ** make array
+    id: 2, // id
+    // tableNumber need to be added
+    planId: '2F' // posz
   },
   {
     name: 'Jan Friedmann',

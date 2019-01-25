@@ -13,6 +13,7 @@ export const Container = styled.div`
   color: ${props => props.theme.colors.primary};
   transition: all 0.375s ease-in;
   padding: ${rem(10)};
+  overflow-y: ${props => (!props.active() ? 'hidden' : 'auto')};
 `;
 export const Button = styled.button`
   height: ${rem(35)};
