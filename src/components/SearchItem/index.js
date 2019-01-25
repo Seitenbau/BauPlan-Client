@@ -10,6 +10,8 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { rem } from '../../utils/helper';
 
+import { toUrl } from '../../assets/utils/Urlify';
+
 const StyledLink = styled(Link)`
   display: block;
   padding: ${rem(5)};
@@ -30,7 +32,7 @@ class SearchItem extends React.PureComponent {
   render() {
     const { name } = this.props;
     return (
-      <StyledLink to={`/${this.props.prefix}/${name}`}>
+      <StyledLink to={`/${this.props.prefix}/${toUrl(name)}`}>
         {this.props.name}
         {this.props.children}
       </StyledLink>

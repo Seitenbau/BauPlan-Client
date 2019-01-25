@@ -13,6 +13,8 @@ import { flatten } from 'utils/helper';
 import throttle from 'lodash/debounce';
 import withScrollTarget from 'components/ScrollTarget';
 
+import { toUrl } from '../../assets/utils/Urlify';
+
 import ScaleImg from './ScaleImg';
 import StyledFloor from './StyledFloor';
 import ImgWrapper from './ImgWrapper';
@@ -93,7 +95,7 @@ export class Floor extends React.Component {
             ))}
           {tables &&
             tables.map((table, j) => (
-              <StyledLink key={j} to={`/table/${table.name}`}>
+              <StyledLink key={j} to={`/table/${toUrl(table.name)}`}>
                 <TableWithScrollTarget
                   scaleFactor={scaleFactor}
                   className={`table table-${j}`}
@@ -132,4 +134,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(() => ({}), mapDispatchToProps)(Floor);
+export default connect(
+  () => ({}),
+  mapDispatchToProps
+)(Floor);

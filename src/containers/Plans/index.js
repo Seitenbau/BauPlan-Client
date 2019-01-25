@@ -12,6 +12,8 @@ import { compose } from 'redux';
 import withScrollTarget from 'components/ScrollTarget';
 import { Iterable } from 'immutable';
 
+import { fromUrl } from '../../assets/utils/Urlify';
+
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
 import Floor from 'containers/Floor';
@@ -57,11 +59,11 @@ export class Plans extends React.Component {
 
   isActiveTable(table) {
     const { params } = this.props.match;
+    const identifier = fromUrl(params.identifier);
 
     if (
       params.type === 'table' &&
-      (params.identifier === table.name ||
-        params.identifier === table.id.toString())
+      (identifier === table.name || identifier === table.id.toString())
     ) {
       // table is specifically selected
       return true;
@@ -70,7 +72,7 @@ export class Plans extends React.Component {
     if (params.type === 'project') {
       const projectId = this.props.projects
         .toJS()
-        .filter(project => params.identifier === project.name)
+        .filter(project => identifier === project.name)
         .map(p => p.id)[0];
 
       if (!table.projects.includes(projectId)) {

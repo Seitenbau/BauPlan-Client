@@ -19,6 +19,8 @@ import Badge from 'components/Badge';
 import { makeSelectProjects } from '../Plans/selectors';
 import { focus, blur, input } from './actions';
 
+import { fromUrl } from '../../assets/utils/Urlify';
+
 import { Button, Form, Container } from './styles';
 
 import makeSelectSearchField, {
@@ -125,7 +127,7 @@ export class Search extends React.PureComponent {
           ref={ref => {
             this.inputRef = ref;
           }}
-          value={this.props.value}
+          value={fromUrl(this.props.value)}
           placeholder="Suche..."
           onFocus={this.onFocus}
           onBlur={this.onBlur}
