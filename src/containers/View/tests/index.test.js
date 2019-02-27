@@ -8,4 +8,8 @@ describe('<View />', () => {
   it('Component renders', () => {
     expect(renderedComponent.exists()).toBe(true);
   });
+
+  it('should render the page message', () => {
+    expect(renderedComponent.contains('Bauplan')).toEqual(true);
+  });
 });

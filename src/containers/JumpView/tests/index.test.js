@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-
+import { fromJS } from 'immutable';
 import { JumpView } from '../index';
 
-const plans = [
+const plans = fromJS([
   { name: 'eins', id: '1' },
   { name: 'zwei', id: '2' },
   { name: 'drei', id: '3' }
-];
+]);
 
 describe('<JumpView />', () => {
   const renderedComponent = shallow(

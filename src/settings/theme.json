@@ -5,7 +5,8 @@
     "backgroundColor": "#F2F5F6",
     "white": "#FFFFFF",
     "black": "#000000",
-    "lightBackground": "#E6E5DA"
+    "lightBackground": "#E6E5DA",
+    "headerColor": "#FAFAFA"
   },
   "plans": {
     "marginBottom": 40,

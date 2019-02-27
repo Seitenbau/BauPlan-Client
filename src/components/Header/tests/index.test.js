@@ -6,6 +6,6 @@ import Header from '../index';
 describe('<Header />', () => {
   it('should render the page message', () => {
     const renderedComponent = shallow(<Header />);
-    expect(renderedComponent.contains('Bauplan')).toEqual(true);
+    expect(renderedComponent.exists()).toBe(true);
   });
 });

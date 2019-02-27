@@ -5,7 +5,6 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import RoomLabel from 'components/RoomLabel';
@@ -14,11 +13,14 @@ import { flatten } from 'utils/helper';
 import throttle from 'lodash/debounce';
 import withScrollTarget from 'components/ScrollTarget';
 
+import { toUrl } from '../../assets/utils/Urlify';
+
 import ScaleImg from './ScaleImg';
 import StyledFloor from './StyledFloor';
 import ImgWrapper from './ImgWrapper';
 import Label from './label';
 import { announceVisible } from './actions';
+import StyledLink from './Link';
 
 const TableWithScrollTarget = withScrollTarget(Table);
 
@@ -55,8 +57,9 @@ export class Floor extends React.Component {
 
   isElementInViewport() {
     const rect = this.wrapper.getBoundingClientRect();
-    const buffer = 10;
-    const inViewport = rect.top < buffer && Math.abs(rect.top) < rect.height;
+    const buffer = 70;
+    const inViewport =
+      rect.top < buffer && Math.abs(rect.top - buffer) < rect.height;
     if (inViewport) {
       this.props.announceVisible(this.props);
     }
@@ -64,47 +67,49 @@ export class Floor extends React.Component {
 
   render() {
     const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
-
+    const { name, labels, imageUri, id, tables } = this.props;
     return (
       <StyledFloor
         innerRef={ref => {
           this.wrapper = ref;
         }}
       >
-        <Label>{this.props.name}</Label>
+        <Label>{name}</Label>
         <ImgWrapper>
           <ScaleImg
-            id={this.props.id}
-            name={this.props.name}
-            src={this.props.imageUri}
-            alt={`Floorplan ${this.props.name}`}
+            id={id}
+            name={name}
+            src={imageUri}
+            alt={`Floorplan ${name}`}
             handleResize={this.handleResize.bind(this)}
           />
-          {this.props.labels.map((label, i) => (
-            <RoomLabel
-              key={i}
-              scaleFactor={scaleFactor}
-              name={label.name}
-              left={label.x}
-              top={label.y}
-            />
-          ))}
-          {this.props.tables.map((table, j) => (
-            <Link key={j} to={`/table/${table.name}`}>
-              <TableWithScrollTarget
+          {labels &&
+            labels.map((label, i) => (
+              <RoomLabel
+                key={i}
                 scaleFactor={scaleFactor}
-                className={`table table-${j}`}
-                name={table.name}
-                id={table.id}
-                active={table.active}
-                scrollOffset={-60}
-                projects={this.find(table.projects)}
-                x={table.x}
-                y={table.y}
-                rotation={table.rotation}
+                name={label.name}
+                left={label.x}
+                top={label.y}
               />
-            </Link>
-          ))}
+            ))}
+          {tables &&
+            tables.map((table, j) => (
+              <StyledLink key={j} to={`/table/${toUrl(table.name)}`}>
+                <TableWithScrollTarget
+                  scaleFactor={scaleFactor}
+                  className={`table table-${j}`}
+                  name={table.name}
+                  id={table.id}
+                  active={table.active}
+                  scrollOffset={-60}
+                  projects={this.find(table.projects)}
+                  x={table.x}
+                  y={table.y}
+                  rotation={table.rotation}
+                />
+              </StyledLink>
+            ))}
         </ImgWrapper>
       </StyledFloor>
     );
@@ -129,4 +134,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(() => ({}), mapDispatchToProps)(Floor);
+export default connect(
+  () => ({}),
+  mapDispatchToProps
+)(Floor);

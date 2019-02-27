@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
+import { Iterable } from 'immutable';
 
 import {
   makeSelectPlansData,
@@ -49,26 +50,26 @@ export class JumpView extends React.PureComponent {
     const { className, plans, activeScrolledToFloor } = this.props;
     return (
       <Ul className={className}>
-        {plans.map((plan, i) => (
-          <li key={i}>
-            <StyledLink
-              active={activeScrolledToFloor === plan.id ? 'active' : undefined}
-              to={`/floor/${plan.id}`}
-            >
-              {plan.name}
-            </StyledLink>
-          </li>
-        ))}
+        {plans &&
+          plans.toJS().map((plan, i) => (
+            <li key={i}>
+              <StyledLink
+                active={
+                  activeScrolledToFloor === plan.id ? 'active' : undefined
+                }
+                to={`/floor/${plan.id}`}
+              >
+                {plan.name}
+              </StyledLink>
+            </li>
+          ))}
       </Ul>
     );
   }
 }
 
-JumpView.defaultProps = {
-  plans: []
-};
 JumpView.propTypes = {
-  plans: PropTypes.array,
+  plans: PropTypes.instanceOf(Iterable),
   className: PropTypes.string,
   activeScrolledToFloor: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };

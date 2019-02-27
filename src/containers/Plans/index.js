@@ -10,6 +10,9 @@ import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
 import { compose } from 'redux';
 import withScrollTarget from 'components/ScrollTarget';
+import { Iterable } from 'immutable';
+
+import { fromUrl } from '../../assets/utils/Urlify';
 
 import injectReducer from 'utils/injectReducer';
 import injectSaga from 'utils/injectSaga';
@@ -42,20 +45,55 @@ export class Plans extends React.Component {
    * @param {array} plan
    */
   getFilteredTables(plan) {
-    const { params } = this.props.match;
     if (!this.props.tables) {
       return [];
     }
     return this.props.tables
+      .toJS()
       .filter(table => table.planId === plan.id)
       .map(table => {
-        // set active table
-        table.active =
-          params.type === 'table' &&
-          (params.identifier === table.name ||
-            params.identifier === table.id.toString());
+        table.active = this.isActiveTable(table);
         return table;
       });
+  }
+
+  isActiveTable(table) {
+    const { params } = this.props.match;
+    const identifier = fromUrl(params.identifier);
+
+    if (
+      params.type === 'table' &&
+      (identifier === table.name || identifier === table.id.toString())
+    ) {
+      // table is specifically selected
+      return true;
+    }
+
+    if (params.type === 'project') {
+      const projectId = this.props.projects
+        .toJS()
+        .filter(project => identifier === project.name)
+        .map(p => p.id)[0];
+
+      if (!table.projects.includes(projectId)) {
+        // project id dose not matches
+        return false;
+      }
+      const { y } = table;
+      const hasHigherSiblings =
+        this.props.tables
+          .toJS()
+          .filter(t => t.id !== table.id)
+          .filter(({ projects }) => projects.includes(projectId))
+          .filter(t => t.y < y).length > 0;
+      // highest sibling will be used
+      if (!hasHigherSiblings) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return false;
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -75,43 +113,40 @@ export class Plans extends React.Component {
   render() {
     const { projects, plans } = this.props;
     const { params } = this.props.match;
-
     return (
       <Wrapper
         innerRef={ref => {
           this.wrapper = ref;
         }}
       >
-        {plans && plans.length
-          ? plans.map((plan, i) => (
-              <FloorWithScrollTarget
-                key={i}
-                name={plan.name}
-                id={plan.id}
-                active={
-                  params.type === 'floor' && plan.id === params.identifier
-                }
-                imageUri={plan.imageUri}
-                mapScaleFactor={plan.mapScaleFactor ? plan.mapScaleFactor : 1}
-                labels={plan.labels}
-                tables={this.getFilteredTables(plan)}
-                projects={projects}
-              />
-            ))
+        {plans && plans.size
+          ? plans
+              .toJS()
+              .map((plan, i) => (
+                <FloorWithScrollTarget
+                  key={i}
+                  name={plan.name}
+                  id={plan.id}
+                  active={
+                    params.type === 'floor' && plan.id === params.identifier
+                  }
+                  imageUri={plan.imageUri}
+                  mapScaleFactor={plan.mapScaleFactor ? plan.mapScaleFactor : 1}
+                  labels={plan.labels}
+                  tables={this.getFilteredTables(plan)}
+                  projects={projects.toJS()}
+                />
+              ))
           : ''}
       </Wrapper>
     );
   }
 }
 
-Plans.defaultProps = {
-  plans: []
-};
-
 Plans.propTypes = {
-  tables: PropTypes.array,
-  projects: PropTypes.array,
-  plans: PropTypes.array
+  tables: PropTypes.instanceOf(Iterable),
+  projects: PropTypes.instanceOf(Iterable),
+  plans: PropTypes.instanceOf(Iterable)
 };
 
 const mapDispatchToProps = dispatch => ({
@@ -127,8 +162,15 @@ const mapStateToProps = createStructuredSelector({
   activeScrolledToFloor: makeSelectActiveScrolledToFloor()
 });
 
-const withConnect = connect(mapStateToProps, mapDispatchToProps);
+const withConnect = connect(
+  mapStateToProps,
+  mapDispatchToProps
+);
 const withReducer = injectReducer({ key: 'plans', reducer });
 const withSaga = injectSaga({ key: 'plans', saga });
 
-export default compose(withReducer, withSaga, withConnect)(Plans);
+export default compose(
+  withReducer,
+  withSaga,
+  withConnect
+)(Plans);

@@ -17,23 +17,23 @@ import {
 } from './constants';
 
 const initialState = fromJS({
-  nextActiveFloor: false
+  nextActiveFloor: false,
+  plans: [],
+  tables: [],
+  projects: []
 });
-initialState.set('plans', []);
-initialState.set('tables', []);
-initialState.set('projects', []);
 
 function plansReducer(state = initialState, action) {
   switch (action.type) {
     case DEFAULT_ACTION:
       return state;
     case REQUEST_PLANS_SUCCESS:
-      const newPlans = action.data.map(data =>
-        Object.assign({}, data, {
-          scale: typeof data.scale !== 'undefined' ? data.scale : 1
-        })
-      );
-      return state.set('floors', newPlans);
+      // set default scale of 1 for plans without scale
+      const plans = action.data.map(plan => {
+        const scale = plan.get('scale') ? plan.get('scale') : 1;
+        return plan.set('scale', scale);
+      });
+      return state.set('plans', plans);
     case REQUEST_PLANS_ERROR:
       return state;
     case REQUEST_TABLE_DATA_SUCCESS:

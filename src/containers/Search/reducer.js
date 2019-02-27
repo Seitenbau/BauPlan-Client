@@ -5,17 +5,26 @@
  */
 
 import { fromJS } from 'immutable';
-import { DEFAULT_ACTION, FOCUSED, BLUR, INPUT } from './constants';
+import { FOCUSED, BLUR, INPUT } from './constants';
+
+function initialSearchValue() {
+  const pathname = window.location.pathname;
+  if (pathname.match('table')) {
+    return pathname
+      .replace('table', '')
+      .replace(new RegExp('/', 'g'), '')
+      .replace('%20', ' ');
+  }
+  return '';
+}
 
 const initialState = fromJS({
   focused: false,
-  value: ''
+  value: initialSearchValue()
 });
 
 function searchFieldReducer(state = initialState, action) {
   switch (action.type) {
-    case DEFAULT_ACTION:
-      return state;
     case FOCUSED:
       return state.set('focused', true);
     case BLUR:
