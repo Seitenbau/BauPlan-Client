@@ -119,9 +119,13 @@ export class Search extends React.PureComponent {
     return false;
   };
 
+  componentDidMount() {
+    window.document.addEventListener('keydown', this.escape);
+  }
+
   render() {
     return (
-      <Form onSubmit={this.onSubmit} onKeyDown={this.escape}>
+      <Form onSubmit={this.onSubmit}>
         <Input
           autoFocus
           ref={ref => {
