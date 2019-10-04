@@ -14,8 +14,8 @@ import TableSpan from './TableSpan';
 
 export class TableDisplay extends React.PureComponent {
   render() {
-    const x = this.props.x * this.props.scaleFactor;
-    const y = this.props.y * this.props.scaleFactor;
+    const x = this.props.x;
+    const y = this.props.y;
     const width = config.objects.tables.width * this.props.scaleFactor;
     const height = config.objects.tables.depth * this.props.scaleFactor;
 

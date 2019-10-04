@@ -19,6 +19,7 @@ import makeSelectTable from './selectors';
 
 export class Table extends React.PureComponent {
   render() {
+    const { x, y } = this.props.toUi(this.props.x, this.props.y, this.props.z);
     const tableNumber = prefixNumber(parseInt(this.props.id, 10));
     return (
       <TableDisplay
@@ -27,8 +28,8 @@ export class Table extends React.PureComponent {
         name={this.props.name}
         number={tableNumber}
         projects={this.props.projects}
-        x={this.props.x}
-        y={this.props.y}
+        x={x}
+        y={y}
         rotation={this.props.rotation}
       />
     );
@@ -59,4 +60,7 @@ const mapStateToProps = createStructuredSelector({
 const withConnect = connect(mapStateToProps);
 const withReducer = injectReducer({ key: 'table', reducer });
 
-export default compose(withReducer, withConnect)(Table);
+export default compose(
+  withReducer,
+  withConnect
+)(Table);

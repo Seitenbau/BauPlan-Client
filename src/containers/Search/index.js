@@ -109,6 +109,11 @@ export class Search extends React.PureComponent {
     );
   };
 
+  resolveProjects = (pids = []) => {
+    const projects = this.props.projects.toJS();
+    return pids.map(id => projects.find(p => p.sys_id == id));
+  };
+
   onGetActiveState = () => {
     if (this.state.active) {
       if (this.props.value && this.props.value.length > 0) {
@@ -171,7 +176,7 @@ export class Search extends React.PureComponent {
             {this.filterTables(this.props.value).map((hit, i) => (
               <SearchItem key={i} prefix={'table'} name={hit.name}>
                 {hit.projects
-                  ? hit.projects.map((p, i) => (
+                  ? this.resolveProjects(hit.projects).map((p, i) => (
                       <Badge key={i} color={p.color} name={p.id} />
                     ))
                   : ''}

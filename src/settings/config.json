@@ -1,4 +1,5 @@
 {
+  "api-entry-url": "http://localhost:8099",
   "name": "Bauplan",
   "objects": {
     "tables": {

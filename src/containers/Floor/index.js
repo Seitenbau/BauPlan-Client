@@ -22,6 +22,8 @@ import Label from './label';
 import { announceVisible } from './actions';
 import StyledLink from './Link';
 
+import theme from '../../settings/theme.json';
+
 const TableWithScrollTarget = withScrollTarget(Table);
 
 export class Floor extends React.Component {
@@ -30,6 +32,7 @@ export class Floor extends React.Component {
     this.state = {
       imageScaleFactor: 1
     };
+    this.toUI = this.toUI.bind(this);
   }
 
   find(id) {
@@ -65,9 +68,31 @@ export class Floor extends React.Component {
     }
   }
 
+  toUI = function(posx, posy, posz) {
+    const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
+    console.log('call: toUI');
+    const rect = this.wrapper.getBoundingClientRect();
+    var d = rect.height;
+    var t = theme.plans.marginBottom;
+    var y = posy;
+    var x = posx;
+
+    // dont check 0 beacuse always same x and y
+    for (var i = 1; i <= 4; i++) {
+      if (posz === i) {
+        y = y + i * (d + t);
+      }
+    }
+    return {
+      y: Math.ceil(y),
+      x: Math.ceil(x)
+    };
+  };
+
   render() {
     const scaleFactor = this.state.imageScaleFactor * this.props.mapScaleFactor;
     const { name, labels, imageUri, id, tables } = this.props;
+
     return (
       <StyledFloor
         innerRef={ref => {
@@ -106,7 +131,9 @@ export class Floor extends React.Component {
                   projects={this.find(table.projects)}
                   x={table.x}
                   y={table.y}
+                  z={table.z}
                   rotation={table.rotation}
+                  toUi={this.toUI}
                 />
               </StyledLink>
             ))}

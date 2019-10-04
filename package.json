@@ -4,6 +4,7 @@
   "homepage": "https://seitenbau.github.io/BauPlan-Client",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.19.0",
     "history": "^4.7.2",
     "immutable": "^3.8.2",
     "prop-types": "^15.6.1",
@@ -27,11 +28,9 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "gh-pages": "^1.1.0",
     "husky": "^0.14.3",
-    "lint-staged": "^7.0.0",
-    "prettier": "^1.11.1",
-    "sinon": "^4.4.6",
     "lint-staged": "^6.0.0",
     "prettier": "^1.9.2",
+    "sinon": "^4.4.6",
     "tween": "^0.9.0"
   },
   "scripts": {
@@ -46,7 +45,10 @@
     "codecov": "cat ./coverage/lcov.info | codecov"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --single-quote --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   },
   "jest": {
     "collectCoverageFrom": [

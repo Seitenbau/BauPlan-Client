@@ -1,5 +1,45 @@
-const getTables = () =>
-  new Promise(res =>
+import Axios from 'axios';
+import config from '../../../settings/config.json';
+
+const zToPlanIdMap = {
+  0: '1F',
+  1: '2F',
+  2: '3F',
+  3: '4F'
+};
+
+const getTables = plans => {
+  return Axios.get(`${config['api-entry-url']}/objects?l=1`).then(res => {
+    console.log(res.data.map(t => t.type));
+    return Promise.resolve(
+      res.data
+        .filter(t => t.type === 'table')
+        .map(t => {
+          const {
+            layout_id,
+            posx,
+            posy,
+            posz,
+            project,
+            rotation,
+            tableNumber,
+            text
+          } = t;
+          return {
+            name: text || '',
+            x: posx,
+            y: posy,
+            floor: posz,
+            rotation,
+            id: tableNumber,
+            projects: project ? [project] : null,
+            planId: zToPlanIdMap[posz]
+          };
+        })
+    );
+  });
+
+  return new Promise(res =>
     res([
       {
         name: 'Tim Dresner',
@@ -44,5 +84,6 @@ const getTables = () =>
       }
     ])
   );
+};
 
 export default getTables;
