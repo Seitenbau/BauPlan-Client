@@ -111,7 +111,7 @@ export class Search extends React.PureComponent {
 
   resolveProjects = (pids = []) => {
     const projects = this.props.projects.toJS();
-    return pids.map(id => projects.find(p => p.sys_id == id));
+    return pids.map(id => projects.find(p => p.sys_id == id) || null);
   };
 
   onGetActiveState = () => {

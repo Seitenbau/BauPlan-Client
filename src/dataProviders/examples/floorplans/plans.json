@@ -1,24 +1,29 @@
 [
   {
-    "name": "Headquarter 1st floor",
+    "name": "Neubau Erdgeschoss",
     "id": "1F",
-    "imageName": "Bauplan_Sample.svg",
-    "mapScaleFactor": 60,
+    "imageName": "Bauplan-EG1.svg",
+    "mapScaleFactor": 0.4,
     "labels": [
       {
         "name": "Meetingroom 1",
-        "x": 31,
-        "y": 6
+        "x": 700,
+        "y": 200
       },
       {
         "name": "Meetingroom 2",
-        "x": 31,
-        "y": 20
+        "x": 400,
+        "y": 200
       },
       {
         "name": "Meetingroom 3",
-        "x": 19,
-        "y": 6
+        "x": 150,
+        "y": 700
+      },
+      {
+        "name": "Fahrradraum",
+        "x": 1000,
+        "y": 800
       }
     ]
   },

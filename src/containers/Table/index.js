@@ -19,7 +19,6 @@ import makeSelectTable from './selectors';
 
 export class Table extends React.PureComponent {
   render() {
-    const { x, y } = this.props.toUi(this.props.x, this.props.y, this.props.z);
     const tableNumber = prefixNumber(parseInt(this.props.id, 10));
     return (
       <TableDisplay
@@ -28,8 +27,8 @@ export class Table extends React.PureComponent {
         name={this.props.name}
         number={tableNumber}
         projects={this.props.projects}
-        x={x}
-        y={y}
+        x={this.props.x}
+        y={this.props.y}
         rotation={this.props.rotation}
       />
     );

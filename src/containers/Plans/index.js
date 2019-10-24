@@ -34,9 +34,9 @@ const FloorWithScrollTarget = withScrollTarget(Floor);
 
 export class Plans extends React.Component {
   componentDidMount() {
-    this.props.requestTableData();
-    this.props.requestProjectData();
     this.props.requestPlans();
+    this.props.requestProjectData();
+    this.props.requestTableData();
   }
 
   /**

@@ -4,8 +4,8 @@
   "objects": {
     "tables": {
       "name": "Table",
-      "width": 2,
-      "depth": 1
+      "width": 80,
+      "depth": 40
     }
   }
 }
