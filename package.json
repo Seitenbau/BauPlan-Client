@@ -23,7 +23,7 @@
     "styled-components": "^3.2.3"
   },
   "devDependencies": {
-    "codecov": "^3.0.0",
+    "codecov": "^3.6.5",
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1",
     "gh-pages": "^1.1.0",
