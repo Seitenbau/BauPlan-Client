@@ -4,12 +4,14 @@
  *
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import Icon from 'components/Icon';
 import Bar from 'components/Bar';
+import JumpView from '../../containers/JumpView';
 import { rem } from '../../utils/helper';
+import ExpandingBox from '../ExpandingBox';
 
 const Iconwrapper = styled(Link)`
   width: 100%;
@@ -31,16 +33,30 @@ const Iconwrapper = styled(Link)`
   }
 `;
 
+const Hr = styled.hr`
+  border: 0;
+  border-bottom: 1px solid ${props => props.theme.colors.primary};
+  margin: 6px 4px;
+`;
+
+let Wrapped = styled(Bar)`
+  &:hover {
+    width: ${rem(200)};
+  }
+`;
+
 function Actionbar() {
   return (
-    <Bar color="secondary">
+    <Wrapped color="secondary">
       <Iconwrapper to="/login">
         <Icon name={'buddy'} width={20} height={20} />
       </Iconwrapper>
       <Iconwrapper to="/me">
         <Icon name={'gear'} width={20} height={20} />
       </Iconwrapper>
-    </Bar>
+      <Hr></Hr>
+      <JumpView />
+    </Wrapped>
   );
 }
 

@@ -35,7 +35,6 @@ export class View extends React.PureComponent {
           <Route path="/:type?/:identifier?" component={Plans} />
         </Switch>
         <Actionbar />
-        <JumpView />
       </div>
     );
   }

@@ -8,15 +8,12 @@
 
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import View from 'containers/View';
+import UserInfoPanel from '../UserInfoPanel';
 
 export function App() {
-  return (
-    <Switch>
-      <Route path="/" component={View} />
-    </Switch>
-  );
+  return <div></div>;
 }
 
 export default App;

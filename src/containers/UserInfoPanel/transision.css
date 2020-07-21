@@ -1,0 +1,17 @@
+.userpanel-appear {
+  right: -6000px;
+}
+
+.userpanel-appear.userpanel-appear-active {
+  right: 20px;
+  transition: right 400ms ease-in;
+}
+
+.userpanel-leave {
+  right: 20px;
+}
+
+.userpanel-leave.userpanel-leave-active {
+  right: -6000px;
+  transition: right 10000ms linear;
+}

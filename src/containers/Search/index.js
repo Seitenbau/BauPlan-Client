@@ -18,6 +18,7 @@ import SearchItem from 'components/SearchItem';
 import Badge from 'components/Badge';
 import { makeSelectProjects } from '../Plans/selectors';
 import { focus, blur, input } from './actions';
+import { Link } from 'react-router-dom';
 
 import { fromUrl } from '../../assets/utils/Urlify';
 
@@ -182,6 +183,7 @@ export class Search extends React.PureComponent {
                   : ''}
               </SearchItem>
             ))}
+            <Link to="/table/Lukas_Ochmann">Lukas</Link>
           </ObjectList>
           <ObjectList
             key={1}
@@ -221,13 +223,7 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-const withConnect = connect(
-  mapStateToProps,
-  mapDispatchToProps
-);
+const withConnect = connect(mapStateToProps, mapDispatchToProps);
 const withReducer = injectReducer({ key: 'searchField', reducer });
 
-export default compose(
-  withConnect,
-  withReducer
-)(Search);
+export default compose(withConnect, withReducer)(Search);

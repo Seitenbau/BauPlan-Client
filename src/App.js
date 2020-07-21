@@ -5,45 +5,62 @@
  * code.
  */
 
+// Import root app
+import UiEventProvider from 'containers/UiEventProvider';
 // Import all the third party stuff
 import React from 'react';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
-import { ThemeProvider } from 'styled-components';
-import createHistory from 'history/createBrowserHistory';
-
-// Import root app
-import App from 'containers/App';
-import UiEventProvider from 'containers/UiEventProvider';
-
-import configureStore from './configureStore';
-
+import { BrowserRouter as Router, Route, useHistory } from 'react-router-dom';
 // Import CSS reset and Global Styles
 import 'sanitize.css';
+import { ThemeProvider } from 'styled-components';
+
+import configureStore from './configureStore';
+import UserInfoPanel from './containers/UserInfoPanel';
+import View from './containers/View';
 import './global-styles';
 import theme from './settings/theme.json';
 
 // Create redux store with history
 const initialState = {};
-const history = createHistory();
-const store = configureStore(initialState, history);
 
 const MOUNT_NODE = document.getElementById('root');
 
-const render = messages => {
-  ReactDOM.render(
+function App() {
+  let history = useHistory();
+  const store = configureStore(initialState, history);
+
+  return (
     <Provider store={store}>
       <UiEventProvider>
         <ThemeProvider theme={theme}>
-          <ConnectedRouter history={history}>
-            <App />
-          </ConnectedRouter>
+          <Router>
+            <Route path="/">
+              <View />
+              <Route path="/table/:name">
+                <ReactCSSTransitionGroup
+                  transitionAppear={true}
+                  transitionName="userpanel"
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={300}
+                  transitionEnter={false}
+                  transitionLeave={false}
+                >
+                  <UserInfoPanel />
+                </ReactCSSTransitionGroup>
+              </Route>
+            </Route>
+          </Router>
         </ThemeProvider>
       </UiEventProvider>
-    </Provider>,
-    MOUNT_NODE
+    </Provider>
   );
+}
+
+const render = messages => {
+  ReactDOM.render(<App />, MOUNT_NODE);
 };
 
 export default render;

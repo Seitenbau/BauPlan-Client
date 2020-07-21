@@ -16,21 +16,23 @@ import {
   makeSelectPlansData,
   makeSelectActiveScrolledToFloor
 } from 'containers/Plans/selectors';
+import ExpandingBox from '../../components/ExpandingBox';
 
 import { rem } from '../../utils/helper';
 
 const Ul = styled.ul`
+  width: 100%;
   list-style: none;
-  position: fixed;
   right: 0;
-  padding: ${rem(60)} ${rem(50)} 0 0;
-  & li {
-    margin-bottom: ${rem(10)};
-  }
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+`;
+
+const Li = styled.li`
+  margin-bottom: ${rem(20)};
 `;
 const StyledLink = styled(Link)`
-  margin-bottom: ${rem(20)};
-  padding: ${rem(5)};
   text-decoration: none;
   &:active,
   &:focus,
@@ -52,16 +54,16 @@ export class JumpView extends React.PureComponent {
       <Ul className={className}>
         {plans &&
           plans.toJS().map((plan, i) => (
-            <li key={i}>
+            <Li key={i}>
               <StyledLink
                 active={
                   activeScrolledToFloor === plan.id ? 'active' : undefined
                 }
                 to={`/floor/${plan.id}`}
               >
-                {plan.name}
+                <ExpandingBox name={plan.name} short={plan.short} />
               </StyledLink>
-            </li>
+            </Li>
           ))}
       </Ul>
     );
